@@ -1,0 +1,49 @@
+---
+import Logo from './Logo.astro';
+import { t, homePath, legalPaths, contact, type Lang } from '../lib/i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const d = t(lang);
+const home = homePath(lang);
+const links = [
+  { href: `${home}#servicios`, label: d.nav.services },
+  { href: `${home}#diagnostico`, label: d.nav.diagnosis },
+  { href: `${home}#sobre-mi`, label: d.nav.about },
+  { href: `${home}#proyectos`, label: d.nav.projects },
+  { href: `${home}#contacto`, label: d.nav.contact },
+];
+---
+<footer class="on-band bg-band text-white">
+  <div class="wrap grid gap-12 py-16 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <Logo descriptor={d.brand.descriptor} tone="light" />
+      <p class="mt-5 max-w-xs text-band-muted">{d.footer.tagline}</p>
+      <p class="mt-2 max-w-xs text-band-muted">{d.footer.location}</p>
+    </div>
+    <nav aria-label={d.footer.links} class="md:col-span-3">
+      <p class="font-semibold">{d.footer.links}</p>
+      <ul class="mt-4 space-y-2.5">
+        {links.map((l) => <li><a href={l.href} class="text-band-muted no-underline hover:text-white">{l.label}</a></li>)}
+      </ul>
+    </nav>
+    <div class="md:col-span-4">
+      <p class="font-semibold">{d.footer.contact}</p>
+      <ul class="mt-4 space-y-2.5 text-band-muted">
+        <li><a href={`mailto:${contact.email}`} class="no-underline hover:text-white">{contact.email}</a></li>
+        <li><a href={`https://wa.me/${contact.whatsappNumber}`} class="no-underline hover:text-white">WhatsApp {contact.whatsappDisplay}</a></li>
+        <li><a href={contact.linkedin} target="_blank" rel="noopener" class="no-underline hover:text-white">LinkedIn</a></li>
+        <li><a href={contact.github} target="_blank" rel="noopener" class="no-underline hover:text-white">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/12">
+    <div class="wrap flex flex-col gap-3 py-6 text-sm text-band-muted sm:flex-row sm:items-center sm:justify-between">
+      <p>© 2026 Buildream. {d.footer.rights}</p>
+      <p class="flex gap-5">
+        <a href={legalPaths.privacy[lang]} class="no-underline hover:text-white">{d.footer.privacy}</a>
+        <a href={legalPaths.terms[lang]} class="no-underline hover:text-white">{d.footer.terms}</a>
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,142 @@
+---
+import { t, contact, whatsappLink, type Lang } from '../lib/i18n';
+import { lineIcon } from '../lib/icons';
+
+interface Props { lang: Lang }
+const all = t(Astro.props.lang);
+const d = all.contact;
+const services = all.services.items.map((s) => s.title);
+// Netlify Forms por defecto. Para usar Formspree/Web3Forms, define PUBLIC_FORM_ENDPOINT.
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT || '/';
+const field = 'mt-2 block w-full rounded-[var(--radius-control)] border border-line bg-paper px-4 py-3 text-base text-ink placeholder:text-muted/70 transition focus:border-accent focus:bg-surface focus:outline-none focus:ring-2 focus:ring-accent/25 aria-[invalid=true]:border-red-700';
+const label = 'block text-[0.95rem] font-semibold';
+---
+<section id="contacto" class="section border-t border-line">
+  <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-5">
+      <h2 class="h2 max-w-[14ch]">{d.title}</h2>
+      <p class="lead mt-5">{d.lead}</p>
+      <p class="mt-10 text-sm font-semibold text-muted">{d.or}</p>
+      <div class="mt-4 flex flex-col gap-3">
+        <a href={whatsappLink(d.whatsappText)} target="_blank" rel="noopener" class="btn btn-secondary justify-start">
+          <Fragment set:html={lineIcon('message-circle', 'size-5')} />
+          {d.whatsapp}
+        </a>
+        <a href={`mailto:${contact.email}`} class="btn btn-secondary justify-start">
+          <Fragment set:html={lineIcon('mail', 'size-5')} />
+          {contact.email}
+        </a>
+      </div>
+    </div>
+
+    <form id="contact-form" name="contacto" method="POST" action={endpoint} data-netlify="true" netlify-honeypot="bot-field"
+          data-endpoint={endpoint} data-msg-required={d.required} data-msg-email={d.invalidEmail}
+          class="panel grid gap-5 p-6 sm:p-8 lg:col-span-7" novalidate>
+      <input type="hidden" name="form-name" value="contacto" />
+      <p class="hidden"><label>Bot <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+      <input type="hidden" name="idioma" value={Astro.props.lang} />
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="f-name" class={label}>{d.name}</label>
+          <input id="f-name" name="nombre" required autocomplete="name" class={field} aria-describedby="e-name" />
+          <p id="e-name" class="mt-1.5 hidden text-sm font-medium text-red-700"></p>
+        </div>
+        <div>
+          <label for="f-email" class={label}>{d.email}</label>
+          <input id="f-email" name="correo" type="email" required autocomplete="email" class={field} aria-describedby="e-email" />
+          <p id="e-email" class="mt-1.5 hidden text-sm font-medium text-red-700"></p>
+        </div>
+      </div>
+      <div>
+        <label for="f-company" class={label}>{d.company} <span class="font-normal text-muted">({d.optional})</span></label>
+        <input id="f-company" name="empresa" autocomplete="organization" class={field} />
+      </div>
+      <div>
+        <label for="f-service" class={label}>{d.service}</label>
+        <select id="f-service" name="servicio" class={`${field} appearance-none bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a5a53' stroke-width='1.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")] bg-[length:1.25rem] bg-[right_0.9rem_center] bg-no-repeat pr-11`}>
+          <option value="">{d.servicePlaceholder}</option>
+          {services.map((s) => <option value={s}>{s}</option>)}
+          <option value={d.serviceOther}>{d.serviceOther}</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-message" class={label}>{d.message}</label>
+        <textarea id="f-message" name="mensaje" rows="5" required placeholder={d.messagePlaceholder} class={field} aria-describedby="e-message"></textarea>
+        <p id="e-message" class="mt-1.5 hidden text-sm font-medium text-red-700"></p>
+      </div>
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+        <button type="submit" class="btn btn-primary disabled:cursor-wait disabled:opacity-70" data-label={d.send} data-sending={d.sending}>{d.send}</button>
+        <p id="form-status" role="status" class="text-[0.95rem] font-medium" data-sent={d.sent} data-error={d.error}></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const status = document.getElementById('form-status')!;
+  const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+  const select = form.querySelector<HTMLSelectElement>('#f-service')!;
+  const message = form.querySelector<HTMLTextAreaElement>('#f-message')!;
+
+  // "Consultar" links preselect the service.
+  document.querySelectorAll<HTMLElement>('[data-service]').forEach((a) =>
+    a.addEventListener('click', () => {
+      select.selectedIndex = Number(a.dataset.service) + 1;
+    }),
+  );
+  // Quiz answers prefill the message.
+  window.addEventListener('quiz:done', (e) => {
+    const { summary, recs } = (e as CustomEvent).detail;
+    message.value = `${summary}\n\n${recs.map((r: string) => `• ${r}`).join('\n')}`;
+  });
+
+  const show = (input: HTMLInputElement | HTMLTextAreaElement, msg: string) => {
+    const err = document.getElementById(input.getAttribute('aria-describedby')!)!;
+    err.textContent = msg;
+    err.classList.toggle('hidden', !msg);
+    input.setAttribute('aria-invalid', String(!!msg));
+  };
+
+  function validate(): boolean {
+    let ok = true;
+    let first: HTMLElement | null = null;
+    form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]').forEach((el) => {
+      let msg = '';
+      if (!el.value.trim()) msg = form.dataset.msgRequired!;
+      else if (el.type === 'email' && !el.validity.valid) msg = form.dataset.msgEmail!;
+      show(el, msg);
+      if (msg && !first) first = el;
+      if (msg) ok = false;
+    });
+    (first as HTMLElement | null)?.focus();
+    return ok;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = '';
+    if (!validate()) return;
+    btn.disabled = true;
+    btn.textContent = btn.dataset.sending!;
+    try {
+      const data = new FormData(form);
+      const res = await fetch(form.dataset.endpoint!, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' },
+        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      status.className = 'text-[0.95rem] font-medium text-accent-strong';
+      status.textContent = status.dataset.sent!;
+    } catch {
+      status.className = 'text-[0.95rem] font-medium text-red-700';
+      status.textContent = status.dataset.error!;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = btn.dataset.label!;
+    }
+  });
+</script>

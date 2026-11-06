@@ -1,0 +1,21 @@
+---
+import { t, type Lang } from '../lib/i18n';
+import { lineIcon } from '../lib/icons';
+
+interface Props { lang: Lang }
+const d = t(Astro.props.lang).audience;
+---
+<section class="section bg-surface">
+  <div class="wrap">
+    <h2 class="h2 max-w-[18ch]">{d.title}</h2>
+    <p class="lead mt-5">{d.lead}</p>
+    <ul class="mt-12 grid gap-x-12 sm:grid-cols-2">
+      {d.items.map((a) => (
+        <li class="flex items-center gap-5 border-t border-line py-6 last:border-b sm:[&:nth-last-child(2)]:border-b">
+          <span class="text-accent"><Fragment set:html={lineIcon(a.icon, 'size-8')} /></span>
+          <span class="text-[1.25rem] font-semibold tracking-[-0.01em]">{a.label}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

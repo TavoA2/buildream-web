@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import Services from './Services.astro';
+import Audience from './Audience.astro';
+import Diagnosis from './Diagnosis.astro';
+import Stack from './Stack.astro';
+import Process from './Process.astro';
+import About from './About.astro';
+import Projects from './Projects.astro';
+import Faq from './Faq.astro';
+import Contact from './Contact.astro';
+import Footer from './Footer.astro';
+import { homePath, type Lang } from '../lib/i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const altPath = homePath(lang === 'es' ? 'en' : 'es');
+// Testimonios y casos de éxito: componentes pendientes hasta tener casos reales (ver TODO-CONTENT.md).
+---
+<Layout lang={lang} altPath={altPath}>
+  <Header lang={lang} altPath={altPath} />
+  <main>
+    <Hero lang={lang} />
+    <Services lang={lang} />
+    <Audience lang={lang} />
+    <Diagnosis lang={lang} />
+    <Stack lang={lang} />
+    <Process lang={lang} />
+    <About lang={lang} />
+    <Projects lang={lang} />
+    <Faq lang={lang} />
+    <Contact lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</Layout>

@@ -1,0 +1,227 @@
+{
+  "meta": {
+    "title": "Buildream · IT & AI consulting for small businesses and founders",
+    "description": "I help you put AI and technology to work in your business: websites with chatbots, automations, AI workshops and cloud. First call free.",
+    "locale": "en_US"
+  },
+  "nav": {
+    "services": "Services",
+    "diagnosis": "AI assessment",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "cta": "Book your assessment",
+    "menu": "Open menu",
+    "close": "Close menu",
+    "switchTo": "Español",
+    "switchLabel": "Ver el sitio en español"
+  },
+  "brand": { "descriptor": "IT & AI Consulting" },
+  "hero": {
+    "title": "You have the vision. We build it.",
+    "lead": "IT and AI consulting for small businesses and founders: websites with chatbots, automations, workshops for your team and the cloud behind it all. I explain what actually helps, in plain words, and leave it running.",
+    "primary": "Book your free assessment",
+    "secondary": "See services",
+    "fact": "Computer engineer with 5+ years running enterprise-grade cloud platforms.",
+    "pipeline": {
+      "label": "How a project moves",
+      "idea": "Your idea",
+      "ideaText": "Let my clients book through WhatsApp without me answering every message",
+      "steps": [
+        { "name": "Plan", "detail": "We understand the business and pick the right tool" },
+        { "name": "Build", "detail": "We build the bot, the site and the connections" },
+        { "name": "Deploy", "detail": "We launch it and test it with real customers" },
+        { "name": "Grow", "detail": "We measure, adjust and add what comes next" }
+      ],
+      "running": "running",
+      "done": "done"
+    }
+  },
+  "services": {
+    "title": "What I can do for your business",
+    "lead": "Five ways to start. Not sure which one you need? We start with the assessment.",
+    "ask": "Ask about this",
+    "items": [
+      { "icon": "compass", "title": "AI assessment and strategy", "text": "We look at how your business runs today and find where AI really saves time, without buying tools you won't use." },
+      { "icon": "globe", "title": "Website with an AI chatbot", "text": "A fast, clear website connected to WhatsApp, with an assistant that answers common questions and books appointments while you work." },
+      { "icon": "workflow", "title": "Process automation", "text": "Forms that land in your spreadsheet on their own, automatic reminders, invoices and customer follow-up with n8n or Make." },
+      { "icon": "graduation-cap", "title": "AI workshops for teams", "text": "Hands-on sessions for marketing, design and sales: how to use ChatGPT, Claude and Gemini on your team's real tasks." },
+      { "icon": "cloud", "title": "Cloud and DevOps for startups", "text": "Hosting, automatic deployments, AWS and a foundation that holds when your product grows. The technical part almost nobody explains." }
+    ]
+  },
+  "audience": {
+    "title": "Who I work with",
+    "lead": "Businesses that want technology on their side, without an in-house tech team.",
+    "items": [
+      { "icon": "rocket", "label": "Founders" },
+      { "icon": "store", "label": "Small businesses" },
+      { "icon": "megaphone", "label": "Marketing and design" },
+      { "icon": "stethoscope", "label": "Health and clinics" },
+      { "icon": "map", "label": "Tourism and hospitality" },
+      { "icon": "dumbbell", "label": "Fitness and coaching" },
+      { "icon": "shopping-bag", "label": "Online stores" },
+      { "icon": "utensils", "label": "Restaurants" },
+      { "icon": "book-open", "label": "Education" },
+      { "icon": "briefcase", "label": "Independent professionals" }
+    ]
+  },
+  "diagnosis": {
+    "title": "An AI assessment for your business",
+    "lead": "A free 30-minute call, no strings attached. Afterwards I send you a proposal with what to do first.",
+    "receiveTitle": "What you get",
+    "receive": [
+      "A summary of how your business runs today and where time is lost",
+      "The three highest-impact opportunities, in order",
+      "Recommended tools for your budget",
+      "A roadmap with steps and timelines",
+      "A tailored proposal, no generic price lists"
+    ],
+    "cta": "Book your assessment",
+    "quiz": {
+      "title": "Quick check",
+      "intro": "Answer four questions and I'll show you where I'd start.",
+      "progress": "Question {n} of {total}",
+      "back": "Back",
+      "restart": "Start over",
+      "resultTitle": "Where I'd start",
+      "resultCta": "Send my answers",
+      "resultNote": "Your answers are copied into the contact form.",
+      "questions": [
+        { "id": "type", "q": "What kind of business do you run?", "options": [
+          { "v": "services", "label": "Services by appointment (clinic, studio, coach)" },
+          { "v": "retail", "label": "A shop or products" },
+          { "v": "creative", "label": "Marketing, design or content" },
+          { "v": "startup", "label": "A startup or digital product" } ] },
+        { "id": "pain", "q": "What takes most of your time?", "options": [
+          { "v": "messages", "label": "Answering messages and booking" },
+          { "v": "admin", "label": "Copying data, invoicing, follow-ups" },
+          { "v": "content", "label": "Creating content and posts" },
+          { "v": "tech", "label": "The technical side: hosting, servers, bugs" } ] },
+        { "id": "web", "q": "Do you have a website?", "options": [
+          { "v": "no", "label": "Not yet" },
+          { "v": "old", "label": "Yes, but it doesn't bring clients" },
+          { "v": "ok", "label": "Yes, and it works well" } ] },
+        { "id": "ai", "q": "Do you already use AI day to day?", "options": [
+          { "v": "none", "label": "No, I don't know where to start" },
+          { "v": "some", "label": "Some ChatGPT, no real method" },
+          { "v": "team", "label": "Yes, and I want my team to use it better" } ] }
+      ],
+      "recs": {
+        "messages": "A WhatsApp assistant that answers common questions and books for you.",
+        "admin": "Automate how data moves between forms, sheets and invoicing.",
+        "content": "An AI content workflow: ideas, scripts and a calendar in one hour a week.",
+        "tech": "Review your infrastructure and set up automatic deployments and monitoring.",
+        "web_no": "A simple, fast website that explains what you do and captures leads.",
+        "web_old": "Rebuild your site with a clear message and a chatbot that turns visits into leads.",
+        "ai_none": "A short workshop to start using AI with confidence.",
+        "ai_some": "Prompt templates for your repeated tasks, so AI works with a method.",
+        "ai_team": "A workshop for your team built on cases from their own work."
+      }
+    }
+  },
+  "stack": {
+    "title": "Frontier AI models with proven technology",
+    "lead": "I pick the model and the infrastructure for your case, so what we build is secure, grows with you and doesn't depend on a trend.",
+    "models": "AI models",
+    "tools": "Tools and platforms"
+  },
+  "process": {
+    "title": "How we work",
+    "lead": "A short, clear process borrowed from how serious software gets built.",
+    "steps": [
+      { "name": "Plan", "text": "A call to understand your business and decide what we solve first." },
+      { "name": "Build", "text": "I build the solution and show you progress; you decide before we move on." },
+      { "name": "Deploy", "text": "We launch it, test it with real cases and I teach you how to use it." },
+      { "name": "Grow", "text": "We review results and adjust. If needed, we add the next step." }
+    ]
+  },
+  "about": {
+    "title": "About me",
+    "name": "Dixon G. Araya Arias",
+    "role": "IT & AI consultant and DevOps and Cloud engineer",
+    "bio": [
+      "I'm a computer engineer who graduated with honors from UNED in Costa Rica. I have more than five years in tech: three running enterprise-grade cloud platforms and two as a backend developer.",
+      "I started Buildream to bring that experience to small businesses: explain AI in plain words and make it work where it actually helps."
+    ],
+    "chips": ["Computer Engineering (UNED)", "DevOps and Cloud", "AWS and Kubernetes", "Backend Java and .NET", "CCNA", "Spanish and English"],
+    "portfolio": "See my full portfolio",
+    "talk": "Let's talk about your project",
+    "photoAlt": "Photo of Dixon Araya"
+  },
+  "projects": {
+    "title": "Projects",
+    "lead": "My own work and demos. Real client cases coming soon.",
+    "tags": { "own": "Own project", "demo": "Concept project", "client": "Client" },
+    "view": "View project",
+    "items": [
+      { "kind": "own", "title": "Professional portfolio", "text": "My personal site with experience, projects and stack. Fast, accessible and shipped with continuous deployment.", "tech": ["Web", "Netlify", "CI/CD"], "url": "https://dixon-araya-portafolio.netlify.app", "nodes": ["Code", "Build", "Netlify", "Web"] },
+      { "kind": "own", "title": "clubscope-platform", "text": "An internal developer platform: infrastructure as code, GitOps deployments and monitoring from day one.", "tech": ["Terraform", "Kubernetes", "Argo CD", "Grafana"], "url": "https://github.com/TavoA2/clubscope-platform", "nodes": ["Terraform", "Cluster", "Argo CD", "Grafana"] },
+      { "kind": "own", "title": "TaskFlow", "text": "A task app with the full lifecycle of a real product: separate pipelines, a private database and deployment on AWS.", "tech": ["AWS", "PostgreSQL", "GitHub Actions", "Prometheus"], "url": "https://github.com/TavoA2", "nodes": ["App", "CI", "AWS", "Metrics"] },
+      { "kind": "own", "title": "AWS DevOps Lab", "text": "An AWS lab to test architectures with reusable modules and separate environments, keeping costs under control.", "tech": ["AWS", "Terraform", "Modules"], "url": "https://github.com/TavoA2/AWS-DEVOPS-LAB", "nodes": ["Modules", "Dev", "AWS", "Costs"] }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      { "q": "Do I need to know about technology?", "a": "No. I explain every step in plain words and leave you a short guide so you or your team can use it without depending on me." },
+      { "q": "How much does it cost?", "a": "Every project gets a tailored quote. We start with a free 30-minute call, then I send you a proposal with scope, timeline and price." },
+      { "q": "Do you work outside Costa Rica?", "a": "Yes. I work remotely with businesses across Latin America and beyond, in Spanish or English." },
+      { "q": "How long does a project take?", "a": "It depends on scope. A website with a chatbot or a simple automation is usually ready in one to three weeks." },
+      { "q": "What happens after delivery?", "a": "I stay with you for the first weeks to adjust what's needed. If you want, we can agree on monthly support." },
+      { "q": "Is my data safe?", "a": "I use well-known tools, least-privilege access and explain where each piece of data lives. Nothing goes live without your approval." }
+    ]
+  },
+  "contact": {
+    "title": "Let's build your idea together",
+    "lead": "Tell me what you want to achieve. I'll reply within 24 hours to schedule your free 30-minute assessment.",
+    "name": "Name",
+    "email": "Email",
+    "company": "Company or project",
+    "optional": "optional",
+    "service": "What are you interested in?",
+    "servicePlaceholder": "Choose an option",
+    "serviceOther": "I'm not sure yet",
+    "message": "Message",
+    "messagePlaceholder": "E.g. I run a shop and want to reply faster on WhatsApp.",
+    "send": "Send message",
+    "sending": "Sending…",
+    "sent": "Message sent. I'll write back soon.",
+    "error": "The message couldn't be sent. Check your connection or write to me on WhatsApp.",
+    "required": "Fill in this field.",
+    "invalidEmail": "Enter a valid email, for example name@email.com.",
+    "or": "Or reach me directly",
+    "whatsapp": "Message on WhatsApp",
+    "whatsappText": "Hi Dixon, I saw Buildream and I'd like to book an assessment.",
+    "emailLabel": "Send an email"
+  },
+  "footer": {
+    "tagline": "Technology and AI that work for your business.",
+    "location": "Costa Rica. Remote work across Latin America.",
+    "links": "Sections",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "rights": "All rights reserved."
+  },
+  "legal": {
+    "back": "Back to home",
+    "updated": "Last updated: November 2026",
+    "privacy": {
+      "title": "Privacy policy",
+      "body": [
+        "Buildream only collects the data you send through the contact form: name, email, company and message.",
+        "I use that data only to reply and prepare your proposal. I don't sell it or share it with third parties, except the provider that processes the form (Netlify).",
+        "You can ask me to delete your data at any time by writing to dixon.ar08@gmail.com.",
+        "This site doesn't use tracking or advertising cookies."
+      ]
+    },
+    "terms": {
+      "title": "Terms of use",
+      "body": [
+        "The content of this site is informational and is not a formal offer. Every service is agreed in writing in a proposal.",
+        "Third-party technology names and logos belong to their owners and are shown only to indicate the tools I work with.",
+        "Projects marked as concept projects are demonstrations and do not represent real clients."
+      ]
+    }
+  }
+}

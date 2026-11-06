@@ -1,0 +1,40 @@
+---
+import { t, type Lang } from '../lib/i18n';
+import { brand, isDark, models, tools, type BrandIcon } from '../lib/icons';
+
+interface Props { lang: Lang }
+const d = t(Astro.props.lang).stack;
+const modelIcons = models.map(brand);
+const toolIcons = tools.map(brand);
+const color = (b: BrandIcon) => (b.hex && !isDark(b.hex) ? b.hex : '#ffffff');
+---
+<section class="on-band section bg-band text-white">
+  <div class="wrap">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="h2">{d.title}</h2>
+      <p class="mx-auto mt-5 max-w-2xl text-[1.1rem] text-band-muted">{d.lead}</p>
+    </div>
+
+    <h3 class="sr-only">{d.models}</h3>
+    <ul class="mx-auto mt-14 flex max-w-3xl flex-wrap items-center justify-center gap-x-14 gap-y-6 border-b border-white/12 pb-12">
+      {modelIcons.map((m) => (
+        <li class="flex items-center gap-3 text-[1.9rem] font-semibold tracking-[-0.02em]">
+          {m.path && <svg class="size-8" viewBox="0 0 24 24" fill={color(m)} aria-hidden="true"><path d={m.path} /></svg>}
+          {m.name}
+        </li>
+      ))}
+    </ul>
+
+    <h3 class="sr-only">{d.tools}</h3>
+    <ul class="grid grid-cols-4 lg:grid-cols-8">
+      {toolIcons.map((b) => (
+        <li class="flex flex-col items-center gap-3 border-b border-white/12 px-2 py-8 text-center">
+          {b.path
+            ? <svg class="size-9" viewBox="0 0 24 24" fill={color(b)} aria-hidden="true"><path d={b.path} /></svg>
+            : <span class="grid h-9 place-items-center text-[1.35rem] font-bold tracking-tight" aria-hidden="true">{b.name}</span>}
+          <span class="text-[0.92rem] text-band-muted">{b.name}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

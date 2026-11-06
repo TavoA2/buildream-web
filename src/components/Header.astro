@@ -1,0 +1,91 @@
+---
+import Logo from './Logo.astro';
+import { t, homePath, type Lang } from '../lib/i18n';
+import { lineIcon } from '../lib/icons';
+
+interface Props { lang: Lang; altPath: string }
+const { lang, altPath } = Astro.props;
+const d = t(lang);
+const home = homePath(lang);
+const links = [
+  { href: `${home}#servicios`, label: d.nav.services },
+  { href: `${home}#diagnostico`, label: d.nav.diagnosis },
+  { href: `${home}#sobre-mi`, label: d.nav.about },
+  { href: `${home}#proyectos`, label: d.nav.projects },
+  { href: `${home}#contacto`, label: d.nav.contact },
+];
+---
+<header id="site-header" class="sticky top-0 z-40 border-b border-transparent bg-paper transition-[border-color,box-shadow] duration-300">
+  <div class="wrap flex h-[4.5rem] items-center justify-between gap-6">
+    <a href={home} class="rounded-md" aria-label="Buildream">
+      <Logo descriptor={d.brand.descriptor} />
+    </a>
+
+    <nav aria-label="Principal" class="hidden lg:block">
+      <ul class="flex items-center gap-7 text-[0.97rem] font-medium">
+        {links.map((l) => (
+          <li><a href={l.href} class="text-ink/80 no-underline transition-colors hover:text-ink">{l.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href={altPath} hreflang={lang === 'es' ? 'en' : 'es'} lang={lang === 'es' ? 'en' : 'es'}
+         aria-label={d.nav.switchLabel}
+         class="rounded-md px-2 py-1 text-sm font-semibold text-muted no-underline transition-colors hover:text-ink">
+        {lang === 'es' ? 'EN' : 'ES'}
+      </a>
+      <a href={`${home}#contacto`} class="btn btn-primary hidden min-h-11 px-4 py-2 text-[0.95rem] sm:inline-flex">{d.nav.cta}</a>
+      <button id="menu-open" type="button" class="grid size-11 place-items-center rounded-md lg:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label={d.nav.menu}>
+        <Fragment set:html={lineIcon('menu', 'size-6')} />
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="fixed inset-0 z-50 hidden flex-col bg-paper lg:hidden" role="dialog" aria-modal="true" aria-label={d.nav.menu}>
+    <div class="wrap flex h-[4.5rem] items-center justify-between">
+      <Logo descriptor={d.brand.descriptor} />
+      <button id="menu-close" type="button" class="grid size-11 place-items-center rounded-md" aria-label={d.nav.close}>
+        <Fragment set:html={lineIcon('x', 'size-6')} />
+      </button>
+    </div>
+    <nav aria-label="Móvil" class="wrap flex flex-1 flex-col pt-6">
+      <ul class="flex flex-col border-t border-line">
+        {links.map((l) => (
+          <li class="border-b border-line">
+            <a href={l.href} data-close class="block py-4 font-display text-3xl no-underline">{l.label}</a>
+          </li>
+        ))}
+      </ul>
+      <a href={`${home}#contacto`} data-close class="btn btn-primary mt-8 w-full">{d.nav.cta}</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header')!;
+  const onScroll = () => {
+    const scrolled = window.scrollY > 8;
+    header.classList.toggle('border-line', scrolled);
+    header.classList.toggle('border-transparent', !scrolled);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const menu = document.getElementById('mobile-menu')!;
+  const openBtn = document.getElementById('menu-open')!;
+  const closeBtn = document.getElementById('menu-close')!;
+  const setOpen = (open: boolean) => {
+    menu.classList.toggle('hidden', !open);
+    menu.classList.toggle('flex', open);
+    openBtn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    (open ? closeBtn : openBtn).focus();
+  };
+  openBtn.addEventListener('click', () => setOpen(true));
+  closeBtn.addEventListener('click', () => setOpen(false));
+  menu.querySelectorAll('[data-close]').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu.classList.contains('hidden')) setOpen(false);
+  });
+</script>

@@ -1,0 +1,132 @@
+---
+import { t, type Lang } from '../lib/i18n';
+import { lineIcon } from '../lib/icons';
+
+interface Props { lang: Lang }
+const d = t(Astro.props.lang).diagnosis;
+const q = d.quiz;
+---
+<section id="diagnostico" class="section">
+  <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-6">
+      <h2 class="h2 max-w-[16ch]">{d.title}</h2>
+      <p class="lead mt-5">{d.lead}</p>
+      <h3 class="mt-10 font-sans text-base font-semibold tracking-normal">{d.receiveTitle}</h3>
+      <ul class="mt-4 space-y-3.5">
+        {d.receive.map((r) => (
+          <li class="flex gap-3">
+            <Fragment set:html={lineIcon('check', 'mt-1 size-5 shrink-0 text-accent')} />
+            <span>{r}</span>
+          </li>
+        ))}
+      </ul>
+      <a href="#contacto" class="btn btn-primary mt-10">{d.cta}</a>
+    </div>
+
+    <div class="lg:col-span-6">
+      <div id="quiz" class="panel p-6 sm:p-8" data-quiz={JSON.stringify(q)} aria-live="polite">
+        <h3 class="font-display text-[1.75rem]">{q.title}</h3>
+        <p class="mt-1 text-muted">{q.intro}</p>
+
+        <div data-stage="questions" class="mt-7">
+          <div class="flex items-center justify-between text-sm text-muted">
+            <span data-progress></span>
+            <button type="button" data-back class="link invisible text-sm">{q.back}</button>
+          </div>
+          <div class="mt-3 h-1 rounded-full bg-line"><div data-bar class="h-1 rounded-full bg-accent transition-[width] duration-500"></div></div>
+          <fieldset class="mt-6">
+            <legend data-question class="text-[1.2rem] font-semibold"></legend>
+            <div data-options class="mt-4 grid gap-2.5"></div>
+          </fieldset>
+        </div>
+
+        <div data-stage="result" class="mt-7 hidden">
+          <p class="text-[1.2rem] font-semibold">{q.resultTitle}</p>
+          <ol data-recs class="mt-4 space-y-3"></ol>
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="#contacto" data-send class="btn btn-primary">{q.resultCta}</a>
+            <button type="button" data-restart class="link text-sm">{q.restart}</button>
+          </div>
+          <p class="mt-3 text-sm text-muted">{q.resultNote}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  type Opt = { v: string; label: string };
+  type Q = { id: string; q: string; options: Opt[] };
+  type Quiz = { progress: string; questions: Q[]; recs: Record<string, string> };
+
+  const root = document.getElementById('quiz')!;
+  const quiz: Quiz = JSON.parse(root.dataset.quiz!);
+  const $ = <T extends HTMLElement>(s: string) => root.querySelector<T>(s)!;
+  const answers: Record<string, Opt> = {};
+  let step = 0;
+
+  function render() {
+    const total = quiz.questions.length;
+    if (step >= total) return showResult();
+    const cur = quiz.questions[step];
+    $('[data-progress]').textContent = quiz.progress.replace('{n}', String(step + 1)).replace('{total}', String(total));
+    $('[data-bar]').style.width = `${(step / total) * 100}%`;
+    $('[data-back]').classList.toggle('invisible', step === 0);
+    $('[data-question]').textContent = cur.q;
+    const box = $('[data-options]');
+    box.replaceChildren(
+      ...cur.options.map((o) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className =
+          'rounded-[0.5rem] border border-line bg-paper px-4 py-3.5 text-left font-medium transition hover:-translate-y-px hover:border-accent hover:bg-accent-soft active:translate-y-px';
+        if (answers[cur.id]?.v === o.v) b.classList.add('border-accent', 'bg-accent-soft');
+        b.textContent = o.label;
+        b.addEventListener('click', () => {
+          answers[cur.id] = o;
+          step++;
+          render();
+        });
+        return b;
+      }),
+    );
+  }
+
+  function recommendations(): string[] {
+    const r = quiz.recs;
+    const out = [r[answers.pain.v]];
+    if (answers.web.v !== 'ok') out.push(r[`web_${answers.web.v}`]);
+    out.push(r[`ai_${answers.ai.v}`]);
+    return out.slice(0, 3);
+  }
+
+  function showResult() {
+    $('[data-stage="questions"]').classList.add('hidden');
+    $('[data-stage="result"]').classList.remove('hidden');
+    const recs = recommendations();
+    $('[data-recs]').replaceChildren(
+      ...recs.map((text, i) => {
+        const li = document.createElement('li');
+        li.className = 'flex gap-3';
+        li.innerHTML = `<span class="grid size-7 shrink-0 place-items-center rounded-full bg-accent text-sm font-semibold text-white">${i + 1}</span><span class="pt-0.5"></span>`;
+        li.lastElementChild!.textContent = text;
+        return li;
+      }),
+    );
+    const summary = quiz.questions.map((q) => `${q.q} ${answers[q.id].label}`).join('\n');
+    window.dispatchEvent(new CustomEvent('quiz:done', { detail: { summary, recs } }));
+  }
+
+  $('[data-back]').addEventListener('click', () => {
+    step = Math.max(0, step - 1);
+    render();
+  });
+  $('[data-restart]').addEventListener('click', () => {
+    step = 0;
+    for (const k of Object.keys(answers)) delete answers[k];
+    $('[data-stage="questions"]').classList.remove('hidden');
+    $('[data-stage="result"]').classList.add('hidden');
+    render();
+  });
+  render();
+</script>

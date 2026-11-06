@@ -1,0 +1,95 @@
+---
+import { t, type Lang } from '../lib/i18n';
+import { lineIcon } from '../lib/icons';
+
+interface Props { lang: Lang }
+const d = t(Astro.props.lang).hero;
+const p = d.pipeline;
+const last = p.steps.length - 1;
+---
+<section class="relative overflow-hidden pb-20 pt-12 sm:pt-16 lg:flex lg:min-h-[calc(100svh-4.5rem)] lg:items-center lg:pb-24">
+  <div class="wrap grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-7">
+      <h1 class="max-w-[13ch] text-[clamp(2.9rem,7.2vw,5.6rem)] leading-[0.98]">{d.title}</h1>
+      <p class="lead mt-7">{d.lead}</p>
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+        <a href="#contacto" class="btn btn-primary">{d.primary}</a>
+        <a href="#servicios" class="btn btn-secondary">{d.secondary}</a>
+      </div>
+      <p class="mt-8 flex max-w-xl items-start gap-2.5 text-[0.95rem] text-muted">
+        <Fragment set:html={lineIcon('circle-check', 'mt-0.5 size-5 shrink-0 text-accent')} />
+        {d.fact}
+      </p>
+    </div>
+
+    <!-- The one authored moment: an idea moving through a build pipeline -->
+    <div class="lg:col-span-5">
+      <figure class="pipeline panel p-6 shadow-lift sm:p-7" aria-label={p.label}>
+        <figcaption class="text-sm font-semibold text-muted">{p.label}</figcaption>
+        <div class="mt-4 rounded-[0.75rem] bg-accent-soft px-4 py-3.5">
+          <p class="text-xs font-semibold text-accent-strong">{p.idea}</p>
+          <p class="mt-1 font-display text-[1.2rem] leading-snug">“{p.ideaText}”</p>
+        </div>
+        <ol class="relative mt-5">
+          {p.steps.map((s, i) => (
+            <li class="step relative grid grid-cols-[1.75rem_1fr_auto] gap-x-3.5 pb-5 last:pb-0" style={`--i:${i}`}>
+              {i < last && <span class="rail absolute left-[0.8125rem] top-7 bottom-1 w-px bg-line" aria-hidden="true"><span class="fill block h-full w-full origin-top bg-accent"></span></span>}
+              <span class="status relative grid size-7 place-items-center" aria-hidden="true">
+                <span class="pending absolute inset-0.5 rounded-full border border-line bg-surface"></span>
+                {i < last
+                  ? <span class="done absolute inset-0 grid place-items-center rounded-full bg-accent text-white"><Fragment set:html={lineIcon('check', 'size-4')} /></span>
+                  : <span class="done running absolute inset-0 grid place-items-center text-accent"><Fragment set:html={lineIcon('loader-circle', 'size-6')} /></span>}
+              </span>
+              <div>
+                <p class="font-semibold leading-7">{s.name}</p>
+                <p class="text-[0.92rem] leading-snug text-muted">{s.detail}</p>
+              </div>
+              <span class="badge mt-1 h-fit rounded-full px-2.5 py-0.5 text-xs font-semibold">
+                {i < last ? p.done : p.running}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Steps complete one after another on load; Grow stays running. */
+  .step .done,
+  .step .badge {
+    opacity: 0;
+    animation: appear 0.45s var(--ease-out-expo) forwards;
+    animation-delay: calc(0.5s + var(--i) * 0.55s);
+  }
+  .step .done {
+    transform: scale(0.6);
+  }
+  .step .badge {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+  }
+  .step .fill {
+    transform: scaleY(0);
+    animation: grow 0.5s var(--ease-out-expo) forwards;
+    animation-delay: calc(0.75s + var(--i) * 0.55s);
+  }
+  .running :global(svg) {
+    animation: spin 1.4s linear infinite;
+  }
+  @keyframes appear {
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes grow {
+    to { transform: scaleY(1); }
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .step .done, .step .badge { opacity: 1; transform: none; }
+    .step .fill { transform: none; }
+    .running :global(svg) { animation: none; }
+  }
+</style>

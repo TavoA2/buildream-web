@@ -1,0 +1,30 @@
+{
+  "name": "buildream-web",
+  "version": "1.0.0",
+  "description": "Buildream — Consultoría IT & IA",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/hanken-grotesk": "^5.3.0",
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.7",
+    "lucide-static": "^1.70.0",
+    "simple-icons": "^16.36.0",
+    "tailwindcss": "^4.3.5"
+  },
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "typescript": "^6.0.3"
+  }
+}

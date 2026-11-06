@@ -1,0 +1,31 @@
+---
+import { t, type Lang } from '../lib/i18n';
+import { lineIcon } from '../lib/icons';
+
+interface Props { lang: Lang }
+const d = t(Astro.props.lang).services;
+---
+<section id="servicios" class="section border-t border-line">
+  <div class="wrap grid gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-4">
+      <div class="lg:sticky lg:top-28">
+        <h2 class="h2">{d.title}</h2>
+        <p class="lead mt-5">{d.lead}</p>
+      </div>
+    </div>
+    <ul class="border-t border-line lg:col-span-8">
+      {d.items.map((s, i) => (
+        <li class="group grid gap-x-6 gap-y-3 border-b border-line py-8 sm:grid-cols-[3rem_1fr_auto] sm:items-start">
+          <span class="grid size-12 place-items-center rounded-full bg-accent-soft text-accent-strong transition-transform duration-300 group-hover:-translate-y-0.5">
+            <Fragment set:html={lineIcon(s.icon, 'size-6')} />
+          </span>
+          <div>
+            <h3 class="font-display text-[1.75rem] leading-tight">{s.title}</h3>
+            <p class="mt-2 max-w-[58ch] text-muted">{s.text}</p>
+          </div>
+          <a href={`#contacto`} data-service={i} class="link self-center justify-self-start whitespace-nowrap text-[0.97rem] sm:justify-self-end">{d.ask}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

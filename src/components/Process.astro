@@ -1,0 +1,24 @@
+---
+import { t, type Lang } from '../lib/i18n';
+
+interface Props { lang: Lang }
+const d = t(Astro.props.lang).process;
+---
+<section class="section">
+  <div class="wrap">
+    <h2 class="h2">{d.title}</h2>
+    <p class="lead mt-5">{d.lead}</p>
+    <ol class="relative mt-14 grid gap-10 md:grid-cols-4 md:gap-8">
+      <span class="absolute left-0 right-0 top-[0.6875rem] hidden h-px bg-line md:block" aria-hidden="true"></span>
+      {d.steps.map((s, i) => (
+        <li class="relative pl-10 md:pl-0">
+          <span class="absolute left-0 top-0 grid size-[1.375rem] place-items-center rounded-full border-2 border-accent bg-paper md:relative" aria-hidden="true">
+            <span class={`size-2 rounded-full ${i === d.steps.length - 1 ? 'bg-paper' : 'bg-accent'}`}></span>
+          </span>
+          <h3 class="text-[2.25rem] md:mt-6">{s.name}</h3>
+          <p class="mt-2 text-muted">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

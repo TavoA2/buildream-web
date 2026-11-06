@@ -1,0 +1,64 @@
+---
+import '../styles/global.css';
+import { t, homePath, contact, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+  /** Path of this page in the other language. */
+  altPath: string;
+}
+
+const { lang, altPath } = Astro.props;
+const d = t(lang);
+const title = Astro.props.title ?? d.meta.title;
+const description = Astro.props.description ?? d.meta.description;
+const site = Astro.site!;
+const canonical = new URL(Astro.url.pathname, site).href;
+const alt = new URL(altPath, site).href;
+const otherLang: Lang = lang === 'es' ? 'en' : 'es';
+const ogImage = new URL('/og.png', site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Buildream',
+  description,
+  url: new URL(homePath(lang), site).href,
+  image: ogImage,
+  email: contact.email,
+  areaServed: ['CR', 'Latin America'],
+  availableLanguage: ['es', 'en'],
+  founder: { '@type': 'Person', name: 'Dixon G. Araya Arias', sameAs: [contact.linkedin, contact.github, contact.portfolio] },
+};
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={lang} href={canonical} />
+    <link rel="alternate" hreflang={otherLang} href={alt} />
+    <link rel="alternate" hreflang="x-default" href={lang === 'es' ? canonical : alt} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#f5f7f4" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Buildream" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={d.meta.locale} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

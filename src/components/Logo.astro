@@ -1,0 +1,18 @@
+---
+// Wordmark: three blocks stepping up (a build in progress) + "Buildream".
+interface Props { descriptor?: string; tone?: 'ink' | 'light' }
+const { descriptor, tone = 'ink' } = Astro.props;
+---
+<span class={`inline-flex items-center gap-2.5 ${tone === 'light' ? 'text-white' : 'text-ink'}`}>
+  <svg class="size-7 shrink-0" viewBox="0 0 28 28" aria-hidden="true">
+    <rect x="2" y="16" width="7" height="10" rx="1.5" fill="currentColor" opacity="0.35" />
+    <rect x="10.5" y="10" width="7" height="16" rx="1.5" fill="currentColor" opacity="0.65" />
+    <rect x="19" y="2" width="7" height="24" rx="1.5" fill="#157a4b" />
+  </svg>
+  <span class="flex flex-col leading-none">
+    <span class="font-display text-[1.45rem] font-semibold tracking-[-0.02em]">Buildream</span>
+    {descriptor && (
+      <span class={`mt-1 text-[0.72rem] font-medium tracking-[0.01em] ${tone === 'light' ? 'text-band-muted' : 'text-muted'}`}>{descriptor}</span>
+    )}
+  </span>
+</span>
