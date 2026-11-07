@@ -40,7 +40,9 @@ if (form && raw) {
   const clear = (el: HTMLInputElement | HTMLTextAreaElement) => {
     el.setCustomValidity('');
     el.removeAttribute('aria-invalid');
-    errorOf(el).hidden = true;
+    const err = errorOf(el);
+    err.hidden = true;
+    err.querySelector('[data-error-text]')!.textContent = '';
   };
 
   for (const el of fields) {
@@ -137,7 +139,12 @@ if (form && raw) {
     show(null);
     form.hidden = false;
     prefillService(d.service);
-    if (d.message) message.value = d.message;
+    if (d.message) {
+      const current = message.value.trim();
+      message.value = current ? `${message.value.replace(/\s+$/, '')}\n\n${d.message}` : d.message;
+    }
+    for (const el of fields) clear(el);
+    live.querySelector('p')?.remove();
     message.focus({ preventScroll: true });
   });
 }
