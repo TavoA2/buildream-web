@@ -8,24 +8,24 @@ const d = t(lang).hero;
 const p = d.pipeline;
 const last = p.steps.length - 1;
 ---
-<section class="hero relative overflow-hidden pb-20 pt-12 sm:pt-16 lg:flex lg:min-h-[calc(100svh-4.5rem)] lg:items-center lg:pb-24">
+<section class="hero relative overflow-hidden pb-16 pt-10 sm:pt-14 md:flex md:min-h-[calc(100svh-4.5rem)] md:items-center md:pb-16">
   <div class="grid-bg pointer-events-none absolute inset-0" aria-hidden="true"></div>
-  <div class="wrap relative grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
-    <div class="lg:col-span-7">
-      <h1 class="max-w-[13ch] text-[clamp(2.9rem,7.2vw,5.6rem)] leading-[0.98]">{d.title}</h1>
-      <p class="lead mt-7">{d.lead}</p>
-      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+  <div class="wrap relative grid items-center gap-12 md:grid-cols-12 md:gap-8 lg:gap-12">
+    <div class="md:col-span-6 lg:col-span-7">
+      <h1 class="max-w-[13ch] text-[clamp(2.6rem,5.6vw,5.4rem)] leading-[0.98]">{d.title}</h1>
+      <p class="lead mt-6">{d.lead}</p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row md:flex-col xl:flex-row">
         <a href={route(lang, 'diagnosis')} class="btn btn-primary">{d.primary}</a>
         <a href={route(lang, 'services')} class="btn btn-secondary bg-paper">{d.secondary}</a>
       </div>
-      <p class="mt-8 flex max-w-xl items-start gap-2.5 text-[0.95rem] text-muted">
+      <p class="mt-7 flex max-w-xl items-start gap-2.5 text-[0.95rem] text-muted">
         <Fragment set:html={lineIcon('circle-check', 'mt-0.5 size-5 shrink-0 text-accent')} />
         {d.fact}
       </p>
     </div>
 
     <!-- The one authored moment: an idea running through a deploy pipeline, as a terminal -->
-    <div class="lg:col-span-5">
+    <div class="md:col-span-6 lg:col-span-5">
       <figure id="hero-terminal" class="terminal overflow-hidden rounded-[var(--radius-panel)] bg-band text-white shadow-[0_30px_60px_-25px_rgb(11_20_48/0.5)] ring-1 ring-black/5" aria-label={p.label}>
         <div class="flex items-center gap-2 border-b border-white/10 px-5 py-3">
           <span class="size-2.5 rounded-full bg-white/25"></span>
