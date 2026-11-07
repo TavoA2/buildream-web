@@ -9,13 +9,14 @@ interface Props {
   links: { id: string; href: string; label: string }[];
   ctaHref: string;
   ctaExternal: boolean;
+  showLang?: boolean;
 }
-const { id, locale, links, ctaHref, ctaExternal } = Astro.props;
+const { id, locale, links, ctaHref, ctaExternal, showLang = true } = Astro.props;
+const newTab = t(locale, 'a11y.externalLink');
 ---
 <div
   id={id}
   role="dialog"
-  aria-modal="true"
   aria-label={t(locale, 'a11y.mainNav')}
   data-menu-panel
   hidden
@@ -38,9 +39,9 @@ const { id, locale, links, ctaHref, ctaExternal } = Astro.props;
       <Button
         href={ctaHref}
         data-nav-cta
-        {...(ctaExternal ? { target: '_blank', rel: 'noopener' } : {})}
-      >{t(locale, 'nav.cta')}</Button>
-      <LangToggle locale={locale} />
+        {...(ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      >{t(locale, 'nav.cta')}{ctaExternal && <span class="sr-only"> ({newTab})</span>}</Button>
+      {showLang && <LangToggle locale={locale} />}
     </div>
   </div>
 </div>

@@ -13,3 +13,4 @@ dist/
 # Impeccable local state (design.json is tracked)
 .impeccable/*
 !.impeccable/design.json
+.codex/

@@ -42,6 +42,16 @@ describe.each(pages)('SEO $lang home', ({ lang, file, canonical }) => {
     const l = root.querySelector('link[rel=preload][as=font]');
     expect(l?.getAttribute('href')).toMatch(/libre-caslon-display.*\.woff2$/);
   });
+  it('escapes < in JSON-LD scripts (no raw closing tags)', () => {
+    for (const s of root.querySelectorAll('script[type="application/ld+json"]')) {
+      expect(s.text).not.toContain('</');
+      expect(s.text).not.toContain('<');
+    }
+  });
+  it('hero h1 keeps whitespace between its two lines', () => {
+    const text = root.querySelector('h1')!.text.replace(/\s+/g, ' ');
+    expect(text).toContain(lang === 'es' ? 'visión. Nosotros' : 'vision. We');
+  });
   it('has ProfessionalService and FAQPage JSON-LD', () => {
     const docs = root
       .querySelectorAll('script[type="application/ld+json"]')
@@ -92,7 +102,7 @@ describe.each([
     expect(root.querySelector('header .sr-only')?.text).toMatch(/Idioma actual|Current language/);
   });
   it('has a mobile dialog panel and a labelled toggle', () => {
-    const d = root.querySelector('[role=dialog][aria-modal=true]');
+    const d = root.querySelector('[role=dialog]');
     expect(d?.getAttribute('aria-label')).toBeTruthy();
     const btn = root.querySelector('button[aria-controls]');
     expect(btn?.getAttribute('aria-expanded')).toBe('false');

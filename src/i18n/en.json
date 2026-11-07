@@ -144,7 +144,7 @@
   },
   "projects": {
     "title": "Projects",
-    "intro": "What I've built and practiced. Each one says whether it's my own, a demo or a client's.",
+    "intro": "What I've built and practiced. Each one says whether it's my own or a demo.",
     "typeLabels": {
       "own": "Own project",
       "demo": "Concept project / demo",

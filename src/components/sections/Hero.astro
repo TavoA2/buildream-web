@@ -25,7 +25,10 @@ const titleLines = t(locale, 'hero.title').split(/(?<=\.)\s+/);
         class="mt-6 font-display text-[clamp(2.5rem,1.6rem+4vw,4.75rem)] font-normal leading-[1.04] tracking-[-0.01em] text-ink"
       >
         {titleLines.map((line, i) => (
-          <span class:list={['block text-balance', i > 0 && 'font-serif italic']}>{line}</span>
+          <>
+            {i > 0 && ' '}
+            <span class:list={['block text-balance', i > 0 && 'font-serif italic']}>{line}</span>
+          </>
         ))}
       </h1>
     </div>

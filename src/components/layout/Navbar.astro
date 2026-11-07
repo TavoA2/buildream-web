@@ -9,14 +9,16 @@ import { pagePath, sectionHref, t, type Locale, type SectionId } from '../../i18
 
 interface Props {
   locale: Locale;
+  showLang?: boolean;
 }
-const { locale } = Astro.props;
+const { locale, showLang = true } = Astro.props;
+const newTab = t(locale, 'a11y.externalLink');
 
 const ids = ['services', 'diagnostic', 'about', 'projects', 'contact'] as const satisfies readonly SectionId[];
 const links = ids.map((id) => ({ id, href: sectionHref(id, locale), label: t(locale, `nav.${id}`) }));
 const ctaHref = site.calUrl ?? sectionHref('contact', locale);
 const ctaExternal = site.calUrl !== null;
-const ext = ctaExternal ? { target: '_blank', rel: 'noopener' } : {};
+const ext = ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
 const panelId = 'mobile-menu';
 ---
 <header
@@ -46,10 +48,11 @@ const panelId = 'mobile-menu';
           </li>
         ))}
       </ul>
-      <LangToggle locale={locale} class="ml-1" />
+      {showLang && <LangToggle locale={locale} class="ml-1" />}
       <Button href={ctaHref} size="sm" data-nav-cta class="ml-1" {...ext}>
         <span class="lg:hidden">{t(locale, 'nav.ctaShort')}</span>
         <span class="hidden lg:inline">{t(locale, 'nav.cta')}</span>
+        {ctaExternal && <span class="sr-only"> ({newTab})</span>}
       </Button>
     </nav>
 
@@ -67,7 +70,7 @@ const panelId = 'mobile-menu';
       <Icon name="x" size={26} class="hidden group-aria-expanded/btn:block" />
     </button>
   </div>
-  <MobileMenu id={panelId} locale={locale} links={links} ctaHref={ctaHref} ctaExternal={ctaExternal} />
+  <MobileMenu id={panelId} locale={locale} links={links} ctaHref={ctaHref} ctaExternal={ctaExternal} showLang={showLang} />
 </header>
 <script>
   import '../../scripts/nav';

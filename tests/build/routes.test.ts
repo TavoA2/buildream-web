@@ -40,6 +40,8 @@ describe('routes', () => {
       expect(urls, u).toContain(u);
     }
     expect(existsSync(join(DIST, '404.html'))).toBe(true);
+    // The 404 is already bilingual: no language toggle that would link to itself.
+    expect(parse(readFileSync(join(DIST, '404.html'), 'utf8')).querySelector('a[hreflang]')).toBeNull();
   });
 
   it('every internal href (path + hash) resolves to a file and an element id', () => {

@@ -35,7 +35,7 @@ const faqPage =
         })),
       }
     : null;
-const ser = (o: unknown) => JSON.stringify(o).replace(/</g, '\u003c');
+const ser = (o: unknown) => JSON.stringify(o).replace(/</g, '\\u003c');
 ---
 <script type="application/ld+json" set:html={ser(service)} />
 {faqPage && <script type="application/ld+json" set:html={ser(faqPage)} />}
