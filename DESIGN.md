@@ -30,6 +30,11 @@ typography:
     fontWeight: 400
     lineHeight: 1.1
     letterSpacing: "-0.005em"
+  subhead:
+    fontFamily: "'Libre Caslon Text', Georgia, serif"
+    fontSize: "1.375rem"
+    fontWeight: 400
+    lineHeight: 1.3
   title:
     fontFamily: "'Public Sans Variable', 'Public Sans', system-ui, sans-serif"
     fontSize: "1.25rem"
@@ -40,12 +45,28 @@ typography:
     fontSize: "clamp(1.0625rem, 1rem + 0.25vw, 1.125rem)"
     fontWeight: 400
     lineHeight: 1.6
+  button:
+    fontFamily: "'Public Sans Variable', 'Public Sans', system-ui, sans-serif"
+    fontSize: "clamp(1.0625rem, 1rem + 0.25vw, 1.125rem)"
+    fontWeight: 600
+    lineHeight: 1
+  small:
+    fontFamily: "'Public Sans Variable', 'Public Sans', system-ui, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 400
+    lineHeight: 1.5
   label:
     fontFamily: "'Public Sans Variable', 'Public Sans', system-ui, sans-serif"
     fontSize: "0.75rem"
     fontWeight: 500
     lineHeight: 1.4
     letterSpacing: "0.14em"
+  descriptor:
+    fontFamily: "'Public Sans Variable', 'Public Sans', system-ui, sans-serif"
+    fontSize: "0.6875rem"
+    fontWeight: 500
+    lineHeight: 1
+    letterSpacing: "0.2em"
   mono:
     fontFamily: "ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace"
     fontSize: "0.8125rem"
@@ -71,9 +92,9 @@ components:
   button-primary:
     backgroundColor: "{colors.pine}"
     textColor: "{colors.white}"
-    typography: "{typography.title}"
+    typography: "{typography.button}"
     rounded: "{rounded.sm}"
-    padding: "12px 20px"
+    padding: "0 20px"
     height: "48px"
   button-primary-hover:
     backgroundColor: "{colors.pine-ink}"
@@ -81,18 +102,35 @@ components:
   button-secondary:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
+    typography: "{typography.button}"
     rounded: "{rounded.sm}"
-    padding: "12px 20px"
+    padding: "0 20px"
     height: "48px"
+  button-secondary-hover:
+    backgroundColor: "{colors.bone-deep}"
+    textColor: "{colors.ink}"
+  button-small:
+    backgroundColor: "{colors.pine}"
+    textColor: "{colors.white}"
+    typography: "{typography.small}"
+    rounded: "{rounded.sm}"
+    padding: "0 16px"
+    height: "40px"
   chip:
     backgroundColor: "{colors.bone-deep}"
     textColor: "{colors.ink}"
     typography: "{typography.label}"
     rounded: "{rounded.pill}"
     padding: "6px 12px"
+  card:
+    backgroundColor: "{colors.bone}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.md}"
+    padding: "20px"
   input:
     backgroundColor: "{colors.white}"
     textColor: "{colors.ink}"
+    typography: "{typography.body}"
     rounded: "{rounded.sm}"
     padding: "12px 14px"
     height: "48px"
@@ -100,81 +138,158 @@ components:
 
 # Design System: Buildream
 
-> Chosen 2026-11-06 (option B "Verde pino" + logo 1 "Build·ream"). Tokens above are normative; re-run `/impeccable document` after the build to reconcile with shipped CSS and generate `.impeccable/design.json`.
+> Chosen 2026-11-06 (option B "Verde pino" + logo 1 "Build·ream"). Reconciled with the shipped CSS on 2026-11-07 (`/impeccable document`); the sidecar is `.impeccable/design.json`. Tokens live in `src/styles/global.css` (`@theme`); the frontmatter above mirrors them and is normative.
 
 ## Overview
 
-**North star: "The engineer's notebook, typeset."** A calm editorial page — bone paper, Caslon headlines, generous margins, 1px rules — where every technical detail is precise and quietly placed rather than performed. Warmth comes from the paper and the voice; competence comes from structure, alignment and the one place the system goes dark (the stack band).
+**Creative North Star: "The engineer's notebook, typeset."**
 
-- **Light by default.** Visitors read this on a laptop at work or a phone between meetings; daylight paper is right. Exactly **one** dark band (`night`) for the technology stack.
-- **Structure through rules, not boxes.** Hairline dividers and alignment organize the page; cards are used sparingly and never in rows of identical tiles.
-- **Motion grammar:** reveal once (opacity + 8px rise, 400ms, ease-out); hovers 150–200ms; the pipeline is the single choreographed sequence. All motion off under `prefers-reduced-motion`.
-- **Imagery:** real screenshots of real projects, the real photo of Dixon when available, otherwise typographic placeholders. No stock, no device mockups, no abstract blobs, no AI-generated illustration.
+A calm editorial page — bone paper, Caslon headlines, generous margins, 1px rules — where every technical detail is precise and quietly placed rather than performed. Warmth comes from the paper and the voice; competence comes from structure, alignment and the one place the system goes dark (the stack band).
+
+Light by default: visitors read this on a laptop at work or on a phone between meetings, so daylight paper is right. Structure comes from rules and alignment, not boxes; cards are used sparingly (projects, the diagnostic price panel, the mini-diagnostic and the contact form) and never as the page scaffold.
+
+**Key Characteristics:**
+- Bone paper (#F7F4EE) with near-black ink and exactly one accent, pine.
+- Libre Caslon Display headlines over Public Sans body; system mono only for job names and tech tags.
+- 1px hairline rules carry the structure; flat surfaces, no shadows.
+- Exactly one night band: the technology stack. The footer is light.
+- Motion is a single reveal grammar plus one choreographed moment (the pipeline).
 
 ## Colors
 
-Strategy: **Restrained** — warm neutrals plus one accent, pine.
+Restrained: warm neutrals plus one accent.
 
-| Token | Value | Role | Contrast |
-|---|---|---|---|
-| `bone` | #F7F4EE | Page background | — |
-| `bone-deep` | #EFEAE1 | Alternate section surface, chips | — |
-| `ink` | #1C1917 | Primary text, headlines | 15.9:1 on bone |
-| `ink-muted` | #57534E | Secondary text, captions | 6.9:1 on bone, 6.4:1 on bone-deep |
-| `hairline` | ink @ 14% | 1px dividers (decorative, not a control boundary) | — |
-| `control-border` | #78716C | Input and outline-button borders | 4.8:1 on white, 4.4:1 on bone |
-| `pine` | #0F766E | Accent: line icons, primary button, active nav, focus ring, pipeline "passed" | 5.0:1 on bone; white on pine 5.5:1 |
-| `pine-ink` | #115E59 | Links and small accent text; primary hover | 6.9:1 on bone |
-| `pine-on-dark` | #4FB3A5 | Accent marks inside the night band only | 7.9:1 on night |
-| `night` | #0A0A0A | Stack band background | — |
-| `night-text` | #E7E5E4 | Text and monochrome logos on night | 15.8:1 |
-| `night-muted` | #A8A29E | Secondary text / logo captions on night | 7.9:1 |
-| `danger` | #B42318 | Form errors only (paired with icon + text, never color alone) | ≥ 5:1 on bone and white |
+### Primary
+- **Pine** (#0F766E): line icons, primary button fill, active-nav underline, focus ring, radio accent, pipeline "passed" marks. 5.0:1 on bone; white on pine 5.5:1.
+- **Pine Ink** (#115E59): links, small accent text (hero eyebrow), primary hover, text selection background. 6.9:1 on bone.
+- **Pine on Dark** (#4FB3A5): accent marks inside the night band only. 7.9:1 on night.
 
-Rules: pine is the only hue. No gradients, glass, glow, colored shadows, or purple. Logos of third parties are rendered monochrome (`night-text` at 75–85% opacity), never in brand colors.
+### Neutral
+- **Bone** (#F7F4EE): page background, cards, footer.
+- **Bone Deep** (#EFEAE1): alternate section surface (Diagnóstico, Contacto), chips, project placeholders, secondary-button hover.
+- **Ink** (#1C1917): primary text and headlines. 15.9:1 on bone.
+- **Ink Muted** (#57534E): secondary text, captions, footer headings. 6.9:1 on bone, 6.4:1 on bone-deep.
+- **Hairline** (ink at 14%): 1px dividers and card borders. Decorative, never a control boundary.
+- **Control Border** (#78716C, utility `border-control`): input and outline-button borders. 4.8:1 on white, 4.4:1 on bone.
+- **Night** (#0A0A0A), **Night Text** (#E7E5E4, 15.8:1), **Night Muted** (#A8A29E, 7.9:1), **Night Hairline** (night-text at 10%): the stack band only.
+- **White** (#FFFFFF): input fields, text on pine.
+- **Danger** (#B42318): form errors only, always paired with icon and text. ≥ 5:1 on bone and white.
+
+### Named Rules
+**The One Accent Rule.** Pine is the only hue. No gradients, glass, glow, colored shadows or purple.
+
+**The One Night Rule.** `night` is used by exactly one band, the stack. Every other surface, the footer included, is bone or bone-deep.
+
+**The Monochrome Logos Rule.** Third-party logos render monochrome in `night-text` (featured row at 100%, grid at 80% opacity), never in brand colors. The SVG is decorative; the visible name under it is the accessible name.
 
 ## Typography
 
-- **Display/headline:** Libre Caslon Display (400 only; it is a display cut, use ≥ 32px). Smaller serif moments (logo, pull quotes, FAQ question at large size if desired) use **Libre Caslon Text** (400, 400 italic, 700).
-- **Body/UI:** Public Sans Variable (400–600).
-- **Mono:** system monospace stack, used only for the pipeline's job names (`plan`, `build`, `deploy`, `grow`) and project tech tags. No webfont.
-- Self-hosted via Fontsource (`woff2`, latin subset incl. ñ ¿ ¡ and accents), `font-display: swap`; preload only Libre Caslon Display.
-- Measure ~68ch for body. Typographic punctuation (’ “ ” —). Eyebrows/labels: uppercase `label` with 0.14em tracking, `ink-muted` or `pine-ink`.
-- Hierarchy: one `display` (hero H1) per page; section titles use `headline`; card/row titles use `title` (Public Sans 600).
+**Display Font:** Libre Caslon Display (Georgia fallback), 400 only, ≥ 32px.
+**Serif Text:** Libre Caslon Text (400, 400 italic, 700) for the logo, the italic second line of the hero H1, the mini-diagnostic questions and result title.
+**Body Font:** Public Sans Variable (system-ui fallback), 400–600.
+**Mono:** system monospace stack, no webfont.
+
+**Character:** a bookish serif voice for statements, a clear civic sans for everything you read and click.
+
+### Hierarchy
+- **Display** (400, clamp(2.5rem → 4.75rem), 1.04, -0.01em): the hero H1 only. The second sentence is Libre Caslon Text italic, echoing the logo.
+- **Headline** (400, clamp(2rem → 3.25rem), 1.1): section titles (`SectionHeading`).
+- **Subhead** (Caslon Text 400, 1.375rem → 1.5rem at md, 1.3): mini-diagnostic question legends and results title. About's name uses a display clamp(1.5rem → 2rem).
+- **Title** (Public Sans 600, 1.25rem, 1.3): card, row, stage and service titles.
+- **Body** (400, clamp(1.0625rem → 1.125rem), 1.6): running text; measure 60–68ch.
+- **Small** (400–600, 0.9375rem, 1.5): captions, hero trust line, pipeline captions, nav links at ≥ 1024px, small buttons, form hints, footer descriptor.
+- **Label** (500, 0.75rem, 0.14em, uppercase): hero eyebrow, chips, project type labels, hero index label.
+- **Descriptor** (500, 0.6875rem, 0.2em, uppercase): the logo descriptor only.
+- **Mono** (400, 0.8125rem, 1.4): pipeline job names (`plan`, `build`, `deploy`, `grow`) and project tech tags.
+
+### Named Rules
+**The One Eyebrow Rule.** The hero eyebrow ("Experiencia enterprise, atención cercana") is a pinned brand commitment and the only eyebrow on the page. Section headings carry their own weight.
+
+**The Mono Means Machine Rule.** Monospace marks things a machine would name (job names, tech tags), never decoration.
 
 ## Layout
 
-- Container max 1200px; gutters 20px (mobile) / 32px (tablet) / 48px (desktop).
-- Section rhythm: 96px (mobile 64px) to 160px vertical padding; alternate `bone` / `bone-deep` only where it clarifies grouping.
-- 12-column grid on desktop; two-column ruled lists (Ref. 2) collapse to one below 768px.
-- Breakpoints: 375 (design floor), 768, 1024, 1440.
-- Hero is left-aligned; nothing is centered except inside the night band.
+- **Container:** max 1200px, centered: `mx-auto max-w-[1200px] px-4 lg:px-6`. Gutters 16px below 1024px, 24px from 1024px; navbar, sections and footer share it.
+- **Section rhythm:** vertical padding 64px (mobile) → 96px (≥ 768px) → 128px (≥ 1024px). The hero is tighter (48/80/96px top). Alternate `bone` / `bone-deep` only where it groups content (Diagnóstico, Contacto).
+- **Grid:** 12 columns on desktop (hero 7 + 4 offset index; lead service 12-col split). Two-column ruled lists (services, audience) collapse to one below 768px.
+- **Stack grid:** 3 → 4 → 6 columns. **Pipeline:** vertical track below 1024px, horizontal four-up from 1024px.
+- **Projects:** 1 → 2 (≥ 768px) → 3 (≥ 1280px) columns.
+- **Breakpoints:** 375 (design floor), 768, 1024, 1280, 1440.
+- The hero is left-aligned; only the night band centers its heading.
+- `scroll-padding-top: 5rem` keeps anchored sections clear of the sticky navbar.
 
 ## Elevation & Depth
 
-Flat. Depth comes from tone (`bone` → `bone-deep` → `night`) and 1px rules, never shadows. The only "lift" is the sticky navbar's 1px bottom rule once compacted.
+Flat. Depth comes from tone (`bone` → `bone-deep` → `night`) and 1px rules, never shadows. The only "lift" is the sticky navbar's 1px bottom hairline, which appears once the bar compacts on scroll.
+
+### Named Rules
+**The Rule-Not-Shadow Rule.** If two things need separating, draw a 1px hairline or change tone; never add a shadow.
 
 ## Shapes
 
-Corners are small and quiet: 4px on buttons and inputs, 6px on the rare card (project cards, diagnostic panel), pill on chips/tags. Icons: Lucide, 1.5px stroke, 20–28px, in `pine`. Dividers always 1px.
+Corners are small and quiet: 4px (`sm`) on buttons, inputs and the About photo; 6px (`md`) on the rare card (project cards, diagnostic price panel, mini-diagnostic, contact form); pill on chips and type labels. Icons are Lucide at 1.5px stroke, 20–28px, in `pine`. Dividers are always 1px; the only heavier rule is a 1px `ink` line that opens the lead service and the mini-diagnostic.
 
-## Logo
+## Components
 
-Wordmark **Build·ream** in Libre Caslon Text: "Build" roman, "ream" italic, with a short pine stroke under the **d** — the joint where "Build" meets "Dream". Descriptor "CONSULTORÍA IT & IA" / "IT & AI CONSULTING" in Public Sans 500, 0.2em tracking, `ink-muted`. Delivered as SVG (outlined paths, no font dependency) in ink, bone (for night) and a monogram "B·" favicon. Final SVG refined during implementation.
+### Buttons
+- **Shape:** gently squared (4px).
+- **Primary:** pine fill, white Public Sans 600, 48px min height, 20px side padding; hover pine-ink (150ms).
+- **Secondary:** transparent with a 1px `control-border` outline, ink text; hover ink border and bone-deep fill.
+- **Small:** 40px, 16px padding, 15px text (navbar CTA).
+- **Text link CTA:** pine-ink, 1px underline at 4px offset, trailing arrow (service "Consultar" rows).
+- **Focus:** 2px pine outline, 2px offset, on every interactive element (`:focus-visible`).
 
-## Components (intent)
-
-- **Button primary:** pine fill, white text, 48px tall, 4px radius; hover pine-ink; focus 2px pine ring with 2px offset.
-- **Button secondary:** text button with 1px ink underline that thickens on hover; or 1px `control-border` outline where a box is needed.
-- **Ruled row (Para quién):** icon + Public Sans 600 name, 1px rule above/below, arrow slides 4px in on hover/focus.
+### Chips and type labels
 - **Chip:** bone-deep pill, label type, no border.
-- **Project type label:** chip variant — "Proyecto propio" ink on bone-deep; "Demo" ink on bone with 1px dashed hairline; "Cliente" pine-ink on bone-deep.
-- **Pipeline node:** 12px circle on a 1px track; pending = hairline outline, running = pine outline with inner dot, passed = pine fill with white check.
-- **Inputs:** white field, 1px `control-border`, 4px radius, visible label above, error text + icon below in `danger`.
+- **Project type label:** "Proyecto propio" ink on bone-deep; "Demo" ink on bone with 1px dashed hairline; "Cliente" pine-ink on bone-deep.
+
+### Cards
+- **Corner Style:** 6px.
+- **Background:** bone, on bone or bone-deep sections.
+- **Border:** 1px hairline. **Shadow:** none.
+- **Internal Padding:** 20px mobile, 24–32px from 768px.
+- **Project placeholder:** bone-deep panel with the title set in display type, 5:2 on mobile and 16:10 from 768px, until a real screenshot exists.
+
+### Inputs
+- **Style:** white field, 1px `control-border`, 4px radius, 48px min height, 12px × 14px padding, visible label above, "(opcional)" in ink-muted.
+- **Focus:** the global pine ring; caret in pine.
+- **Error:** 2px danger border plus icon and message below, announced via a live region.
+- **Choice tiles (mini-diagnostic):** 48px label tiles with a 1px control border; checked = pine border on bone-deep; radios and checkboxes use `accent-color: pine`.
+
+### Navigation
+- Sticky bone bar; compacts on scroll (padding 16 → 8px, descriptor hidden, hairline appears).
+- Links in ink-muted Public Sans 500 (14px, 15px at ≥ 1024px); hover ink; active section ink with a 2px pine underline at 8px offset.
+- Language toggle ES / EN keeps the current section. Small primary CTA on the right.
+- Below 768px: full-screen menu behind a 48px toggle, focus-trapped, closes on Esc.
+
+### Ruled row (Para quién)
+Icon + Public Sans 600 name between 1px rules, 80px min height; the arrow slides 4px in on hover or focus. Rows are not links.
+
+### Pipeline (signature)
+Four stages on a 1px track. 12px node: pending = hairline outline, running = pine outline with inner dot, passed = pine fill with white check. Each stage: mono job name, Public Sans 600 title, one plain-language line, a small caption ("Semana 1"). Stages pass in sequence once on scroll (200–300ms steps); under reduced motion and without JS all four render passed.
+
+### Stack band
+The single night band: centered headline, featured AI row (48px marks), then a ruled 3/4/6-column grid (32px marks at 80% opacity), names in night-muted, a 12px trademark note.
+
+### Footer
+Light: bone with a 1px hairline top rule, ink logo, ink-muted 14px column headings, ink links with 44px targets (hover pine-ink and underline).
+
+### Logo
+Wordmark **Build·ream** in Libre Caslon Text: "Build" roman, "ream" italic, a short pine stroke under the **d**. Descriptor "CONSULTORÍA IT & IA" / "IT & AI CONSULTING" in the `descriptor` type, ink-muted. Shipped as outlined SVG in ink (light surfaces) and bone (night), plus a "B·" favicon.
+
+### Motion
+Reveal once: opacity + 8px rise, 400ms, `cubic-bezier(0.16, 1, 0.3, 1)`, only after the head script sets `js-reveal`. Hovers 150–200ms. Everything collapses to near-instant under `prefers-reduced-motion`.
 
 ## Do's and Don'ts
 
-- Do let rules and whitespace carry structure; do keep one accent; do show real things only.
-- Do keep technical vocabulary inside the stack band, pipeline job names, project tags and the cloud service.
-- Don't build rows of identical cards, centered hero-over-cards, gradient/glass/glow, stock imagery, or colored third-party logos.
-- Don't use pine for large fills beyond the primary button and small status marks.
+### Do:
+- **Do** let 1px rules and whitespace carry structure; keep pine the only accent.
+- **Do** use the shared container (`max-w-[1200px] px-4 lg:px-6`) and the 64/96/128px section rhythm.
+- **Do** show real things only: real projects, real photo, typographic placeholders otherwise.
+- **Do** keep technical vocabulary inside the stack band, pipeline job names, project tags and the cloud service.
+
+### Don't:
+- **Don't** add a second `night` surface (the footer included).
+- **Don't** build rows of identical icon cards, a centered hero over cards, gradients, glass, glow, shadows, stock imagery or colored third-party logos.
+- **Don't** use pine for large fills beyond the primary button and small status marks.
+- **Don't** add eyebrows above section headings.

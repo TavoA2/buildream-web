@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-07T17:40:00Z",
+  "title": "Design System: Buildream",
+  "extensions": {
+    "colorMeta": {
+      "bone": { "role": "neutral", "displayName": "Bone Paper", "canonical": "#F7F4EE", "tonalRamp": ["#2B2823", "#47423A", "#6B655A", "#8F887B", "#B4AD9F", "#D6D0C4", "#EFEAE1", "#F7F4EE"] },
+      "bone-deep": { "role": "neutral", "displayName": "Deep Bone", "canonical": "#EFEAE1", "tonalRamp": ["#29261F", "#454036", "#686152", "#8C8471", "#B0A893", "#D3CCBB", "#EFEAE1", "#F9F7F3"] },
+      "ink": { "role": "neutral", "displayName": "Warm Ink", "canonical": "#1C1917", "tonalRamp": ["#1C1917", "#292524", "#44403C", "#57534E", "#78716C", "#A8A29E", "#D6D3D1", "#F5F5F4"] },
+      "ink-muted": { "role": "neutral", "displayName": "Muted Ink", "canonical": "#57534E", "tonalRamp": ["#1C1917", "#292524", "#44403C", "#57534E", "#78716C", "#A8A29E", "#D6D3D1", "#F5F5F4"] },
+      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "rgba(28, 25, 23, 0.14)" },
+      "control-border": { "role": "neutral", "displayName": "Control Stone", "canonical": "#78716C", "tonalRamp": ["#1C1917", "#292524", "#44403C", "#57534E", "#78716C", "#A8A29E", "#D6D3D1", "#F5F5F4"] },
+      "pine": { "role": "primary", "displayName": "Pine", "canonical": "#0F766E", "tonalRamp": ["#042F2E", "#134E4A", "#115E59", "#0F766E", "#0D9488", "#4FB3A5", "#99F6E4", "#F0FDFA"] },
+      "pine-ink": { "role": "primary", "displayName": "Pine Ink", "canonical": "#115E59", "tonalRamp": ["#042F2E", "#134E4A", "#115E59", "#0F766E", "#0D9488", "#4FB3A5", "#99F6E4", "#F0FDFA"] },
+      "pine-on-dark": { "role": "primary", "displayName": "Pine on Night", "canonical": "#4FB3A5", "tonalRamp": ["#042F2E", "#134E4A", "#115E59", "#0F766E", "#0D9488", "#4FB3A5", "#99F6E4", "#F0FDFA"] },
+      "night": { "role": "neutral", "displayName": "Night", "canonical": "#0A0A0A", "tonalRamp": ["#0A0A0A", "#1C1917", "#292524", "#44403C", "#78716C", "#A8A29E", "#D6D3D1", "#E7E5E4"] },
+      "night-text": { "role": "neutral", "displayName": "Night Text", "canonical": "#E7E5E4" },
+      "night-muted": { "role": "neutral", "displayName": "Night Muted", "canonical": "#A8A29E" },
+      "night-hairline": { "role": "neutral", "displayName": "Night Hairline", "canonical": "rgba(231, 229, 228, 0.10)" },
+      "white": { "role": "neutral", "displayName": "White", "canonical": "#FFFFFF" },
+      "danger": { "role": "error", "displayName": "Danger", "canonical": "#B42318", "tonalRamp": ["#55160C", "#7A271A", "#912018", "#B42318", "#D92D20", "#F04438", "#FDA29B", "#FEF3F2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero H1 only; second sentence in Libre Caslon Text italic." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "subhead": { "displayName": "Subhead", "purpose": "Mini-diagnostic question legends and results title." },
+      "title": { "displayName": "Title", "purpose": "Card, row, stage and service titles." },
+      "body": { "displayName": "Body", "purpose": "Running text, 60-68ch." },
+      "button": { "displayName": "Button", "purpose": "Button labels." },
+      "small": { "displayName": "Small", "purpose": "Captions, trust line, pipeline captions, nav at >=1024px, small buttons, hints." },
+      "label": { "displayName": "Label", "purpose": "Hero eyebrow, chips, project type labels." },
+      "descriptor": { "displayName": "Descriptor", "purpose": "Logo descriptor only." },
+      "mono": { "displayName": "Mono", "purpose": "Pipeline job names and project tech tags." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "reveal", "value": "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "One-time section reveal: opacity + 8px rise." },
+      { "name": "hover", "value": "150ms", "purpose": "Color transitions on buttons and links." },
+      { "name": "pipeline-step", "value": "200-300ms ease-out", "purpose": "Pipeline node fill and track draw, the one choreographed sequence." }
+    ],
+    "breakpoints": [
+      { "name": "floor", "value": "375px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "wide", "value": "1440px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one call to action: the free 30-minute call.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Agenda tu llamada</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 4px; background: var(--color-pine, #0F766E); color: #FFFFFF; font-family: 'Public Sans Variable', 'Public Sans', system-ui, sans-serif; font-weight: 600; font-size: 1.0625rem; line-height: 1; text-decoration: none; white-space: nowrap; transition: background-color 150ms; } .ds-btn-primary:hover { background: var(--color-pine-ink, #115E59); } .ds-btn-primary:focus-visible { outline: 2px solid #0F766E; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outline companion to the primary CTA.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Ver servicios</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border: 1px solid #78716C; border-radius: 4px; background: transparent; color: #1C1917; font-family: 'Public Sans Variable', 'Public Sans', system-ui, sans-serif; font-weight: 600; font-size: 1.0625rem; line-height: 1; text-decoration: none; transition: background-color 150ms, border-color 150ms; } .ds-btn-secondary:hover { border-color: #1C1917; background: #EFEAE1; } .ds-btn-secondary:focus-visible { outline: 2px solid #0F766E; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Contact form field with label above.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Nombre</span><input class=\"ds-input\" type=\"text\" /></label>",
+      "css": ".ds-field { display: grid; gap: 8px; font-family: 'Public Sans Variable', 'Public Sans', system-ui, sans-serif; } .ds-field-label { font-size: 0.9375rem; font-weight: 600; color: #1C1917; } .ds-input { min-height: 48px; padding: 12px 14px; border: 1px solid #78716C; border-radius: 4px; background: #FFFFFF; color: #1C1917; font: inherit; font-size: 1rem; line-height: 1.5; caret-color: #0F766E; } .ds-input:focus-visible { outline: 2px solid #0F766E; outline-offset: 2px; } .ds-input[aria-invalid=true] { border: 2px solid #B42318; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Credentials and project type labels.",
+      "html": "<span class=\"ds-chip\">Proyecto propio</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 999px; background: #EFEAE1; color: #1C1917; font-family: 'Public Sans Variable', 'Public Sans', system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; line-height: 1.4; letter-spacing: 0.14em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "description": "Navbar link; active section underlined in pine.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Servicios</a><a href=\"#\" aria-current=\"location\">Proyectos</a><a href=\"#\">Contacto</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 12px; font-family: 'Public Sans Variable', 'Public Sans', system-ui, sans-serif; } .ds-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; color: #57534E; font-size: 0.9375rem; font-weight: 500; text-decoration: none; } .ds-nav a:hover { color: #1C1917; } .ds-nav a[aria-current] { color: #1C1917; text-decoration: underline; text-decoration-color: #0F766E; text-decoration-thickness: 2px; text-underline-offset: 8px; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Rare card: project with type label, tags and links.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-ph\">TaskFlow</div><div class=\"ds-card-body\"><span class=\"ds-chip\">Proyecto propio</span><h3>TaskFlow</h3><p>Un flujo completo de entrega y operación.</p><code>DevOps SRE AWS</code></div></article>",
+      "css": ".ds-card { border: 1px solid rgba(28,25,23,0.14); border-radius: 6px; background: #F7F4EE; color: #1C1917; font-family: 'Public Sans Variable', 'Public Sans', system-ui, sans-serif; max-width: 380px; } .ds-card-ph { display: flex; align-items: flex-end; aspect-ratio: 16/10; padding: 20px; background: #EFEAE1; border-radius: 6px 6px 0 0; font-family: 'Libre Caslon Display', Georgia, serif; font-size: 2.25rem; line-height: 1.1; } .ds-card-body { padding: 20px; } .ds-card-body h3 { margin: 16px 0 8px; font-size: 1.25rem; font-weight: 600; } .ds-card-body p { margin: 0 0 16px; color: #57534E; } .ds-card-body code { font-size: 0.8125rem; color: #57534E; } .ds-chip { display: inline-flex; padding: 6px 12px; border-radius: 999px; background: #EFEAE1; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Pipeline Stage",
+      "kind": "custom",
+      "description": "Signature: CI-style stage node on a 1px track.",
+      "html": "<div class=\"ds-stage\"><div class=\"ds-stage-head\"><span class=\"ds-node\"></span><code>plan</code><span class=\"ds-track\"></span></div><h3>Entender tu negocio</h3><p>Escucho tu idea y definimos qué construir y en qué orden.</p><small>Semana 1</small></div>",
+      "css": ".ds-stage { font-family: 'Public Sans Variable', 'Public Sans', system-ui, sans-serif; color: #1C1917; max-width: 280px; } .ds-stage-head { display: flex; align-items: center; gap: 12px; height: 20px; } .ds-node { width: 12px; height: 12px; border-radius: 50%; background: #0F766E; border: 1px solid #0F766E; } .ds-stage code { font-size: 0.8125rem; color: #57534E; } .ds-track { flex: 1; height: 1px; background: #0F766E; } .ds-stage h3 { margin: 24px 0 8px 24px; font-size: 1.25rem; font-weight: 600; } .ds-stage p { margin: 0 0 12px 24px; color: #57534E; } .ds-stage small { margin-left: 24px; font-size: 0.9375rem; font-weight: 500; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The engineer's notebook, typeset.",
+    "overview": "A calm editorial page — bone paper, Caslon headlines, generous margins, 1px rules — where every technical detail is precise and quietly placed rather than performed. Warmth comes from the paper and the voice; competence comes from structure, alignment and the one place the system goes dark (the stack band). Light by default: visitors read this on a laptop at work or on a phone between meetings, so daylight paper is right. Structure comes from rules and alignment, not boxes; cards are used sparingly (projects, the diagnostic price panel, the mini-diagnostic and the contact form) and never as the page scaffold.",
+    "keyCharacteristics": [
+      "Bone paper (#F7F4EE) with near-black ink and exactly one accent, pine.",
+      "Libre Caslon Display headlines over Public Sans body; system mono only for job names and tech tags.",
+      "1px hairline rules carry the structure; flat surfaces, no shadows.",
+      "Exactly one night band: the technology stack. The footer is light.",
+      "Motion is a single reveal grammar plus one choreographed moment (the pipeline)."
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Pine is the only hue. No gradients, glass, glow, colored shadows or purple.", "section": "colors" },
+      { "name": "The One Night Rule", "body": "`night` is used by exactly one band, the stack. Every other surface, the footer included, is bone or bone-deep.", "section": "colors" },
+      { "name": "The Monochrome Logos Rule", "body": "Third-party logos render monochrome in `night-text` (featured row at 100%, grid at 80% opacity), never in brand colors. The SVG is decorative; the visible name under it is the accessible name.", "section": "colors" },
+      { "name": "The One Eyebrow Rule", "body": "The hero eyebrow (\"Experiencia enterprise, atención cercana\") is a pinned brand commitment and the only eyebrow on the page. Section headings carry their own weight.", "section": "typography" },
+      { "name": "The Mono Means Machine Rule", "body": "Monospace marks things a machine would name (job names, tech tags), never decoration.", "section": "typography" },
+      { "name": "The Rule-Not-Shadow Rule", "body": "If two things need separating, draw a 1px hairline or change tone; never add a shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do let 1px rules and whitespace carry structure; keep pine the only accent.",
+      "Do use the shared container (`max-w-[1200px] px-4 lg:px-6`) and the 64/96/128px section rhythm.",
+      "Do show real things only: real projects, real photo, typographic placeholders otherwise.",
+      "Do keep technical vocabulary inside the stack band, pipeline job names, project tags and the cloud service."
+    ],
+    "donts": [
+      "Don't add a second `night` surface (the footer included).",
+      "Don't build rows of identical icon cards, a centered hero over cards, gradients, glass, glow, shadows, stock imagery or colored third-party logos.",
+      "Don't use pine for large fills beyond the primary button and small status marks.",
+      "Don't add eyebrows above section headings."
+    ]
+  }
+}
