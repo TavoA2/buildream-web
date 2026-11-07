@@ -1,5 +1,9 @@
 {
-  "featured": ["openai", "claude", "googlegemini"],
+  "featured": [
+    { "slug": "openai", "name": "OpenAI" },
+    { "slug": "claude", "name": "Claude" },
+    { "slug": "googlegemini", "name": "Gemini" }
+  ],
   "grid": [
     { "slug": "github", "name": "GitHub" },
     { "slug": "nodedotjs", "name": "Node.js" },

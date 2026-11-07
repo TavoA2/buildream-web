@@ -1,0 +1,70 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import stack from '../../content/stack.json';
+import { resolveStackIcon } from '../../lib/stack-icons';
+import { anchors, t, type Locale } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+const resolve = (item: { slug: string; name: string }) => ({
+  ...item,
+  icon: resolveStackIcon(item.slug),
+});
+const featured = stack.featured.map(resolve);
+const grid = stack.grid.map(resolve);
+---
+<section
+  id={anchors.stack[locale]}
+  data-section="stack"
+  aria-labelledby="stack-title"
+  class="bg-night py-16 md:py-24 lg:py-32"
+>
+  <div class="mx-auto max-w-[1200px] px-4 lg:px-6">
+    <div class="mx-auto max-w-[68ch] text-center [&_h2]:text-balance [&_p]:mx-auto [&_p]:max-w-[56ch] [&_p]:text-balance">
+      <SectionHeading id="stack-title" tone="night" title={t(locale, 'stack.title')} intro={t(locale, 'stack.intro')} />
+    </div>
+
+    <ul
+      data-stack-featured
+      aria-label={t(locale, 'stack.featuredLabel')}
+      class="mt-12 flex flex-wrap items-end justify-center gap-x-12 gap-y-8 border-b border-night-hairline pb-12 md:mt-16 md:gap-x-20 md:pb-14"
+    >
+      {featured.map((item) => (
+        <li data-stack-item class="flex flex-col items-center gap-3">
+          {item.icon ? (
+            <svg role="img" aria-label={item.name} viewBox="0 0 24 24" width="48" height="48" class="h-12 w-12 text-night-text">
+              <path d={item.icon.svgPath} fill="currentColor" />
+            </svg>
+          ) : (
+            <span aria-hidden="true" class="flex h-12 items-center font-display text-[2.25rem] leading-none text-night-text">{item.name}</span>
+          )}
+          <span class="text-sm text-night-muted">{item.name}</span>
+        </li>
+      ))}
+    </ul>
+
+    <ul
+      data-stack-grid
+      aria-label={t(locale, 'stack.gridLabel')}
+      class="grid grid-cols-3 border-b border-night-hairline md:grid-cols-4 lg:grid-cols-6"
+    >
+      {grid.map((item) => (
+        <li data-stack-item class="flex flex-col items-center justify-start gap-3 border-t border-night-hairline px-2 py-8">
+          {item.icon ? (
+            <svg role="img" aria-label={item.name} viewBox="0 0 24 24" width="32" height="32" class="h-8 w-8 text-night-text/80">
+              <path d={item.icon.svgPath} fill="currentColor" />
+            </svg>
+          ) : (
+            <span aria-hidden="true" class="flex h-8 items-center font-display text-[1.5rem] leading-none text-night-text/80">{item.name}</span>
+          )}
+          <span class="text-center text-sm text-night-muted">{item.name}</span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-8 max-w-[68ch] text-xs leading-[1.6] text-night-muted">{t(locale, 'stack.logoNote')}</p>
+  </div>
+</section>

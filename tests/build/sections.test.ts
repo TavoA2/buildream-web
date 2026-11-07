@@ -50,3 +50,30 @@ it('ES first "Consultar" href is /?servicio=cloud-devops#contacto', () => {
     '/?servicio=cloud-devops#contacto',
   );
 });
+
+const lowerPages = [
+  { lang: 'es', file: 'dist/index.html', stack: 'stack', audience: 'para-quien', first: 'Startups', home: '/', contact: 'contacto' },
+  { lang: 'en', file: 'dist/en/index.html', stack: 'stack', audience: 'who-we-help', first: 'Startups', home: '/en/', contact: 'contact' },
+];
+
+describe.each(lowerPages)('stack and audience $lang', ({ file, stack, audience, first, home, contact }) => {
+  const root = parse(readFileSync(file, 'utf8'));
+
+  it('stack band has 3 featured + 14 grid items and no hard-coded fills', () => {
+    const section = root.querySelector(`section#${stack}`);
+    expect(section?.getAttribute('data-section')).toBe('stack');
+    expect(section!.querySelectorAll('[data-stack-featured] [data-stack-item]')).toHaveLength(3);
+    expect(section!.querySelectorAll('[data-stack-grid] [data-stack-item]')).toHaveLength(14);
+    expect(section!.outerHTML).not.toMatch(/fill="#/i);
+    for (const svg of section!.querySelectorAll('svg')) {
+      expect(svg.getAttribute('role')).toBe('img');
+      expect(svg.getAttribute('aria-label')).toBeTruthy();
+    }
+  });
+
+
+  it('stack comes after services and before audience', () => {
+    const order = root.querySelectorAll('main > section').map((s) => s.getAttribute('data-section'));
+    expect(order.indexOf('stack')).toBe(order.indexOf('services') + 1);
+  });
+});

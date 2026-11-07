@@ -45,7 +45,7 @@ describe('stack icons', () => {
     expect(resolveStackIcon('does-not-exist')).toBeNull();
   });
   it('every stack slug resolves or is listed as missing', () => {
-    const slugs = [...stack.featured, ...stack.grid.map((g) => g.slug)];
+    const slugs = [...stack.featured.map((f) => f.slug), ...stack.grid.map((g) => g.slug)];
     expect(stack.grid).toHaveLength(14);
     for (const s of slugs) {
       if (resolveStackIcon(s) === null) expect(MISSING_ICON_SLUGS).toContain(s);
