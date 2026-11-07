@@ -48,7 +48,7 @@ if (form && raw) {
   for (const el of fields) {
     el.addEventListener('invalid', (e) => {
       e.preventDefault();
-      const msg = el.validity.valueMissing ? cfg.errors.required : cfg.errors.email;
+      const msg = el.validity.valueMissing || (el.validity.patternMismatch && el.name === 'name') ? cfg.errors.required : cfg.errors.email;
       el.setCustomValidity(msg);
       el.setAttribute('aria-invalid', 'true');
       const err = errorOf(el);
@@ -57,7 +57,7 @@ if (form && raw) {
     });
     el.addEventListener('input', () => {
       clear(el);
-      if (!form.querySelector('[aria-invalid]')) live.querySelector('p')?.remove();
+      if (!form.querySelector('[aria-invalid]')) live.querySelector('[data-summary]')?.remove();
     });
   }
 
@@ -93,6 +93,8 @@ if (form && raw) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (sending) return;
+    // Whitespace-only counts as empty (textarea has no pattern attribute).
+    if (!message.value.trim()) message.value = '';
     if (!form.checkValidity()) {
       show('summary');
       fields.find((el) => el.getAttribute('aria-invalid') === 'true')?.focus();
@@ -141,10 +143,13 @@ if (form && raw) {
     prefillService(d.service);
     if (d.message) {
       const current = message.value.trim();
-      message.value = current ? `${message.value.replace(/\s+$/, '')}\n\n${d.message}` : d.message;
+      // Skip when the same summary is already appended (button clicked twice).
+      if (!current.endsWith(d.message.trim())) {
+        message.value = current ? `${message.value.replace(/\s+$/, '')}\n\n${d.message}` : d.message;
+      }
     }
     for (const el of fields) clear(el);
-    live.querySelector('p')?.remove();
+    live.querySelector('[data-summary]')?.remove();
     message.focus({ preventScroll: true });
   });
 }

@@ -27,6 +27,7 @@ describe.each(pages)('faq, contact, thanks $lang', ({ file, faq, contact, thanks
     for (const n of ['name', 'email', 'message']) {
       expect(form.querySelector(`[name="${n}"]`)?.hasAttribute('required')).toBe(true);
     }
+    expect(form.querySelector('[name="name"]')?.getAttribute('pattern')).toBe('.*\\S.*'); // whitespace-only rejected
     expect(form.querySelector('[name="botcheck"]')?.getAttribute('tabindex')).toBe('-1');
     expect(form.querySelector('[name="access_key"]')).toBeTruthy();
     expect(form.querySelector('[name="redirect"]')?.getAttribute('value')).toMatch(/^https:\/\/.+\/(gracias|en\/thanks)$/);

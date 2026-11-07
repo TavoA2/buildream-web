@@ -103,7 +103,7 @@ const linkRow =
 
           <div>
             <label for={`${prefix}-name`} class={label}>{t(locale, 'contact.form.name')}</label>
-            <input id={`${prefix}-name`} name="name" type="text" required autocomplete="name" aria-describedby={`${prefix}-name-error`} class={field} />
+            <input id={`${prefix}-name`} name="name" type="text" required pattern=".*\S.*" autocomplete="name" aria-describedby={`${prefix}-name-error`} class={field} />
             <p id={`${prefix}-name-error`} data-error hidden class={errorClass}><Icon name="circle-alert" size={18} class="mt-px" /><span data-error-text></span></p>
           </div>
 
@@ -183,7 +183,7 @@ const linkRow =
         </template>
 
         <template data-tpl="summary">
-          <p class="flex items-start gap-2 text-[0.9375rem] font-semibold text-danger"><Icon name="circle-alert" size={18} class="mt-px" />{t(locale, 'contact.errors.summary')}</p>
+          <p data-summary class="flex items-start gap-2 text-[0.9375rem] font-semibold text-danger"><Icon name="circle-alert" size={18} class="mt-px" />{t(locale, 'contact.errors.summary')}</p>
         </template>
       </div>
 
