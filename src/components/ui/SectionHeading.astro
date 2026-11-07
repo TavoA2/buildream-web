@@ -1,0 +1,23 @@
+---
+interface Props {
+  id: string;
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  tone?: 'light' | 'night';
+}
+const { id, eyebrow, title, intro, tone = 'light' } = Astro.props;
+const night = tone === 'night';
+---
+<div class="max-w-[68ch]">
+  {eyebrow && (
+    <p class:list={['mb-4 font-sans text-xs font-medium uppercase leading-[1.4] tracking-[0.14em]', night ? 'text-night-muted' : 'text-pine-ink']}>{eyebrow}</p>
+  )}
+  <h2
+    id={id}
+    class:list={['font-display font-normal text-[clamp(2rem,1.5rem+2.2vw,3.25rem)] leading-[1.1] tracking-[-0.005em]', night ? 'text-night-text' : 'text-ink']}
+  >{title}</h2>
+  {intro && (
+    <p class:list={['mt-4 text-[1.0625rem] leading-[1.6]', night ? 'text-night-muted' : 'text-ink-muted']}>{intro}</p>
+  )}
+</div>

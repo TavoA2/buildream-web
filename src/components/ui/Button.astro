@@ -1,0 +1,20 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary';
+  size?: 'md' | 'sm';
+  class?: string;
+  [attr: string]: unknown;
+}
+const { href, variant = 'primary', size = 'md', class: className, ...rest } = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-sm font-sans font-semibold leading-none no-underline transition-colors duration-150 whitespace-nowrap';
+const sizes = { md: 'min-h-12 px-5', sm: 'min-h-10 px-4 text-[0.9375rem]' };
+// Primary: white on pine (5.5:1), hover pine-ink. Secondary: 1px control-border outline, consistent everywhere.
+const variants = {
+  primary: 'bg-pine text-white hover:bg-pine-ink',
+  secondary: 'border border-control bg-transparent text-ink hover:border-ink hover:bg-bone-deep',
+};
+---
+<a href={href} class:list={[base, sizes[size], variants[variant], className]} {...rest}><slot /></a>

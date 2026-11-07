@@ -1,0 +1,26 @@
+---
+import { t, type Locale } from '../../i18n/utils';
+
+interface Props {
+  type: 'own' | 'demo' | 'client';
+  locale: Locale;
+}
+const { type, locale } = Astro.props;
+
+const variants = {
+  own: 'bg-bone-deep text-ink',
+  demo: 'bg-bone text-ink border border-dashed border-hairline',
+  client: 'bg-bone-deep text-pine-ink',
+};
+const labels = {
+  own: t(locale, 'projects.typeLabels.own'),
+  demo: t(locale, 'projects.typeLabels.demo'),
+  client: t(locale, 'projects.typeLabels.client'),
+};
+---
+<span
+  class:list={[
+    'inline-flex items-center rounded-pill px-3 py-1.5 font-sans text-xs font-medium uppercase leading-[1.4] tracking-[0.14em]',
+    variants[type],
+  ]}
+>{labels[type]}</span>

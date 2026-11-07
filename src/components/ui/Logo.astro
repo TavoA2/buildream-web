@@ -1,0 +1,24 @@
+---
+import inkSvg from '../../assets/logo/wordmark-ink.svg?raw';
+import boneSvg from '../../assets/logo/wordmark-bone.svg?raw';
+import { t, type Locale } from '../../i18n/utils';
+
+interface Props {
+  tone?: 'ink' | 'bone';
+  withDescriptor?: boolean;
+  locale: Locale;
+  class?: string;
+}
+const { tone = 'ink', withDescriptor = true, locale, class: className } = Astro.props;
+// Strip intrinsic size so CSS controls it; the viewBox keeps the ratio.
+const svg = (tone === 'bone' ? boneSvg : inkSvg).replace(/ width="\d+" height="\d+"/, '');
+---
+<span class:list={['inline-flex flex-col items-start gap-1.5', className]} role="img" aria-label={t(locale, 'brand.name')}>
+  <span class="block h-9 [&>svg]:block [&>svg]:h-full [&>svg]:w-auto" aria-hidden="true" set:html={svg} />
+  {withDescriptor && (
+    <span
+      aria-hidden="true"
+      class:list={['font-sans text-[0.6875rem] font-medium uppercase leading-none tracking-[0.2em]', tone === 'bone' ? 'text-night-muted' : 'text-ink-muted']}
+    >{t(locale, 'brand.descriptor')}</span>
+  )}
+</span>
