@@ -1,0 +1,13 @@
+---
+import Page from '../components/Page.astro';
+import Diagnosis from '../components/Diagnosis.astro';
+import Process from '../components/Process.astro';
+import { t, type Lang } from '../lib/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const m = t(lang).pages.diagnosis;
+---
+<Page lang={lang} current="diagnosis" title={m.title} description={m.description}>
+  <Diagnosis lang={lang} standalone />
+  <div class="border-t border-line"><Process lang={lang} /></div>
+</Page>

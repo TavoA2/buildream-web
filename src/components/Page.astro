@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { routes, type Lang, type Route } from '../lib/i18n';
+
+interface Props { lang: Lang; current: Route; title?: string; description?: string }
+const { lang, current, title, description } = Astro.props;
+const altPath = routes[current][lang === 'es' ? 'en' : 'es'];
+---
+<Layout lang={lang} altPath={altPath} title={title} description={description}>
+  <a href="#main" class="sr-only z-50 rounded-md bg-ink px-4 py-2 text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
+    {lang === 'es' ? 'Saltar al contenido' : 'Skip to content'}
+  </a>
+  <Header lang={lang} altPath={altPath} current={current} />
+  <main id="main"><slot /></main>
+  <Footer lang={lang} />
+</Layout>

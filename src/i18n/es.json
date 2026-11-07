@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Buildream · Consultoría IT e IA para pymes y emprendedores",
-    "description": "Te ayudo a usar la inteligencia artificial y la tecnología en tu negocio: sitios web con chatbot, automatizaciones, talleres de IA y nube. Primera llamada gratis.",
+    "title": "Buildream · Consultoría IT e IA para potenciar tu trabajo",
+    "description": "Llevo la inteligencia artificial a tu forma de trabajar, sea cual sea tu área: agentes e integraciones, marketing y video con IA, webs con chatbot, automatizaciones y nube. Primera llamada gratis.",
     "locale": "es_CR"
   },
   "nav": {
@@ -14,14 +14,15 @@
     "menu": "Abrir menú",
     "close": "Cerrar menú",
     "switchTo": "English",
-    "switchLabel": "Ver el sitio en inglés"
+    "switchLabel": "Ver el sitio en inglés",
+    "home": "Inicio"
   },
   "brand": {
     "descriptor": "Consultoría IT & IA"
   },
   "hero": {
     "title": "Tú tienes la visión. Nosotros la construimos.",
-    "lead": "Consultoría IT e IA para pymes y emprendedores: sitios web con chatbot, automatizaciones, talleres para tu equipo y la nube detrás de todo. Te explico en simple qué te sirve y lo dejo funcionando.",
+    "lead": "Llevo la inteligencia artificial a tu forma de trabajar, sea cual sea tu área: marketing, diseño, arquitectura, ventas o tecnología. Te explico en simple qué te sirve, lo conecto con las herramientas que ya usas y lo dejo funcionando.",
     "primary": "Agenda tu diagnóstico gratis",
     "secondary": "Ver servicios",
     "fact": "Ingeniero en Computación con más de 5 años operando plataformas cloud de nivel enterprise.",
@@ -53,13 +54,23 @@
   },
   "services": {
     "title": "Qué puedo hacer por tu negocio",
-    "lead": "Cinco formas de empezar. Si no sabes cuál necesitas, empezamos por el diagnóstico.",
+    "lead": "Siete formas de llevar la IA a tu trabajo. Si no sabes cuál necesitas, empezamos por el diagnóstico.",
     "ask": "Consultar",
     "items": [
       {
         "icon": "compass",
         "title": "Diagnóstico y estrategia de IA",
-        "text": "Revisamos cómo trabaja tu negocio hoy y encontramos dónde la IA te ahorra tiempo de verdad, sin comprar herramientas que no vas a usar."
+        "text": "Revisamos cómo trabajas hoy y encontramos dónde la IA te ahorra tiempo de verdad, sin comprar herramientas que no vas a usar."
+      },
+      {
+        "icon": "plug",
+        "title": "Agentes e integraciones de IA",
+        "text": "Conecto la IA con los programas que ya usas: AutoCAD, Excel, tu CRM o tu correo. Por ejemplo, generar borradores de planos a partir de una descripción o preparar reportes solos."
+      },
+      {
+        "icon": "clapperboard",
+        "title": "Marketing y contenido con IA",
+        "text": "Agentes que investigan tu nicho, escriben textos, generan imágenes y videos y arman tu calendario de publicaciones. Tú revisas y apruebas."
       },
       {
         "icon": "globe",
@@ -74,18 +85,20 @@
       {
         "icon": "graduation-cap",
         "title": "Talleres de IA para equipos",
-        "text": "Sesiones prácticas para marketing, diseño y ventas: cómo usar ChatGPT, Claude y Gemini en las tareas reales de tu equipo."
+        "text": "Sesiones prácticas para cualquier área: cómo usar ChatGPT, Claude y Gemini en las tareas reales de tu equipo."
       },
       {
         "icon": "cloud",
-        "title": "Nube y DevOps para startups",
-        "text": "Hosting, despliegues automáticos, AWS y una base que aguante cuando tu producto crezca. La parte técnica que casi nadie te explica."
+        "title": "Nube y DevOps",
+        "text": "Hosting, despliegues automáticos, monitoreo y AWS: una base técnica que aguante cuando tu producto crezca."
       }
-    ]
+    ],
+    "all": "Ver todos los servicios",
+    "summaryTitle": "IA aplicada a tu forma de trabajar"
   },
   "audience": {
-    "title": "Para quién trabajo",
-    "lead": "Negocios que quieren usar la tecnología a su favor, sin tener un equipo técnico.",
+    "title": "Para cualquier área",
+    "lead": "No importa a qué te dediques: si hay tareas repetidas, la IA te puede ayudar. Algunos ejemplos:",
     "items": [
       {
         "icon": "rocket",
@@ -98,6 +111,10 @@
       {
         "icon": "megaphone",
         "label": "Marketing y diseño"
+      },
+      {
+        "icon": "drafting-compass",
+        "label": "Arquitectura e ingeniería"
       },
       {
         "icon": "stethoscope",
@@ -126,6 +143,10 @@
       {
         "icon": "briefcase",
         "label": "Profesionales independientes"
+      },
+      {
+        "icon": "code",
+        "label": "Tecnología y startups"
       }
     ]
   },
@@ -168,6 +189,10 @@
               "label": "Marketing, diseño o contenido"
             },
             {
+              "v": "aec",
+              "label": "Arquitectura, ingeniería o construcción"
+            },
+            {
               "v": "startup",
               "label": "Startup o producto digital"
             }
@@ -188,6 +213,10 @@
             {
               "v": "content",
               "label": "Crear contenido y publicaciones"
+            },
+            {
+              "v": "design",
+              "label": "Diseño técnico, planos o documentos"
             },
             {
               "v": "tech",
@@ -241,7 +270,8 @@
         "web_old": "Rehacer tu web con un mensaje claro y un chatbot que convierta visitas en contactos.",
         "ai_none": "Un taller corto para empezar a usar la IA con confianza.",
         "ai_some": "Plantillas de instrucciones para tus tareas repetidas, para que la IA trabaje con método.",
-        "ai_team": "Un taller para tu equipo con casos de su propio trabajo."
+        "ai_team": "Un taller para tu equipo con casos de su propio trabajo.",
+        "design": "Conectar la IA con tus programas, como AutoCAD, para generar borradores y automatizar tareas repetidas."
       }
     }
   },
@@ -456,5 +486,33 @@
         "Los proyectos marcados como conceptuales son demostraciones y no representan a clientes reales."
       ]
     }
+  },
+  "pages": {
+    "services": {
+      "title": "Servicios · Buildream",
+      "description": "Agentes e integraciones de IA, marketing y video con IA, sitios web con chatbot, automatizaciones, talleres y nube."
+    },
+    "diagnosis": {
+      "title": "Diagnóstico de IA gratis · Buildream",
+      "description": "Una llamada de 30 minutos para encontrar dónde la IA le ahorra tiempo a tu negocio."
+    },
+    "projects": {
+      "title": "Proyectos · Buildream",
+      "description": "Proyectos propios y demostraciones de Buildream."
+    },
+    "about": {
+      "title": "Sobre mí · Buildream",
+      "description": "Dixon G. Araya Arias, consultor IT e IA e ingeniero DevOps y Cloud."
+    },
+    "contact": {
+      "title": "Contacto · Buildream",
+      "description": "Cuéntame tu idea y agenda tu diagnóstico gratis de 30 minutos."
+    }
+  },
+  "ctaBand": {
+    "title": "¿Tienes una idea o una tarea que te quita horas?",
+    "text": "Cuéntamela. En una llamada de 30 minutos vemos si la IA te puede ayudar y por dónde empezar.",
+    "primary": "Agenda tu diagnóstico gratis",
+    "secondary": "Escribir por WhatsApp"
   }
 }

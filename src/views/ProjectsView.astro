@@ -1,0 +1,13 @@
+---
+import Page from '../components/Page.astro';
+import Projects from '../components/Projects.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { t, type Lang } from '../lib/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const m = t(lang).pages.projects;
+---
+<Page lang={lang} current="projects" title={m.title} description={m.description}>
+  <Projects lang={lang} standalone />
+  <CtaBand lang={lang} />
+</Page>

@@ -2,6 +2,22 @@
 
 Sitio de presentación de **Buildream · Consultoría IT & IA**. Estático, bilingüe (ES por defecto, EN en `/en/`), hecho con Astro + Tailwind CSS v4.
 
+## Páginas
+
+| Página | ES | EN |
+|---|---|---|
+| Inicio | `/` | `/en/` |
+| Servicios (+ FAQ) | `/servicios/` | `/en/services/` |
+| Diagnóstico IA (+ mini-quiz) | `/diagnostico/` | `/en/assessment/` |
+| Proyectos | `/proyectos/` | `/en/projects/` |
+| Sobre mí | `/sobre-mi/` | `/en/about/` |
+| Contacto (+ FAQ) | `/contacto/` | `/en/contact/` |
+| Legales | `/privacidad/`, `/terminos/` | `/en/privacy/`, `/en/terms/` |
+
+Las rutas están en `src/lib/i18n.ts` (`routes`). Cada página se arma en `src/views/` con las secciones de `src/components/`. En celular el menú es una hamburguesa a pantalla completa; en escritorio, barra con la página activa subrayada.
+
+El botón "Consultar" de cada servicio y el resultado del mini-quiz prellenan el formulario de Contacto (vía `sessionStorage`).
+
 ## Correr en local
 
 ```bash
@@ -57,7 +73,8 @@ Cuando lo compres, define `SITE_URL` (en `.env` o en las variables del hosting) 
 
 ```
 src/
-  components/   Secciones (Hero, Services, Diagnosis, Stack, ...)
+  components/   Secciones (Hero, Services, Diagnosis, Stack, ...) + Page (layout común)
+  views/        Composición de cada página
   i18n/         Textos ES/EN
   layouts/      <head>, SEO, JSON-LD
   lib/          i18n, iconos

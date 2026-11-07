@@ -2,7 +2,7 @@
 
 ## Qué es
 
-Consultoría IT e IA de Dixon G. Araya Arias (Costa Rica, trabajo remoto). Ayuda a pymes, emprendedores y profesionales de marketing y diseño a usar la IA y la tecnología en su negocio.
+Consultoría IT e IA de Dixon G. Araya Arias (Costa Rica, trabajo remoto). Lleva la IA al trabajo de cualquier área (marketing, diseño, arquitectura, ventas, tecnología…) para pymes, emprendedores y profesionales.
 
 ## Para quién
 
@@ -15,10 +15,14 @@ Que el visitante **entienda qué se ofrece, confíe y escriba**. Una sola conver
 ## Servicios
 
 1. Diagnóstico y estrategia de IA
-2. Sitio web con chatbot de IA
-3. Automatización de procesos
-4. Talleres de IA para equipos
-5. Nube y DevOps para startups
+2. Agentes e integraciones de IA (conectar la IA con AutoCAD, Excel, CRM, correo…)
+3. Marketing y contenido con IA (investigación de nicho, textos, imágenes, video, calendario)
+4. Sitio web con chatbot de IA
+5. Automatización de procesos
+6. Talleres de IA para equipos
+7. Nube y DevOps
+
+Sin nicho fijo: la propuesta es potenciar con IA el trabajo de cualquier área.
 
 ## Reglas
 

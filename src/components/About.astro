@@ -1,12 +1,14 @@
 ---
-import { t, contact, type Lang } from '../lib/i18n';
+import { t, route, contact, type Lang } from '../lib/i18n';
 
-interface Props { lang: Lang }
-const d = t(Astro.props.lang).about;
+interface Props { lang: Lang; standalone?: boolean }
+const { lang, standalone = false } = Astro.props;
+const d = t(lang).about;
+const H = standalone ? 'h1' : 'h2';
 // Foto pendiente: guarda la imagen en src/assets/dixon.jpg y reemplaza el bloque del monograma
 // por <Image src={photo} alt={d.photoAlt} /> (import { Image } from 'astro:assets').
 ---
-<section id="sobre-mi" class="section border-t border-line">
+<section id="sobre-mi" class:list={['section', !standalone && 'border-t border-line']}>
   <div class="wrap grid items-center gap-12 md:grid-cols-12 lg:gap-16">
     <div class="md:col-span-5">
       <div class="relative mx-auto aspect-[4/5] max-w-sm overflow-hidden rounded-[var(--radius-panel)] bg-accent-soft md:mx-0" role="img" aria-label={d.photoAlt}>
@@ -15,7 +17,7 @@ const d = t(Astro.props.lang).about;
       </div>
     </div>
     <div class="md:col-span-7">
-      <h2 class="h2">{d.title}</h2>
+      <H class="h2">{d.title}</H>
       <p class="mt-6 font-display text-[1.6rem] leading-tight">{d.name}</p>
       <p class="mt-1 font-medium text-muted">{d.role}</p>
       {d.bio.map((p) => <p class="mt-5 max-w-[60ch]">{p}</p>)}
@@ -24,7 +26,7 @@ const d = t(Astro.props.lang).about;
       </ul>
       <div class="mt-9 flex flex-col gap-3 sm:flex-row">
         <a href={contact.portfolio} target="_blank" rel="noopener" class="btn btn-secondary">{d.portfolio}</a>
-        <a href="#contacto" class="btn btn-primary">{d.talk}</a>
+        <a href={route(lang, 'contact')} class="btn btn-primary">{d.talk}</a>
       </div>
     </div>
   </div>

@@ -1,15 +1,18 @@
 ---
-import { t, type Lang } from '../lib/i18n';
+import { t, route, type Lang } from '../lib/i18n';
 import { lineIcon } from '../lib/icons';
 
-interface Props { lang: Lang }
-const d = t(Astro.props.lang).diagnosis;
+interface Props { lang: Lang; standalone?: boolean }
+const { lang, standalone = false } = Astro.props;
+const d = t(lang).diagnosis;
+const H = standalone ? 'h1' : 'h2';
+const contactUrl = route(lang, 'contact');
 const q = d.quiz;
 ---
 <section id="diagnostico" class="section">
   <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
     <div class="lg:col-span-6">
-      <h2 class="h2 max-w-[16ch]">{d.title}</h2>
+      <H class="h2 max-w-[16ch]">{d.title}</H>
       <p class="lead mt-5">{d.lead}</p>
       <h3 class="mt-10 font-sans text-base font-semibold tracking-normal">{d.receiveTitle}</h3>
       <ul class="mt-4 space-y-3.5">
@@ -20,7 +23,7 @@ const q = d.quiz;
           </li>
         ))}
       </ul>
-      <a href="#contacto" class="btn btn-primary mt-10">{d.cta}</a>
+      <a href={contactUrl} class="btn btn-primary mt-10">{d.cta}</a>
     </div>
 
     <div class="lg:col-span-6">
@@ -44,7 +47,7 @@ const q = d.quiz;
           <p class="text-[1.2rem] font-semibold">{q.resultTitle}</p>
           <ol data-recs class="mt-4 space-y-3"></ol>
           <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="#contacto" data-send class="btn btn-primary">{q.resultCta}</a>
+            <a href={contactUrl} data-send class="btn btn-primary">{q.resultCta}</a>
             <button type="button" data-restart class="link text-sm">{q.restart}</button>
           </div>
           <p class="mt-3 text-sm text-muted">{q.resultNote}</p>
@@ -114,7 +117,12 @@ const q = d.quiz;
       }),
     );
     const summary = quiz.questions.map((q) => `${q.q} ${answers[q.id].label}`).join('\n');
-    window.dispatchEvent(new CustomEvent('quiz:done', { detail: { summary, recs } }));
+    const text = `${summary}\n\n${recs.map((r) => `• ${r}`).join('\n')}`;
+    try {
+      sessionStorage.setItem('buildream:message', text);
+    } catch {
+      /* storage unavailable: the form simply starts empty */
+    }
   }
 
   $('[data-back]').addEventListener('click', () => {

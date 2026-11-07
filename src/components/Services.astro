@@ -1,15 +1,17 @@
 ---
-import { t, type Lang } from '../lib/i18n';
+import { t, route, type Lang } from '../lib/i18n';
 import { lineIcon } from '../lib/icons';
 
-interface Props { lang: Lang }
-const d = t(Astro.props.lang).services;
+interface Props { lang: Lang; standalone?: boolean }
+const { lang, standalone = false } = Astro.props;
+const d = t(lang).services;
+const H = standalone ? 'h1' : 'h2';
 ---
-<section id="servicios" class="section border-t border-line">
+<section id="servicios" class:list={['section', !standalone && 'border-t border-line']}>
   <div class="wrap grid gap-12 lg:grid-cols-12">
     <div class="lg:col-span-4">
       <div class="lg:sticky lg:top-28">
-        <h2 class="h2">{d.title}</h2>
+        <H class="h2">{d.title}</H>
         <p class="lead mt-5">{d.lead}</p>
       </div>
     </div>
@@ -23,9 +25,21 @@ const d = t(Astro.props.lang).services;
             <h3 class="font-display text-[1.75rem] leading-tight">{s.title}</h3>
             <p class="mt-2 max-w-[58ch] text-muted">{s.text}</p>
           </div>
-          <a href={`#contacto`} data-service={i} class="link self-center justify-self-start whitespace-nowrap text-[0.97rem] sm:justify-self-end">{d.ask}</a>
+          <a href={route(lang, 'contact')} data-service={s.title} class="link self-center justify-self-start whitespace-nowrap text-[0.97rem] sm:justify-self-end">{d.ask}</a>
         </li>
       ))}
     </ul>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-service]').forEach((a) =>
+    a.addEventListener('click', () => {
+      try {
+        sessionStorage.setItem('buildream:service', a.dataset.service!);
+      } catch {
+        /* storage unavailable */
+      }
+    }),
+  );
+</script>

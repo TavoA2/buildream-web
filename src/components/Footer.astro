@@ -1,17 +1,17 @@
 ---
 import Logo from './Logo.astro';
-import { t, homePath, legalPaths, contact, type Lang } from '../lib/i18n';
+import { t, route, legalPaths, contact, type Lang } from '../lib/i18n';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const d = t(lang);
-const home = homePath(lang);
 const links = [
-  { href: `${home}#servicios`, label: d.nav.services },
-  { href: `${home}#diagnostico`, label: d.nav.diagnosis },
-  { href: `${home}#sobre-mi`, label: d.nav.about },
-  { href: `${home}#proyectos`, label: d.nav.projects },
-  { href: `${home}#contacto`, label: d.nav.contact },
+  { href: route(lang, 'home'), label: d.nav.home },
+  { href: route(lang, 'services'), label: d.nav.services },
+  { href: route(lang, 'diagnosis'), label: d.nav.diagnosis },
+  { href: route(lang, 'projects'), label: d.nav.projects },
+  { href: route(lang, 'about'), label: d.nav.about },
+  { href: route(lang, 'contact'), label: d.nav.contact },
 ];
 ---
 <footer class="on-band bg-band text-white">

@@ -2,21 +2,23 @@
 import { t, type Lang } from '../lib/i18n';
 import { lineIcon } from '../lib/icons';
 
-interface Props { lang: Lang }
+interface Props { lang: Lang; standalone?: boolean }
+const { standalone = false } = Astro.props;
+const H = standalone ? 'h1' : 'h2';
 const d = t(Astro.props.lang).projects;
 type Kind = keyof typeof d.tags;
 ---
-<section id="proyectos" class="section bg-surface">
+<section id="proyectos" class:list={['section', !standalone && 'bg-surface']}>
   <div class="wrap">
-    <h2 class="h2">{d.title}</h2>
+    <H class="h2">{d.title}</H>
     <p class="lead mt-5">{d.lead}</p>
     <ul class="mt-12 grid gap-6 md:grid-cols-2">
       {d.items.map((p) => (
         <li>
           <a href={p.url} target="_blank" rel="noopener"
-             class="group flex h-full flex-col rounded-[var(--radius-panel)] border border-line bg-paper p-6 no-underline transition duration-300 hover:-translate-y-0.5 hover:shadow-lift sm:p-7">
+             class="group flex h-full flex-col rounded-[var(--radius-panel)] border border-line bg-surface p-6 no-underline transition duration-300 hover:-translate-y-0.5 hover:shadow-lift sm:p-7">
             <!-- Mini pipeline diagram of the project -->
-            <div class="flex items-center rounded-[0.75rem] bg-surface px-4 py-5" aria-hidden="true">
+            <div class="flex items-center rounded-[0.75rem] bg-paper px-4 py-5" aria-hidden="true">
               {p.nodes.map((n, i) => (
                 <>
                   {i > 0 && <span class="relative h-px flex-1 bg-line"><span class="absolute inset-y-0 left-0 w-0 bg-accent transition-[width] duration-500 group-hover:w-full" style={`transition-delay:${i * 90}ms`}></span></span>}

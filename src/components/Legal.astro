@@ -1,24 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from './Header.astro';
-import Footer from './Footer.astro';
-import { t, homePath, legalPaths, type Lang } from '../lib/i18n';
+import Page from './Page.astro';
+import { t, homePath, type Lang } from '../lib/i18n';
 
 interface Props { lang: Lang; page: 'privacy' | 'terms' }
 const { lang, page } = Astro.props;
 const d = t(lang);
 const content = d.legal[page];
-const altPath = legalPaths[page][lang === 'es' ? 'en' : 'es'];
 ---
-<Layout lang={lang} altPath={altPath} title={`${content.title} · Buildream`}>
-  <Header lang={lang} altPath={altPath} />
-  <main class="section">
+<Page lang={lang} current={page} title={`${content.title} · Buildream`}>
+  <div class="section">
     <article class="wrap max-w-3xl">
       <a href={homePath(lang)} class="link text-sm">{d.legal.back}</a>
       <h1 class="mt-6 text-[clamp(2.5rem,6vw,4rem)]">{content.title}</h1>
       <p class="mt-3 text-sm text-muted">{d.legal.updated}</p>
       {content.body.map((p) => <p class="mt-6 max-w-[65ch]">{p}</p>)}
     </article>
-  </main>
-  <Footer lang={lang} />
-</Layout>
+  </div>
+</Page>

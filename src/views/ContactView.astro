@@ -1,0 +1,13 @@
+---
+import Page from '../components/Page.astro';
+import Contact from '../components/Contact.astro';
+import Faq from '../components/Faq.astro';
+import { t, type Lang } from '../lib/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const m = t(lang).pages.contact;
+---
+<Page lang={lang} current="contact" title={m.title} description={m.description}>
+  <Contact lang={lang} standalone />
+  <Faq lang={lang} />
+</Page>

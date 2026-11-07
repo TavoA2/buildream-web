@@ -16,11 +16,25 @@ export function homePath(lang: Lang): string {
   return lang === 'es' ? '/' : '/en/';
 }
 
-/** Legal page paths, mapped across languages. */
-export const legalPaths = {
+/** Every page and its path in each language. */
+export const routes = {
+  home: { es: '/', en: '/en/' },
+  services: { es: '/servicios/', en: '/en/services/' },
+  diagnosis: { es: '/diagnostico/', en: '/en/assessment/' },
+  projects: { es: '/proyectos/', en: '/en/projects/' },
+  about: { es: '/sobre-mi/', en: '/en/about/' },
+  contact: { es: '/contacto/', en: '/en/contact/' },
   privacy: { es: '/privacidad/', en: '/en/privacy/' },
   terms: { es: '/terminos/', en: '/en/terms/' },
 } as const;
+export type Route = keyof typeof routes;
+
+export function route(lang: Lang, r: Route): string {
+  return routes[r][lang];
+}
+
+/** Kept for legal pages. */
+export const legalPaths = { privacy: routes.privacy, terms: routes.terms };
 
 export const contact = {
   whatsappNumber: '50685200223',

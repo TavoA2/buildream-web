@@ -2,7 +2,9 @@
 import { t, contact, whatsappLink, type Lang } from '../lib/i18n';
 import { lineIcon } from '../lib/icons';
 
-interface Props { lang: Lang }
+interface Props { lang: Lang; standalone?: boolean }
+const { standalone = false } = Astro.props;
+const H = standalone ? 'h1' : 'h2';
 const all = t(Astro.props.lang);
 const d = all.contact;
 const services = all.services.items.map((s) => s.title);
@@ -11,10 +13,10 @@ const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT || '/';
 const field = 'mt-2 block w-full rounded-[var(--radius-control)] border border-line bg-paper px-4 py-3 text-base text-ink placeholder:text-muted/70 transition focus:border-accent focus:bg-surface focus:outline-none focus:ring-2 focus:ring-accent/25 aria-[invalid=true]:border-red-700';
 const label = 'block text-[0.95rem] font-semibold';
 ---
-<section id="contacto" class="section border-t border-line">
+<section id="contacto" class:list={['section', !standalone && 'border-t border-line']}>
   <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
     <div class="lg:col-span-5">
-      <h2 class="h2 max-w-[14ch]">{d.title}</h2>
+      <H class="h2 max-w-[14ch]">{d.title}</H>
       <p class="lead mt-5">{d.lead}</p>
       <p class="mt-10 text-sm font-semibold text-muted">{d.or}</p>
       <div class="mt-4 flex flex-col gap-3">
@@ -80,17 +82,17 @@ const label = 'block text-[0.95rem] font-semibold';
   const select = form.querySelector<HTMLSelectElement>('#f-service')!;
   const message = form.querySelector<HTMLTextAreaElement>('#f-message')!;
 
-  // "Consultar" links preselect the service.
-  document.querySelectorAll<HTMLElement>('[data-service]').forEach((a) =>
-    a.addEventListener('click', () => {
-      select.selectedIndex = Number(a.dataset.service) + 1;
-    }),
-  );
-  // Quiz answers prefill the message.
-  window.addEventListener('quiz:done', (e) => {
-    const { summary, recs } = (e as CustomEvent).detail;
-    message.value = `${summary}\n\n${recs.map((r: string) => `• ${r}`).join('\n')}`;
-  });
+  // Prefill from the services page ("Consultar") and the quiz on the assessment page.
+  try {
+    const service = sessionStorage.getItem('buildream:service');
+    if (service) select.value = service;
+    const text = sessionStorage.getItem('buildream:message');
+    if (text) message.value = text;
+    sessionStorage.removeItem('buildream:service');
+    sessionStorage.removeItem('buildream:message');
+  } catch {
+    /* storage unavailable */
+  }
 
   const show = (input: HTMLInputElement | HTMLTextAreaElement, msg: string) => {
     const err = document.getElementById(input.getAttribute('aria-describedby')!)!;

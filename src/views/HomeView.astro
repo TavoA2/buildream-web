@@ -1,0 +1,20 @@
+---
+import Page from '../components/Page.astro';
+import Hero from '../components/Hero.astro';
+import ServicesSummary from '../components/ServicesSummary.astro';
+import Audience from '../components/Audience.astro';
+import Stack from '../components/Stack.astro';
+import Process from '../components/Process.astro';
+import CtaBand from '../components/CtaBand.astro';
+import type { Lang } from '../lib/i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<Page lang={lang} current="home">
+  <Hero lang={lang} />
+  <ServicesSummary lang={lang} />
+  <Audience lang={lang} />
+  <Stack lang={lang} />
+  <Process lang={lang} />
+  <CtaBand lang={lang} />
+</Page>

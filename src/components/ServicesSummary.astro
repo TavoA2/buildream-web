@@ -1,0 +1,32 @@
+---
+import { t, route, type Lang } from '../lib/i18n';
+import { lineIcon } from '../lib/icons';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const d = t(lang).services;
+---
+<section class="section border-t border-line">
+  <div class="wrap">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="h2 max-w-[16ch]">{d.summaryTitle}</h2>
+        <p class="lead mt-5">{d.lead}</p>
+      </div>
+      <a href={route(lang, 'services')} class="btn btn-secondary shrink-0 self-start md:self-auto">{d.all}</a>
+    </div>
+    <ul class="mt-12 grid gap-px overflow-hidden rounded-[var(--radius-panel)] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+      {d.items.map((s, i) => (
+        <li class:list={['bg-paper', i === 0 && 'sm:col-span-2 lg:col-span-1 lg:row-span-2']}>
+          <a href={route(lang, 'services')} class="group flex h-full flex-col gap-4 p-6 no-underline transition-colors hover:bg-surface sm:p-7">
+            <span class="grid size-11 place-items-center rounded-full bg-accent-soft text-accent-strong transition-transform duration-300 group-hover:-translate-y-0.5">
+              <Fragment set:html={lineIcon(s.icon, 'size-5')} />
+            </span>
+            <span class:list={['font-display leading-tight', i === 0 ? 'text-[1.9rem]' : 'text-[1.35rem]']}>{s.title}</span>
+            {i === 0 && <span class="max-w-[40ch] text-muted">{s.text}</span>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

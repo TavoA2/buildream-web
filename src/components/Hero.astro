@@ -1,9 +1,10 @@
 ---
-import { t, type Lang } from '../lib/i18n';
+import { t, route, type Lang } from '../lib/i18n';
 import { lineIcon } from '../lib/icons';
 
 interface Props { lang: Lang }
-const d = t(Astro.props.lang).hero;
+const { lang } = Astro.props;
+const d = t(lang).hero;
 const p = d.pipeline;
 const last = p.steps.length - 1;
 ---
@@ -13,8 +14,8 @@ const last = p.steps.length - 1;
       <h1 class="max-w-[13ch] text-[clamp(2.9rem,7.2vw,5.6rem)] leading-[0.98]">{d.title}</h1>
       <p class="lead mt-7">{d.lead}</p>
       <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-        <a href="#contacto" class="btn btn-primary">{d.primary}</a>
-        <a href="#servicios" class="btn btn-secondary">{d.secondary}</a>
+        <a href={route(lang, 'diagnosis')} class="btn btn-primary">{d.primary}</a>
+        <a href={route(lang, 'services')} class="btn btn-secondary">{d.secondary}</a>
       </div>
       <p class="mt-8 flex max-w-xl items-start gap-2.5 text-[0.95rem] text-muted">
         <Fragment set:html={lineIcon('circle-check', 'mt-0.5 size-5 shrink-0 text-accent')} />
