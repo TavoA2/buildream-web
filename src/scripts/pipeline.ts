@@ -61,7 +61,7 @@ if (root && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
         phase = 'armed';
         // Armed while already on screen (in-page jump): `go` may have fired first and ignored it.
         const seen = Math.min(r.bottom, innerHeight) - Math.max(r.top, 0);
-        if (seen > 0) timer ||= setTimeout(start, seen >= 0.4 * r.height ? 0 : 1500);
+        if (seen > 0) timer ||= window.setTimeout(start, seen >= 0.4 * r.height ? 0 : 1500);
       }
     },
     { rootMargin: '30% 0px' },
@@ -73,7 +73,7 @@ if (root && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     ([g]) => {
       if (phase !== 'armed') return;
       if (g.intersectionRatio >= 0.4) start();
-      else if (g.isIntersecting) timer ||= setTimeout(start, 1500);
+      else if (g.isIntersecting) timer ||= window.setTimeout(start, 1500);
       else {
         clearTimeout(timer);
         timer = 0;
