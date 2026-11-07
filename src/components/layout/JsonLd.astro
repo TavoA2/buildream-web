@@ -1,0 +1,41 @@
+---
+import { site } from '../../config/site';
+import type { Locale } from '../../i18n/utils';
+import { t } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  faq?: { question: string; answer: string }[];
+}
+const { locale, faq } = Astro.props;
+
+const base = site.url.replace(/\/+$/, '');
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Buildream',
+  description: t(locale, 'meta.home.description'),
+  url: locale === 'es' ? `${base}/` : `${base}/en/`,
+  areaServed: ['Costa Rica', 'Latin America'],
+  knowsLanguage: ['es', 'en'],
+  founder: { '@type': 'Person', name: 'Dixon G. Araya Arias' },
+  email: site.email,
+  telephone: '+50685200223',
+  sameAs: [site.linkedin, site.github, site.portfolio],
+};
+const faqPage =
+  faq && faq.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faq.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+      }
+    : null;
+const ser = (o: unknown) => JSON.stringify(o).replace(/</g, '\u003c');
+---
+<script type="application/ld+json" set:html={ser(service)} />
+{faqPage && <script type="application/ld+json" set:html={ser(faqPage)} />}

@@ -1,0 +1,33 @@
+---
+import '../styles/global.css';
+import SEO from '../components/layout/SEO.astro';
+import JsonLd from '../components/layout/JsonLd.astro';
+import { t, type Locale, type PageId } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  page: PageId;
+  title: string;
+  description: string;
+  faq?: { question: string; answer: string }[];
+  jsonLd?: boolean;
+}
+const { locale, page, title, description, faq, jsonLd = page === 'home' } = Astro.props;
+---
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <SEO locale={locale} page={page} title={title} description={description} />
+    {jsonLd && <JsonLd locale={locale} faq={faq} />}
+  </head>
+  <body class="bg-bone text-ink font-sans">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-ink focus:text-bone focus:px-4 focus:py-2 focus:rounded-sm"
+    >{t(locale, 'a11y.skipLink')}</a>
+    <slot />
+  </body>
+</html>
