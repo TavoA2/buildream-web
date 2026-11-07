@@ -1,18 +1,35 @@
 ---
-// Wordmark: three blocks stepping up (a build in progress) + "Buildream".
+// Logo C4 "prompt de IA": cuadro de terminal con > y una chispa + nombre monoespaciado con cursor.
+// Archivos fuente en /brand.
 interface Props { descriptor?: string; tone?: 'ink' | 'light' }
 const { descriptor, tone = 'ink' } = Astro.props;
+const light = tone === 'light';
+const bg = light ? '#2f5bff' : '#0b1430';
+const chevron = light ? '#ffffff' : '#22d3ee';
+const spark = light ? '#22d3ee' : '#2f5bff';
 ---
-<span class={`inline-flex items-center gap-2.5 ${tone === 'light' ? 'text-white' : 'text-ink'}`}>
-  <svg class="size-7 shrink-0" viewBox="0 0 28 28" aria-hidden="true">
-    <rect x="2" y="16" width="7" height="10" rx="1.5" fill="currentColor" opacity="0.35" />
-    <rect x="10.5" y="10" width="7" height="16" rx="1.5" fill="currentColor" opacity="0.65" />
-    <rect x="19" y="2" width="7" height="24" rx="1.5" fill="#2f5bff" />
+<span class={`inline-flex items-center gap-2.5 ${light ? 'text-white' : 'text-ink'}`}>
+  <svg class="size-9 shrink-0" viewBox="0 0 64 64" aria-hidden="true">
+    <rect width="64" height="64" rx="15" fill={bg} />
+    <path d="M18 21L31 32L18 43" fill="none" stroke={chevron} stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M45 30.5C46.1 36.6 47.9 38.6 54 40C47.9 41.4 46.1 43.4 45 49.5C43.9 43.4 42.1 41.4 36 40C42.1 38.6 43.9 36.6 45 30.5Z" fill={spark} />
   </svg>
   <span class="flex flex-col leading-none">
-    <span class="font-display text-[1.45rem] font-semibold tracking-[-0.02em]">Buildream</span>
+    <span class="font-mono text-[1.28rem] font-semibold tracking-[-0.03em]">buildream<span class={`logo-cursor ${light ? 'text-signal' : 'text-accent'}`}>_</span></span>
     {descriptor && (
-      <span class={`mt-1 text-[0.72rem] font-medium tracking-[0.01em] ${tone === 'light' ? 'text-band-muted' : 'text-muted'}`}>{descriptor}</span>
+      <span class={`mt-1.5 text-[0.72rem] font-medium tracking-[0.01em] ${light ? 'text-band-muted' : 'text-muted'}`}>{descriptor}</span>
     )}
   </span>
 </span>
+
+<style>
+  .logo-cursor {
+    animation: logo-blink 1.1s steps(1) infinite;
+  }
+  @keyframes logo-blink {
+    50% { opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-cursor { animation: none; }
+  }
+</style>

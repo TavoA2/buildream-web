@@ -24,6 +24,10 @@ El azul transmite confianza y tecnología; el cian de la terminal marca lo que e
 
 Los logos de terceros conservan sus colores; los muy oscuros se pasan a blanco sobre la banda.
 
+## Logo
+
+C4 "prompt de IA": cuadro de terminal azul noche con `>` en cian y una chispa azul en lugar del cursor (aquí escribes, la IA responde). Nombre en JetBrains Mono 600, minúsculas, con `_` como cursor. En fondos oscuros, el cuadro pasa a azul eléctrico con `>` blanco y chispa cian. Archivos en `/brand`.
+
 ## Tipografía
 
 - **Display:** Newsreader Variable (serif editorial con eje óptico), peso 500, tracking −0.02em. Titulares H1–H3.

@@ -46,6 +46,10 @@ Otros datos:
 
 Lo pendiente está en `TODO-CONTENT.md`.
 
+## Marca
+
+Logo "prompt de IA" (C4) en `brand/`: ícono oscuro y azul, logo horizontal claro y oscuro, wordmark, avatar para redes y PNG en varios tamaños. Paleta en `DESIGN.md`.
+
 ## Deploy
 
 ### Netlify (recomendado: plan gratis permite uso comercial)
