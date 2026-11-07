@@ -1,0 +1,187 @@
+{
+  "questions": [
+    {
+      "id": "business",
+      "multi": false,
+      "title": "Which best describes your business?",
+      "options": [
+        {
+          "id": "startup",
+          "label": "Startup or new project"
+        },
+        {
+          "id": "small-business",
+          "label": "Small or local business"
+        },
+        {
+          "id": "professional-services",
+          "label": "Professional services (consulting, legal, accounting)"
+        },
+        {
+          "id": "health-clinic",
+          "label": "Health or clinic"
+        },
+        {
+          "id": "tourism-hospitality",
+          "label": "Tourism or hospitality"
+        },
+        {
+          "id": "fitness",
+          "label": "Gym or fitness"
+        },
+        {
+          "id": "ecommerce",
+          "label": "Online store or e-commerce"
+        },
+        {
+          "id": "restaurant",
+          "label": "Restaurant or food business"
+        },
+        {
+          "id": "education",
+          "label": "Education or training"
+        },
+        {
+          "id": "freelancer",
+          "label": "Freelancer or independent professional"
+        },
+        {
+          "id": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    {
+      "id": "repetitive",
+      "multi": true,
+      "title": "Which repetitive tasks take most of your time?",
+      "options": [
+        {
+          "id": "faq-replies",
+          "label": "Answering the same customer questions"
+        },
+        {
+          "id": "invoicing",
+          "label": "Invoicing and payments"
+        },
+        {
+          "id": "crm-entry",
+          "label": "Copying data into a sheet or CRM by hand"
+        },
+        {
+          "id": "reports",
+          "label": "Building reports"
+        },
+        {
+          "id": "scheduling",
+          "label": "Scheduling appointments and bookings"
+        },
+        {
+          "id": "inventory",
+          "label": "Inventory tracking"
+        },
+        {
+          "id": "email-sorting",
+          "label": "Sorting and answering emails"
+        },
+        {
+          "id": "content-creation",
+          "label": "Creating content or posts"
+        },
+        {
+          "id": "none-tasks",
+          "label": "None in particular"
+        }
+      ]
+    },
+    {
+      "id": "channels",
+      "multi": true,
+      "title": "How do your customers reach you?",
+      "options": [
+        {
+          "id": "whatsapp",
+          "label": "WhatsApp"
+        },
+        {
+          "id": "website",
+          "label": "My website"
+        },
+        {
+          "id": "instagram",
+          "label": "Instagram or social media"
+        },
+        {
+          "id": "email",
+          "label": "Email"
+        },
+        {
+          "id": "phone",
+          "label": "Phone calls"
+        },
+        {
+          "id": "in-person",
+          "label": "In person"
+        },
+        {
+          "id": "none-channels",
+          "label": "I do not have a defined channel yet"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "multi": false,
+      "title": "What do you use to run your work today?",
+      "options": [
+        {
+          "id": "manual",
+          "label": "Paper or everything by hand"
+        },
+        {
+          "id": "spreadsheets",
+          "label": "Spreadsheets"
+        },
+        {
+          "id": "crm-software",
+          "label": "A CRM or management software"
+        },
+        {
+          "id": "ecommerce-platform",
+          "label": "An online store platform"
+        },
+        {
+          "id": "cloud-hosting",
+          "label": "Servers or cloud services"
+        },
+        {
+          "id": "none-tools",
+          "label": "Not sure"
+        }
+      ]
+    },
+    {
+      "id": "budget",
+      "multi": false,
+      "title": "What approximate budget do you have in mind?",
+      "options": [
+        {
+          "id": "low",
+          "label": "Tight"
+        },
+        {
+          "id": "mid",
+          "label": "Moderate"
+        },
+        {
+          "id": "high",
+          "label": "Flexible"
+        },
+        {
+          "id": "unsure",
+          "label": "Not sure yet"
+        }
+      ]
+    }
+  ]
+}

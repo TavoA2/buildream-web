@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from './ui/Button.astro';
+import Icon from './ui/Icon.astro';
+import { site } from '../config/site';
+import { legal, LEGAL_UPDATED, type LegalId } from '../i18n/legal';
+import { resolveFormConfig, type ProviderName } from '../lib/form-providers';
+import { format, pagePath, t, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  page: LegalId;
+}
+const { locale, page } = Astro.props;
+const doc = legal[page][locale];
+const providerNames: Record<ProviderName, string> = { web3forms: 'Web3Forms', formspree: 'Formspree', netlify: 'Netlify Forms' };
+const cfg = resolveFormConfig({
+  PUBLIC_FORM_PROVIDER: import.meta.env.PUBLIC_FORM_PROVIDER,
+  PUBLIC_WEB3FORMS_KEY: import.meta.env.PUBLIC_WEB3FORMS_KEY,
+  PUBLIC_FORMSPREE_ID: import.meta.env.PUBLIC_FORMSPREE_ID,
+});
+// Names the real processors so the policy stays true if the provider env changes.
+const vars = { processor: providerNames[cfg.provider], host: process.env.NETLIFY === 'true' ? 'Netlify' : 'Vercel' };
+const fill = (s: string) => format(s, vars);
+---
+<BaseLayout locale={locale} page={page} title={t(locale, `meta.${page}.title`)} description={t(locale, `meta.${page}.description`)}>
+  <main id="main" class="py-16 md:py-24">
+    <div class="mx-auto max-w-[1200px] px-4 lg:px-6">
+      <article class="max-w-[68ch]">
+        <h1 class="font-display text-[clamp(2.25rem,1.6rem+3vw,3.75rem)] leading-[1.08] text-ink text-balance">{doc.title}</h1>
+        <p class="mt-4 text-sm text-ink-muted">{t(locale, 'legal.updated')}: <time datetime={LEGAL_UPDATED}>{LEGAL_UPDATED}</time></p>
+        <p class="mt-8 text-[1.0625rem] text-ink-muted">{doc.intro}</p>
+
+        {doc.sections.map((s) => (
+          <section class="mt-12">
+            <h2 class="font-serif text-2xl leading-snug text-ink">{s.heading}</h2>
+            {s.paragraphs?.map((p) => <p class="mt-3 text-ink">{fill(p)}</p>)}
+            {s.items && (
+              <ul class="mt-3 list-disc space-y-1 pl-6 text-ink marker:text-ink-muted">
+                {s.items.map((i) => <li>{i}</li>)}
+              </ul>
+            )}
+            {s.note && <p class="mt-3 text-ink">{fill(s.note)}</p>}
+          </section>
+        ))}
+
+        <section class="mt-12 border-t border-hairline pt-8">
+          <h2 class="font-serif text-2xl leading-snug text-ink">{t(locale, 'legal.contactTitle')}</h2>
+          <p class="mt-3 text-ink">
+            {t(locale, 'legal.contactText')}{' '}
+            <a href={`mailto:${site.email}`} class="font-semibold text-pine-ink underline underline-offset-4 hover:decoration-2">{site.email}</a>.
+          </p>
+        </section>
+
+        <Button href={pagePath('home', locale)} variant="secondary" class="mt-12">
+          <Icon name="arrow-left" size={18} />
+          {t(locale, 'legal.backHome')}
+        </Button>
+      </article>
+    </div>
+  </main>
+</BaseLayout>

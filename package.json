@@ -1,0 +1,42 @@
+{
+  "name": "buildream",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run tests/unit",
+    "test:build": "vitest run tests/build",
+    "contrast": "tsx scripts/check-contrast.ts"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/public-sans": "^5.3.0",
+    "@fontsource/libre-caslon-display": "^5.3.0",
+    "@fontsource/libre-caslon-text": "^5.3.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.7",
+    "lucide-static": "^1.70.0",
+    "satori": "^0.63.2",
+    "simple-icons": "^16.36.0",
+    "tailwindcss": "^4.3.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@lhci/cli": "^0.16.0",
+    "linkinator": "^8.1.0",
+    "node-html-parser": "^9.0.7",
+    "opentype.js": "^2.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "vitest": "^5.1.0",
+    "yaml": "^2.9.1"
+  },
+  "engines": {
+    "node": ">=22.19"
+  }
+}

@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+import Button from '../ui/Button.astro';
+import Chip from '../ui/Chip.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import { anchors, sectionHref, t, type Locale } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+// Real photo wins as soon as src/assets/dixon.jpg exists; until then a typographic monogram holds the slot.
+const photos = import.meta.glob<{ default: ImageMetadata }>('/src/assets/dixon.{jpg,jpeg}', { eager: true });
+const photo = Object.values(photos)[0]?.default;
+
+const CREDENTIALS = ['degree', 'experience', 'devops', 'backend', 'ccna', 'languages'] as const;
+const chips = CREDENTIALS.map((k) => t(locale, `about.credentials.${k}`));
+---
+<section
+  id={anchors.about[locale]}
+  data-section="about"
+  aria-labelledby="about-title"
+  class="py-16 md:py-24 lg:py-32"
+>
+  <div class="mx-auto max-w-[1200px] px-4 lg:px-6">
+    <SectionHeading id="about-title" title={t(locale, 'about.title')} />
+
+    <div class="mt-10 grid gap-10 md:mt-14 md:grid-cols-[14rem_1fr] md:gap-12 lg:grid-cols-[18rem_1fr] lg:gap-16">
+      <div data-reveal class="w-40 md:w-full">
+        {photo ? (
+          <Image
+            src={photo}
+            alt={t(locale, 'about.photoAlt')}
+            widths={[320, 576]}
+            sizes="(min-width: 1024px) 288px, (min-width: 768px) 224px, 160px"
+            class="aspect-square w-full rounded-sm object-cover"
+          />
+        ) : (
+          <div
+            data-about-monogram
+            aria-hidden="true"
+            class="grid aspect-square w-full place-items-center rounded-sm bg-bone-deep font-display text-[clamp(3rem,2rem+4vw,5.5rem)] leading-none tracking-[-0.01em] text-ink"
+          >DA</div>
+        )}
+      </div>
+
+      <div data-reveal class="max-w-[62ch]">
+        <h3 class="font-display text-[clamp(1.5rem,1.2rem+1.2vw,2rem)] leading-[1.2] text-ink">{t(locale, 'about.name')}</h3>
+        <p class="mt-1 font-sans text-[0.9375rem] font-medium leading-[1.5] text-pine-ink">{t(locale, 'about.role')}</p>
+        <p class="mt-5 text-[1.0625rem] leading-[1.6] text-ink-muted">{t(locale, 'about.bio')}</p>
+
+        <ul aria-label={t(locale, 'about.credentialsLabel')} class="mt-6 flex flex-wrap gap-2">
+          {chips.map((c) => <li class="max-w-full"><Chip class="max-w-full">{c}</Chip></li>)}
+        </ul>
+
+        <Button href={sectionHref('contact', locale)} class="mt-8" data-about-cta>{t(locale, 'about.cta')}</Button>
+      </div>
+    </div>
+  </div>
+</section>

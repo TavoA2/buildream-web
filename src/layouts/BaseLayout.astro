@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import SEO from '../components/layout/SEO.astro';
+import JsonLd from '../components/layout/JsonLd.astro';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+import { t, type Locale, type PageId } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  page: PageId;
+  title: string;
+  description: string;
+  faq?: { question: string; answer: string }[];
+  jsonLd?: boolean;
+  noindex?: boolean;
+}
+const { locale, page, title, description, faq, jsonLd = page === 'home', noindex = false } = Astro.props;
+---
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!--
+      Runs before first paint: opt in to reveal motion only when it will play. If reveal.ts has not
+      booted within 3s (blocked or failed), drop the class so nothing stays hidden.
+    -->
+    <script is:inline>
+      (function (d) {
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+        d.classList.add('js-reveal');
+        setTimeout(function () {
+          if (!('revealReady' in d.dataset)) d.classList.remove('js-reveal');
+        }, 3000);
+      })(document.documentElement);
+    </script>
+    <SEO locale={locale} page={page} title={title} description={description} noindex={noindex} />
+    {jsonLd && <JsonLd locale={locale} faq={faq} />}
+  </head>
+  <body class="bg-bone text-ink font-sans">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-ink focus:text-bone focus:px-4 focus:py-2 focus:rounded-sm"
+    >{t(locale, 'a11y.skipLink')}</a>
+    <Navbar locale={locale} showLang={page !== 'notFound'} />
+    <slot />
+    <Footer locale={locale} />
+    <script>
+      import '../scripts/reveal';
+    </script>
+  </body>
+</html>

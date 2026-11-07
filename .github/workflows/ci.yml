@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - run: npm run contrast
+      - run: npm run build
+      - run: npm run test:build
+      # Skip external hosts (never hit third parties from CI); localhost is the temporary static server.
+      - run: npx linkinator dist --recurse --clean-urls --skip '^https?://(?!localhost|127\.0\.0\.1)'
+      - run: npx lhci autorun

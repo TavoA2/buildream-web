@@ -1,0 +1,23 @@
+{
+  "featured": [
+    { "slug": "openai", "name": "OpenAI" },
+    { "slug": "claude", "name": "Claude" },
+    { "slug": "googlegemini", "name": "Gemini" }
+  ],
+  "grid": [
+    { "slug": "github", "name": "GitHub" },
+    { "slug": "nodedotjs", "name": "Node.js" },
+    { "slug": "react", "name": "React" },
+    { "slug": "nextdotjs", "name": "Next.js" },
+    { "slug": "astro", "name": "Astro" },
+    { "slug": "amazonwebservices", "name": "AWS" },
+    { "slug": "kubernetes", "name": "Kubernetes" },
+    { "slug": "terraform", "name": "Terraform" },
+    { "slug": "docker", "name": "Docker" },
+    { "slug": "n8n", "name": "n8n" },
+    { "slug": "wordpress", "name": "WordPress" },
+    { "slug": "figma", "name": "Figma" },
+    { "slug": "notion", "name": "Notion" },
+    { "slug": "cloudflare", "name": "Cloudflare" }
+  ]
+}

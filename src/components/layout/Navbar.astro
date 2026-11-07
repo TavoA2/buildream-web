@@ -1,0 +1,77 @@
+---
+import Logo from '../ui/Logo.astro';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+import LangToggle from './LangToggle.astro';
+import MobileMenu from './MobileMenu.astro';
+import { site } from '../../config/site';
+import { pagePath, sectionHref, t, type Locale, type SectionId } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  showLang?: boolean;
+}
+const { locale, showLang = true } = Astro.props;
+const newTab = t(locale, 'a11y.externalLink');
+
+const ids = ['services', 'diagnostic', 'about', 'projects', 'contact'] as const satisfies readonly SectionId[];
+const links = ids.map((id) => ({ id, href: sectionHref(id, locale), label: t(locale, `nav.${id}`) }));
+const ctaHref = site.calUrl ?? sectionHref('contact', locale);
+const ctaExternal = site.calUrl !== null;
+const ext = ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+const panelId = 'mobile-menu';
+---
+<header
+  data-nav
+  class="group/header sticky top-0 z-50 border-b border-transparent bg-bone transition-[border-color] duration-200 data-[compact]:border-hairline"
+>
+  <div class="relative z-50 mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-4 transition-[padding] duration-200 group-data-[compact]/header:py-2 md:px-4 lg:px-6">
+    <a
+      href={pagePath('home', locale)}
+      data-nav-home
+      aria-label={t(locale, 'a11y.homeLink')}
+      class="shrink-0 rounded-sm no-underline"
+    >
+      <Logo locale={locale} class="group-data-[compact]/header:[&>span:last-child]:hidden" />
+    </a>
+
+    <nav aria-label={t(locale, 'a11y.mainNav')} class="hidden items-center gap-0 md:flex lg:gap-3">
+      <ul class="flex items-center">
+        {links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              data-nav-link
+              data-section-id={l.id}
+              class="inline-flex min-h-11 items-center whitespace-nowrap rounded-sm px-1 text-sm lg:text-[0.9375rem] font-medium text-ink-muted no-underline hover:text-ink aria-[current=location]:text-ink aria-[current=location]:underline aria-[current=location]:decoration-pine aria-[current=location]:decoration-2 aria-[current=location]:underline-offset-8 lg:px-3"
+            >{l.label}</a>
+          </li>
+        ))}
+      </ul>
+      {showLang && <LangToggle locale={locale} class="ml-1" />}
+      <Button href={ctaHref} size="sm" data-nav-cta class="ml-1" {...ext}>
+        <span class="lg:hidden">{t(locale, 'nav.ctaShort')}</span>
+        <span class="hidden lg:inline">{t(locale, 'nav.cta')}</span>
+        {ctaExternal && <span class="sr-only"> ({newTab})</span>}
+      </Button>
+    </nav>
+
+    <button
+      type="button"
+      data-menu-toggle
+      aria-expanded="false"
+      aria-controls={panelId}
+      aria-label={t(locale, 'a11y.menuOpen')}
+      data-label-open={t(locale, 'a11y.menuOpen')}
+      data-label-close={t(locale, 'a11y.menuClose')}
+      class="group/btn -mr-2 inline-flex h-12 w-12 items-center justify-center rounded-sm text-ink md:hidden"
+    >
+      <Icon name="menu" size={26} class="group-aria-expanded/btn:hidden" />
+      <Icon name="x" size={26} class="hidden group-aria-expanded/btn:block" />
+    </button>
+  </div>
+  <MobileMenu id={panelId} locale={locale} links={links} ctaHref={ctaHref} ctaExternal={ctaExternal} showLang={showLang} />
+</header>
+<script>
+  import '../../scripts/nav';
+</script>

@@ -8,3 +8,9 @@ dist/
 .netlify/
 .lighthouseci/
 .DS_Store
+.playwright-mcp/
+
+# Impeccable local state (design.json is tracked)
+.impeccable/*
+!.impeccable/design.json
+.codex/

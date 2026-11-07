@@ -1,0 +1,13 @@
+[
+  { "name": "Startups", "icon": "rocket" },
+  { "name": "Emprendedores", "icon": "lightbulb" },
+  { "name": "Pymes", "icon": "store" },
+  { "name": "Marketing y diseño", "icon": "palette" },
+  { "name": "Salud y clínicas", "icon": "heart-pulse" },
+  { "name": "Turismo y hospedaje", "icon": "plane" },
+  { "name": "Fitness y coaching", "icon": "dumbbell" },
+  { "name": "E-commerce", "icon": "shopping-cart" },
+  { "name": "Restaurantes", "icon": "utensils" },
+  { "name": "Educación", "icon": "graduation-cap" },
+  { "name": "Profesionales independientes", "icon": "briefcase" }
+]
