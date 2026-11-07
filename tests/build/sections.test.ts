@@ -87,3 +87,46 @@ describe.each(lowerPages)('stack and audience $lang', ({ file, stack, audience, 
     expect(order.indexOf('audience')).toBe(order.indexOf('stack') + 1);
   });
 });
+
+const diagPages = [
+  { lang: 'es', file: 'dist/index.html', diagnostic: 'diagnostico', home: '/', contact: 'contacto' },
+  { lang: 'en', file: 'dist/en/index.html', diagnostic: 'diagnostic', home: '/en/', contact: 'contact' },
+];
+
+describe.each(diagPages)('diagnostic $lang', ({ file, diagnostic, home, contact }) => {
+  const html = readFileSync(file, 'utf8');
+  const root = parse(html);
+  const section = root.querySelector(`section#${diagnostic}`);
+
+  it('has the diagnostic section right after audience', () => {
+    expect(section?.getAttribute('data-section')).toBe('diagnostic');
+    const order = root.querySelectorAll('main > section').map((s) => s.getAttribute('data-section'));
+    expect(order.indexOf('diagnostic')).toBe(order.indexOf('audience') + 1);
+  });
+
+  it('package shows USD 150, the ai-diagnostic CTA and the free-call link', () => {
+    expect(section!.querySelector('[data-diagnostic-price]')?.text.trim()).toBe('USD 150');
+    expect(section!.querySelector('[data-diagnostic-cta]')?.getAttribute('href')).toBe(
+      `${home}?servicio=ai-diagnostic#${contact}`,
+    );
+    expect(section!.querySelector('[data-diagnostic-free-call]')?.getAttribute('href')).toBe(`${home}#${contact}`);
+  });
+
+  it('mini-diagnostic server-renders 5 fieldsets with legends, only the first visible', () => {
+    const fieldsets = section!.querySelectorAll('form[data-diagnostic-form] fieldset');
+    expect(fieldsets).toHaveLength(5);
+    for (const fs of fieldsets) expect(fs.querySelector('legend')?.text.trim()).toBeTruthy();
+    expect(fieldsets.map((f) => f.hasAttribute('hidden'))).toEqual([false, true, true, true, true]);
+    expect(section!.querySelectorAll('input[type=checkbox]').length).toBeGreaterThan(0);
+    expect(section!.querySelector('[role=progressbar]')?.getAttribute('aria-valuemax')).toBe('5');
+    expect(section!.querySelector('[aria-live=polite]')).toBeTruthy();
+  });
+
+  it('has a no-JS notice linking to contact', () => {
+    expect(section!.querySelector('noscript')?.innerHTML).toContain(`href="${home}#${contact}"`);
+  });
+
+  it('ships no [PENDIENTE placeholders', () => {
+    expect(html).not.toContain('[PENDIENTE');
+  });
+});

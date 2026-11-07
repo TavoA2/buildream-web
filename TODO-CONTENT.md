@@ -22,4 +22,4 @@ Pending items. Nothing here may be invented; placeholders render in dev only.
 - [ ] Legal review of Privacy and Terms templates.
 
 ## Mini-diagnostic
-- [ ] `[PENDIENTE: rango USD]` Budget ranges for the mini-diagnostic options `low` / `mid` / `high` (`src/content/diagnostic/{es,en}.json`). Confirm the USD ranges with Dixon, then replace the placeholder text in the labels.
+- [ ] (Optional) USD ranges for the mini-diagnostic budget options `low` / `mid` / `high` (`src/content/diagnostic/{es,en}.json`). They ship with qualitative labels (ES: Ajustado / Moderado / Amplio; EN: Tight / Moderate / Flexible); ranges can be added to the labels later once Dixon confirms them.

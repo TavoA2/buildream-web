@@ -167,15 +167,15 @@
       "options": [
         {
           "id": "low",
-          "label": "[PENDIENTE: rango USD] Presupuesto bajo"
+          "label": "Ajustado"
         },
         {
           "id": "mid",
-          "label": "[PENDIENTE: rango USD] Presupuesto medio"
+          "label": "Moderado"
         },
         {
           "id": "high",
-          "label": "[PENDIENTE: rango USD] Presupuesto alto"
+          "label": "Amplio"
         },
         {
           "id": "unsure",

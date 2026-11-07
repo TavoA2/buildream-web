@@ -167,15 +167,15 @@
       "options": [
         {
           "id": "low",
-          "label": "[PENDIENTE: USD range] Low budget"
+          "label": "Tight"
         },
         {
           "id": "mid",
-          "label": "[PENDIENTE: USD range] Medium budget"
+          "label": "Moderate"
         },
         {
           "id": "high",
-          "label": "[PENDIENTE: USD range] High budget"
+          "label": "Flexible"
         },
         {
           "id": "unsure",

@@ -1,0 +1,182 @@
+---
+import Icon from '../ui/Icon.astro';
+import { getLocalizedCollection } from '../../lib/content';
+import { SERVICE_ORDER, type ServiceId } from '../../config/services';
+import rules from '../../content/diagnostic-rules.json';
+import es from '../../content/diagnostic/es.json';
+import en from '../../content/diagnostic/en.json';
+import type { QuestionId } from '../../lib/diagnostic-engine';
+import type { PrefillLabels } from '../../lib/form-prefill';
+import { anchors, format, pagePath, sectionHref, t, type Locale, type UiKey } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+const questions = (locale === 'es' ? es : en).questions as {
+  id: QuestionId;
+  multi: boolean;
+  title: string;
+  options: { id: string; label: string }[];
+}[];
+const total = questions.length;
+
+const serviceEntries = await getLocalizedCollection('services', locale);
+const serviceNames = Object.fromEntries(serviceEntries.map((e) => [e.data.id, e.data.title])) as Record<ServiceId, string>;
+const reasons = Object.fromEntries(
+  SERVICE_ORDER.map((id) => [id, t(locale, rules.reasons[id] as UiKey)]),
+) as Record<ServiceId, string>;
+
+const prefill: PrefillLabels = {
+  intro: t(locale, 'diagnostic.mini.prefillIntro'),
+  recommended: t(locale, 'diagnostic.mini.prefillRecommended'),
+  question: Object.fromEntries(
+    questions.map((q) => [q.id, t(locale, `diagnostic.mini.short.${q.id}` as UiKey)]),
+  ) as Record<QuestionId, string>,
+  option: Object.fromEntries(questions.flatMap((q) => q.options.map((o) => [o.id, o.label]))),
+  service: serviceNames,
+};
+
+// Only what the client needs, for this locale only.
+const clientData = {
+  stepOf: t(locale, 'diagnostic.mini.stepOf'),
+  next: t(locale, 'diagnostic.mini.next'),
+  seeResults: t(locale, 'diagnostic.mini.seeResults'),
+  resultsAnnounce: t(locale, 'diagnostic.mini.resultsAnnounce'),
+  contactId: anchors.contact[locale],
+  home: pagePath('home', locale),
+  reasons,
+  prefill,
+};
+
+const field = 'diag';
+const stepText = (n: number) => format(t(locale, 'diagnostic.mini.stepOf'), { current: n, total });
+---
+<div data-mini-diagnostic class="mt-16 border-t border-ink pt-10 md:mt-24 md:pt-12 lg:grid lg:grid-cols-12 lg:gap-x-8">
+  <div class="lg:col-span-4">
+    <h3 id="mini-title" class="font-display text-[clamp(1.75rem,1.4rem+1.4vw,2.5rem)] font-normal leading-[1.15] text-balance text-ink">
+      {t(locale, 'diagnostic.mini.title')}
+    </h3>
+    <p class="mt-4 max-w-[48ch] text-ink-muted">{t(locale, 'diagnostic.mini.intro')}</p>
+  </div>
+
+  <div class="mt-8 lg:col-span-7 lg:col-start-6 lg:mt-0">
+    <noscript>
+      <p data-diagnostic-nojs class="rounded-md border border-hairline bg-bone p-6 text-ink">
+        {t(locale, 'diagnostic.mini.noJs')}
+        <a href={sectionHref('contact', locale)} class="font-semibold text-pine-ink underline decoration-1 underline-offset-4 hover:decoration-2">
+          {t(locale, 'diagnostic.mini.noJsLink')}
+        </a>
+      </p>
+    </noscript>
+
+    <!-- Hidden until the script boots: without JS only the notice above shows. -->
+    <form
+      data-diagnostic-form
+      hidden
+      novalidate
+      aria-labelledby="mini-title"
+      class="rounded-md border border-hairline bg-bone p-5 md:p-8"
+    >
+      <div data-diagnostic-steps>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <p data-diagnostic-status aria-live="polite" class="whitespace-nowrap text-[0.9375rem] font-semibold text-ink">{stepText(1)}</p>
+          <p class="text-[0.9375rem] text-ink-muted">{t(locale, 'diagnostic.mini.optionalHint')}</p>
+        </div>
+        <div
+          data-diagnostic-progress
+          role="progressbar"
+          aria-label={t(locale, 'diagnostic.mini.progressLabel')}
+          aria-valuemin="1"
+          aria-valuemax={total}
+          aria-valuenow="1"
+          aria-valuetext={stepText(1)}
+          class="mt-3 h-1 overflow-hidden rounded-pill bg-hairline"
+        >
+          <div data-diagnostic-bar class="h-full bg-pine transition-[width] duration-300 ease-out" style={`width: ${100 / total}%`}></div>
+        </div>
+
+        {questions.map((q, i) => (
+          <fieldset data-step={i} hidden={i > 0} aria-describedby={q.multi ? `${field}-${q.id}-hint` : undefined} class="mt-8">
+            <legend tabindex="-1" class="focus:outline-none font-serif text-[1.375rem] leading-[1.3] text-balance text-ink md:text-2xl">{q.title}</legend>
+            {q.multi && (
+              <p id={`${field}-${q.id}-hint`} class="mt-2 text-[0.9375rem] text-ink-muted">{t(locale, 'diagnostic.mini.multiHint')}</p>
+            )}
+            <div class="mt-5 grid gap-2 sm:grid-cols-2">
+              {q.options.map((o) => (
+                <label class="flex min-h-12 cursor-pointer items-center gap-3 rounded-sm border border-control bg-white px-4 py-3 leading-[1.35] text-ink transition-colors duration-150 hover:border-ink has-[:checked]:border-pine has-[:checked]:bg-bone-deep">
+                  <input
+                    type={q.multi ? 'checkbox' : 'radio'}
+                    name={q.id}
+                    value={o.id}
+                    class="size-5 shrink-0 accent-pine"
+                  />
+                  <span>{o.label}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        ))}
+
+        <div class="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-hairline pt-6">
+          <button
+            type="button"
+            data-diagnostic-back
+            hidden
+            class="inline-flex min-h-12 items-center gap-2 rounded-sm border border-control px-5 font-semibold text-ink transition-colors duration-150 hover:border-ink hover:bg-bone-deep"
+          >
+            <Icon name="arrow-left" size={18} />
+            {t(locale, 'diagnostic.mini.back')}
+          </button>
+          <button
+            type="submit"
+            data-diagnostic-next
+            class="ml-auto inline-flex min-h-12 items-center gap-2 rounded-sm bg-pine px-5 font-semibold text-white transition-colors duration-150 hover:bg-pine-ink"
+          >
+            <span data-diagnostic-next-label>{t(locale, 'diagnostic.mini.next')}</span>
+            <Icon name="arrow-right" size={18} />
+          </button>
+        </div>
+      </div>
+
+      <div data-diagnostic-results hidden>
+        <h4 data-diagnostic-results-title tabindex="-1" class="focus:outline-none font-serif text-[1.375rem] leading-[1.3] text-ink md:text-2xl">
+          {t(locale, 'diagnostic.mini.resultsTitle')}
+        </h4>
+        <p class="mt-2 text-ink-muted">{t(locale, 'diagnostic.mini.resultsIntro')}</p>
+        <ol data-diagnostic-list class="mt-6"></ol>
+        <template data-diagnostic-item>
+          <li class="border-t border-hairline py-5 last:border-b">
+            <p data-name class="font-sans text-lg font-semibold leading-[1.3] text-ink"></p>
+            <p data-reason class="mt-2 max-w-[60ch] text-ink-muted"></p>
+          </li>
+        </template>
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a
+            href={sectionHref('contact', locale)}
+            data-diagnostic-talk
+            class="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-pine px-5 font-semibold leading-none text-white no-underline transition-colors duration-150 hover:bg-pine-ink"
+          >
+            {t(locale, 'diagnostic.mini.talk')}
+            <Icon name="arrow-right" size={18} />
+          </a>
+          <button
+            type="button"
+            data-diagnostic-restart
+            class="inline-flex min-h-12 items-center gap-2 rounded-sm font-semibold text-ink underline decoration-1 underline-offset-[6px] hover:decoration-2"
+          >
+            <Icon name="rotate-ccw" size={18} />
+            {t(locale, 'diagnostic.mini.restart')}
+          </button>
+        </div>
+      </div>
+      <p data-diagnostic-announce aria-live="polite" class="sr-only"></p>
+    </form>
+    <script type="application/json" data-diagnostic-data set:html={JSON.stringify(clientData).replace(/</g, '\\u003c')} />
+  </div>
+</div>
+
+<script>
+  import '../../scripts/diagnostic';
+</script>

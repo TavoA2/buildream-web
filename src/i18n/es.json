@@ -51,8 +51,10 @@
       "followUp": "Seguimiento"
     },
     "priceLabel": "Precio",
+    "price": "USD {price}",
     "cta": "Quiero mi diagnóstico",
-    "freeCallLine": "¿Prefieres conversarlo primero? La llamada de 30 minutos es gratis y sin compromiso.",
+    "freeCallQuestion": "¿No sabes si lo necesitas?",
+    "freeCallLink": "Empieza con la llamada gratis",
     "mini": {
       "title": "Mini-diagnóstico: ¿por dónde empezar?",
       "intro": "Responde 5 preguntas rápidas y te sugiero dos o tres servicios. Todo ocurre en tu navegador y no se guarda nada.",
@@ -65,9 +67,20 @@
       "resultsTitle": "Lo que te recomiendo",
       "resultsIntro": "Según tus respuestas, estos son los mejores puntos de partida.",
       "talk": "Quiero hablar de esto",
-      "restart": "Empezar de nuevo",
+      "restart": "Volver a empezar",
       "noJs": "El mini-diagnóstico necesita JavaScript. Puedes escribirme directamente desde el formulario de contacto.",
-      "noJsLink": "Ir a contacto"
+      "noJsLink": "Ir a contacto",
+      "optionalHint": "Puedes saltar cualquier pregunta.",
+      "resultsAnnounce": "Listo. {count} recomendaciones para ti.",
+      "prefillIntro": "Hola Dixon, hice el mini-diagnóstico del sitio. Estas son mis respuestas:",
+      "prefillRecommended": "Servicios sugeridos",
+      "short": {
+        "business": "Negocio",
+        "repetitive": "Tareas repetitivas",
+        "channels": "Canales de atención",
+        "tools": "Herramientas actuales",
+        "budget": "Presupuesto"
+      }
     },
     "reasons": {
       "cloud-devops": "Tu infraestructura puede ganar estabilidad y orden; puedo ayudarte a montarla en la nube con despliegues automatizados.",

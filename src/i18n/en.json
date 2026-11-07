@@ -51,8 +51,10 @@
       "followUp": "Follow-up"
     },
     "priceLabel": "Price",
+    "price": "USD {price}",
     "cta": "I want my diagnostic",
-    "freeCallLine": "Prefer to talk it over first? The 30-minute call is free, no strings attached.",
+    "freeCallQuestion": "Not sure you need it?",
+    "freeCallLink": "Start with the free call",
     "mini": {
       "title": "Mini-diagnostic: where to start?",
       "intro": "Answer 5 quick questions and I'll suggest two or three services. Everything happens in your browser and nothing is saved.",
@@ -67,7 +69,18 @@
       "talk": "I want to talk about this",
       "restart": "Start over",
       "noJs": "The mini-diagnostic needs JavaScript. You can write to me directly from the contact form.",
-      "noJsLink": "Go to contact"
+      "noJsLink": "Go to contact",
+      "optionalHint": "You can skip any question.",
+      "resultsAnnounce": "Done. {count} recommendations for you.",
+      "prefillIntro": "Hi Dixon, I took the mini-diagnostic on your site. These are my answers:",
+      "prefillRecommended": "Suggested services",
+      "short": {
+        "business": "Business",
+        "repetitive": "Repetitive tasks",
+        "channels": "Customer channels",
+        "tools": "Current tools",
+        "budget": "Budget"
+      }
     },
     "reasons": {
       "cloud-devops": "Your infrastructure could be more stable and better organized; I can set it up in the cloud with automated deployments.",
