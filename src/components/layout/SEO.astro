@@ -8,8 +8,9 @@ interface Props {
   page: PageId;
   title: string;
   description: string;
+  noindex?: boolean;
 }
-const { locale, page, title, description } = Astro.props;
+const { locale, page, title, description, noindex = false } = Astro.props;
 
 const abs = (path: string) => new URL(path, site.url.replace(/\/+$/, '') + '/').href;
 const canonical = abs(pagePath(page, locale));
@@ -21,6 +22,7 @@ const ogAlt = locale === 'es' ? 'en_US' : 'es_CR';
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex" />}
 <link rel="canonical" href={canonical} />
 <link rel="alternate" hreflang="es" href={es} />
 <link rel="alternate" hreflang="en" href={en} />

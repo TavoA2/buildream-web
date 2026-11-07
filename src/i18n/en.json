@@ -195,7 +195,8 @@
       "errorTitle": "We couldn't send your message",
       "error": "Something went wrong. Try again or write to me directly.",
       "whatsappFallback": "Prefer to message me on WhatsApp?",
-      "whatsappFallbackCta": "Open WhatsApp"
+      "whatsappFallbackCta": "Open WhatsApp",
+      "another": "Send another message"
     }
   },
   "footer": {

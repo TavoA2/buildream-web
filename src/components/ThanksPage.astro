@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from './ui/Button.astro';
+import Icon from './ui/Icon.astro';
+import { pagePath, t, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+<BaseLayout
+  locale={locale}
+  page="thanks"
+  title={t(locale, 'meta.thanks.title')}
+  description={t(locale, 'meta.thanks.description')}
+  noindex
+>
+  <main id="main" class="py-24 md:py-32 lg:py-40">
+    <div class="mx-auto max-w-[1200px] px-4 lg:px-6">
+      <div class="max-w-[60ch]">
+        <Icon name="circle-check" size={36} class="text-pine" />
+        <h1 class="mt-6 font-display text-[clamp(2.25rem,1.6rem+3vw,3.75rem)] leading-[1.08] text-ink">{t(locale, 'thanks.title')}</h1>
+        <p class="mt-4 text-[1.0625rem] text-ink-muted">{t(locale, 'thanks.text')}</p>
+        <Button href={pagePath('home', locale)} variant="secondary" class="mt-8">
+          <Icon name="arrow-left" size={18} />
+          {t(locale, 'thanks.back')}
+        </Button>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

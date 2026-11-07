@@ -1,0 +1,222 @@
+---
+import Icon from '../ui/Icon.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import { site } from '../../config/site';
+import { SERVICE_ORDER } from '../../config/services';
+import { getLocalizedCollection } from '../../lib/content';
+import { resolveFormConfig } from '../../lib/form-providers';
+import { anchors, format, pagePath, t, type Locale } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+const cfg = resolveFormConfig({
+  PUBLIC_FORM_PROVIDER: import.meta.env.PUBLIC_FORM_PROVIDER,
+  PUBLIC_WEB3FORMS_KEY: import.meta.env.PUBLIC_WEB3FORMS_KEY,
+  PUBLIC_FORMSPREE_ID: import.meta.env.PUBLIC_FORMSPREE_ID,
+});
+const g = globalThis as { __buildreamFormWarned?: boolean };
+if (!cfg.configured && import.meta.env.PROD && !g.__buildreamFormWarned) {
+  g.__buildreamFormWarned = true;
+  console.warn(
+    `[buildream] Contact form provider "${cfg.provider}" has no key configured (PUBLIC_WEB3FORMS_KEY / PUBLIC_FORMSPREE_ID). Submissions will fail until it is set.`,
+  );
+}
+
+const services = await getLocalizedCollection('services', locale);
+const titleOf = new Map(services.map((s) => [s.data.id as string, s.data.title]));
+const options = [
+  ...SERVICE_ORDER.map((id) => ({ value: id as string, label: titleOf.get(id) ?? id })),
+  {
+    value: 'ai-diagnostic',
+    label: `${t(locale, 'contact.form.serviceAiDiagnostic')} (${format(t(locale, 'diagnostic.price'), { price: site.diagnosticPriceUsd })})`,
+  },
+  { value: 'other', label: t(locale, 'contact.form.serviceOther') },
+];
+
+const redirect = new URL(pagePath('thanks', locale), site.url.replace(/\/+$/, '') + '/').href;
+const greeting = t(locale, 'contact.whatsappMessage');
+const newTab = t(locale, 'a11y.externalLink');
+const prefix = 'contact';
+const localeTag = locale.toUpperCase();
+
+const clientConfig = {
+  provider: cfg.provider,
+  key: cfg.key,
+  configured: cfg.configured,
+  locale: localeTag,
+  waBase: `https://wa.me/${site.whatsappNumber}?text=`,
+  greeting,
+  labels: Object.fromEntries(options.map((o) => [o.value, o.label])),
+  errors: {
+    required: t(locale, 'contact.errors.required'),
+    email: t(locale, 'contact.errors.email'),
+  },
+  sending: t(locale, 'contact.states.sending'),
+  submit: t(locale, 'contact.form.submit'),
+};
+
+const field =
+  'block w-full min-h-12 rounded-sm border border-control bg-white px-[14px] py-3 text-base leading-[1.5] text-ink placeholder:text-ink-muted aria-invalid:border-danger aria-invalid:border-2';
+const label = 'mb-2 block font-sans text-[0.9375rem] font-semibold leading-[1.4] text-ink';
+const errorClass = 'mt-2 flex items-start gap-2 text-[0.9375rem] leading-[1.4] text-danger';
+const linkRow =
+  'flex min-h-12 items-center gap-3 border-b border-hairline py-3 font-semibold text-ink first:border-t hover:text-pine-ink [&:hover_span]:underline [&_span]:underline-offset-4';
+---
+<section
+  id={anchors.contact[locale]}
+  data-section="contact"
+  aria-labelledby="contact-title"
+  class="bg-bone-deep py-16 md:py-24 lg:py-32"
+>
+  <div class="mx-auto max-w-[1200px] px-4 lg:px-6">
+    <SectionHeading id="contact-title" title={t(locale, 'contact.title')} intro={t(locale, 'contact.note')} />
+
+    <div class="mt-10 lg:mt-14 lg:grid lg:grid-cols-12 lg:gap-x-8">
+      <div data-reveal data-contact class="rounded-md border border-hairline bg-bone p-5 md:p-8 lg:col-span-7">
+        <form
+          data-contact-form
+          action={cfg.action}
+          method="POST"
+          {...(cfg.provider === 'netlify' ? { name: 'contact', 'data-netlify': 'true' } : {})}
+          class="space-y-5"
+        >
+          {cfg.provider === 'web3forms' && (
+            <>
+              <input type="hidden" name="access_key" value={cfg.key ?? ''} />
+              <input type="hidden" name="redirect" value={redirect} />
+              <input type="hidden" name="subject" value={`Nuevo contacto desde Buildream (${localeTag})`} />
+              <input type="hidden" name="from_name" value="Buildream" />
+            </>
+          )}
+          {cfg.provider === 'formspree' && <input type="hidden" name="_next" value={redirect} />}
+          {cfg.provider === 'netlify' && <input type="hidden" name="form-name" value="contact" />}
+
+          <div class="sr-only" aria-hidden="true">
+            <label>
+              {t(locale, 'contact.form.honeypot')}
+              <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" />
+            </label>
+          </div>
+
+          <div>
+            <label for={`${prefix}-name`} class={label}>{t(locale, 'contact.form.name')}</label>
+            <input id={`${prefix}-name`} name="name" type="text" required autocomplete="name" aria-describedby={`${prefix}-name-error`} class={field} />
+            <p id={`${prefix}-name-error`} data-error hidden class={errorClass}><Icon name="circle-alert" size={18} class="mt-px" /><span data-error-text></span></p>
+          </div>
+
+          <div>
+            <label for={`${prefix}-email`} class={label}>{t(locale, 'contact.form.email')}</label>
+            <input
+              id={`${prefix}-email`}
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+              title={t(locale, 'contact.errors.email')}
+              aria-describedby={`${prefix}-email-error`}
+              class={field}
+            />
+            <p id={`${prefix}-email-error`} data-error hidden class={errorClass}><Icon name="circle-alert" size={18} class="mt-px" /><span data-error-text></span></p>
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-2">
+            <div>
+              <label for={`${prefix}-company`} class={label}>
+                {t(locale, 'contact.form.company')} <span class="font-normal text-ink-muted">({t(locale, 'contact.form.optional')})</span>
+              </label>
+              <input id={`${prefix}-company`} name="company" type="text" autocomplete="organization" class={field} />
+            </div>
+            <div>
+              <label for={`${prefix}-service`} class={label}>
+                {t(locale, 'contact.form.service')} <span class="font-normal text-ink-muted">({t(locale, 'contact.form.optional')})</span>
+              </label>
+              <select id={`${prefix}-service`} name="service" class={field}>
+                <option value="" selected>{t(locale, 'contact.form.servicePlaceholder')}</option>
+                {options.map((o) => <option value={o.value}>{o.label}</option>)}
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for={`${prefix}-message`} class={label}>{t(locale, 'contact.form.message')}</label>
+            <textarea id={`${prefix}-message`} name="message" rows="6" required aria-describedby={`${prefix}-message-error`} class:list={[field, 'resize-y']}></textarea>
+            <p id={`${prefix}-message-error`} data-error hidden class={errorClass}><Icon name="circle-alert" size={18} class="mt-px" /><span data-error-text></span></p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
+            <button
+              type="submit"
+              data-submit
+              class="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-pine px-5 font-sans font-semibold leading-none text-white transition-colors duration-150 hover:bg-pine-ink aria-busy:cursor-progress aria-busy:bg-pine-ink"
+            >
+              <span data-submit-label>{t(locale, 'contact.form.submit')}</span>
+              <Icon name="send" size={18} />
+            </button>
+            <p class="text-[0.9375rem] text-ink-muted">{t(locale, 'contact.states.idle')}</p>
+          </div>
+        </form>
+
+        <div data-contact-live aria-live="polite" class="empty:hidden [&:not(:empty)]:mt-5"></div>
+
+        <template data-tpl="success">
+          <div data-panel="success" tabindex="-1" class="py-4 outline-offset-4 md:py-8">
+            <Icon name="circle-check" size={32} class="text-pine" />
+            <h3 class="mt-4 font-display text-[clamp(1.75rem,1.4rem+1.4vw,2.25rem)] leading-[1.15] text-ink">{t(locale, 'contact.states.successTitle')}</h3>
+            <p class="mt-3 max-w-[48ch] text-ink-muted">{t(locale, 'contact.states.success')}</p>
+            <button type="button" data-another class="mt-6 inline-flex min-h-12 items-center rounded-sm border border-control px-5 font-sans font-semibold text-ink hover:border-ink hover:bg-bone-deep">{t(locale, 'contact.states.another')}</button>
+          </div>
+        </template>
+
+        <template data-tpl="error">
+          <div data-panel="error" class="rounded-sm border border-danger p-4">
+            <p class="flex items-start gap-2 font-semibold text-danger"><Icon name="circle-alert" size={20} class="mt-0.5" />{t(locale, 'contact.states.errorTitle')}</p>
+            <p class="mt-2 text-ink-muted">{t(locale, 'contact.states.error')}</p>
+            <p class="mt-3 text-ink">
+              {t(locale, 'contact.states.whatsappFallback')}{' '}
+              <a data-wa href={site.whatsappUrl(greeting)} target="_blank" rel="noopener noreferrer" class="font-semibold text-pine-ink underline underline-offset-4 hover:decoration-2">{t(locale, 'contact.states.whatsappFallbackCta')}<span class="sr-only"> ({newTab})</span></a>
+            </p>
+          </div>
+        </template>
+
+        <template data-tpl="summary">
+          <p class="flex items-start gap-2 text-[0.9375rem] font-semibold text-danger"><Icon name="circle-alert" size={18} class="mt-px" />{t(locale, 'contact.errors.summary')}</p>
+        </template>
+      </div>
+
+      <aside data-reveal class="mt-10 lg:col-span-4 lg:col-start-9 lg:mt-0" aria-labelledby="contact-channels">
+        <h3 id="contact-channels" class="font-sans text-xl font-semibold leading-[1.3] text-ink">{t(locale, 'contact.channelsTitle')}</h3>
+        <ul class="mt-4">
+          <li>
+            <a href={site.whatsappUrl(greeting)} target="_blank" rel="noopener noreferrer" data-contact-link="whatsapp" class={linkRow}>
+              <Icon name="message-circle" size={22} class="text-pine" />
+              <span>{t(locale, 'contact.whatsapp')}<span class="sr-only"> ({newTab})</span></span>
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${site.email}`} data-contact-link="email" class={linkRow}>
+              <Icon name="mail" size={22} class="text-pine" />
+              <span class="break-all">{site.email}</span>
+            </a>
+          </li>
+          {site.calUrl && (
+            <li>
+              <a href={site.calUrl} target="_blank" rel="noopener noreferrer" data-contact-link="cal" class={linkRow}>
+                <Icon name="calendar-check" size={22} class="text-pine" />
+                <span>{t(locale, 'contact.cal')}<span class="sr-only"> ({newTab})</span></span>
+              </a>
+            </li>
+          )}
+        </ul>
+      </aside>
+    </div>
+  </div>
+  <script type="application/json" data-contact-config set:html={JSON.stringify(clientConfig).replace(/</g, '\\u003c')} />
+</section>
+
+<script>
+  import '../../scripts/form';
+</script>

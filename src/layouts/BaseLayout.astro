@@ -12,8 +12,9 @@ interface Props {
   description: string;
   faq?: { question: string; answer: string }[];
   jsonLd?: boolean;
+  noindex?: boolean;
 }
-const { locale, page, title, description, faq, jsonLd = page === 'home' } = Astro.props;
+const { locale, page, title, description, faq, jsonLd = page === 'home', noindex = false } = Astro.props;
 ---
 <!doctype html>
 <html lang={locale}>
@@ -34,7 +35,7 @@ const { locale, page, title, description, faq, jsonLd = page === 'home' } = Astr
         }, 3000);
       })(document.documentElement);
     </script>
-    <SEO locale={locale} page={page} title={title} description={description} />
+    <SEO locale={locale} page={page} title={title} description={description} noindex={noindex} />
     {jsonLd && <JsonLd locale={locale} faq={faq} />}
   </head>
   <body class="bg-bone text-ink font-sans">

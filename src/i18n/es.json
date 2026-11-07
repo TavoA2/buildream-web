@@ -195,7 +195,8 @@
       "errorTitle": "No pudimos enviar tu mensaje",
       "error": "Algo falló al enviar. Inténtalo de nuevo o escríbeme directo.",
       "whatsappFallback": "¿Prefieres escribirme por WhatsApp?",
-      "whatsappFallbackCta": "Abrir WhatsApp"
+      "whatsappFallbackCta": "Abrir WhatsApp",
+      "another": "Enviar otro mensaje"
     }
   },
   "footer": {
