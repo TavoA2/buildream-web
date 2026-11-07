@@ -8,6 +8,8 @@ export interface LegalSection {
   heading: string;
   paragraphs?: string[];
   items?: string[];
+  /** Paragraph shown after the list. */
+  note?: string;
 }
 export interface LegalDoc {
   title: string;
@@ -27,8 +29,9 @@ export const legal: Record<LegalId, Record<Locale, LegalDoc>> = {
       sections: [
         {
           heading: 'Qué datos recogemos',
-          paragraphs: ['Solo recibimos los datos que escribes en el formulario de contacto:'],
+          paragraphs: ['Los datos personales que recibimos son los que escribes en el formulario de contacto:'],
           items: ['Nombre', 'Correo electrónico', 'Empresa (opcional)', 'Servicio de interés', 'Tu mensaje'],
+          note: 'Además, el servicio de formularios y el hosting reciben datos técnicos de la conexión, como tu dirección IP y metadatos de la solicitud.',
         },
         {
           heading: 'Para qué los usamos',
@@ -39,7 +42,8 @@ export const legal: Record<LegalId, Record<Locale, LegalDoc>> = {
         {
           heading: 'Quién procesa el formulario',
           paragraphs: [
-            'El formulario se envía mediante Web3Forms, un servicio que recibe lo que escribes y lo entrega a nuestro correo. Web3Forms actúa como encargado del envío; su propio tratamiento de datos se rige por su política de privacidad.',
+            'El formulario se envía mediante {processor}, un servicio externo que recibe lo que escribes y lo entrega a nuestro correo. {processor} actúa como encargado del envío; su propio tratamiento de datos se rige por su política de privacidad.',
+            'El sitio se aloja en el proveedor de hosting, actualmente {host}, que como cualquier servidor web recibe datos técnicos de tu visita (por ejemplo tu dirección IP y metadatos de la solicitud) y puede guardarlos en registros de acceso.',
             'Si prefieres no usar el formulario, puedes escribirnos por correo o WhatsApp.',
           ],
         },
@@ -74,8 +78,9 @@ export const legal: Record<LegalId, Record<Locale, LegalDoc>> = {
       sections: [
         {
           heading: 'What data we collect',
-          paragraphs: ['We only receive what you type into the contact form:'],
+          paragraphs: ['The personal data we receive is what you type into the contact form:'],
           items: ['Name', 'Email address', 'Company (optional)', 'Service you are interested in', 'Your message'],
+          note: 'In addition, the form service and the hosting provider receive technical connection data, such as your IP address and request metadata.',
         },
         {
           heading: 'What we use it for',
@@ -86,7 +91,8 @@ export const legal: Record<LegalId, Record<Locale, LegalDoc>> = {
         {
           heading: 'Who processes the form',
           paragraphs: [
-            'The form is sent through Web3Forms, a service that receives what you type and delivers it to our email. Web3Forms acts as the processor of the delivery; its own handling of data is governed by its privacy policy.',
+            'The form is sent through {processor}, an external service that receives what you type and delivers it to our email. {processor} acts as the processor of the delivery; its own handling of data is governed by its privacy policy.',
+            'The site is served by the hosting provider, currently {host}, which like any web server receives technical data about your visit (for example your IP address and request metadata) and may keep it in access logs.',
             'If you would rather not use the form, you can write to us by email or WhatsApp.',
           ],
         },
