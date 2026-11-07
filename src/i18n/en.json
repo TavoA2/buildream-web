@@ -1,0 +1,235 @@
+{
+  "brand": {
+    "name": "Buildream",
+    "descriptor": "IT & AI Consulting"
+  },
+  "nav": {
+    "services": "Services",
+    "diagnostic": "AI Diagnostic",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "cta": "Book a call",
+    "ctaShort": "Book",
+    "langShort": "ES"
+  },
+  "hero": {
+    "eyebrow": "Enterprise experience, personal attention",
+    "title": "You have the vision. We build it.",
+    "lead": "Cloud, DevOps and AI automation for startups and businesses. You work directly with the engineer who builds it, with no middlemen.",
+    "ctaPrimary": "Free 30-min diagnostic",
+    "ctaSecondary": "See services",
+    "trust": "Computer Engineer · 5+ years on enterprise cloud platforms",
+    "indexLabel": "What we do"
+  },
+  "services": {
+    "title": "Services",
+    "intro": "Five ways to work together, from getting your infrastructure in order to having AI save you hours every week.",
+    "consult": "Ask about it",
+    "consultAria": "Ask about {service}"
+  },
+  "stack": {
+    "title": "Frontier AI models + proven technologies",
+    "intro": "I pick the right tool for each project instead of marrying a single one.",
+    "featuredLabel": "AI models",
+    "gridLabel": "Technologies",
+    "logoNote": "Brands belong to their owners and appear only to name the tools."
+  },
+  "audience": {
+    "title": "Who I work with",
+    "intro": "From technical startups to businesses just getting started with technology. If you have a problem to solve, let's talk.",
+    "cta": "Tell me about your case"
+  },
+  "diagnostic": {
+    "title": "AI Diagnostic",
+    "intro": "A clear look at where artificial intelligence can help your business, with a plan to get started.",
+    "includesTitle": "What you get",
+    "includes": {
+      "summary": "Executive summary",
+      "opportunities": "Prioritized opportunities",
+      "tools": "Recommended tools",
+      "roadmap": "Roadmap",
+      "followUp": "Follow-up"
+    },
+    "priceLabel": "Price",
+    "cta": "I want my diagnostic",
+    "freeCallLine": "Prefer to talk it over first? The 30-minute call is free, no strings attached.",
+    "mini": {
+      "title": "Mini-diagnostic: where to start?",
+      "intro": "Answer 5 quick questions and I'll suggest two or three services. Everything happens in your browser and nothing is saved.",
+      "stepOf": "Step {current} of {total}",
+      "progressLabel": "Mini-diagnostic progress",
+      "multiHint": "You can pick more than one option.",
+      "back": "Back",
+      "next": "Next",
+      "seeResults": "See results",
+      "resultsTitle": "What I recommend",
+      "resultsIntro": "Based on your answers, these are the best places to start.",
+      "talk": "I want to talk about this",
+      "restart": "Start over",
+      "noJs": "The mini-diagnostic needs JavaScript. You can write to me directly from the contact form.",
+      "noJsLink": "Go to contact"
+    }
+  },
+  "process": {
+    "title": "How I work",
+    "intro": "Every project moves through four stages, like a pipeline, so you always know where we are.",
+    "stages": {
+      "plan": {
+        "title": "Plan",
+        "job": "plan",
+        "caption": "Week 1",
+        "line": "I listen to your idea and we decide what to build and in what order."
+      },
+      "build": {
+        "title": "Build",
+        "job": "build",
+        "caption": "During the project",
+        "line": "I build in short steps and show you real progress."
+      },
+      "deploy": {
+        "title": "Deploy",
+        "job": "deploy",
+        "caption": "Delivery",
+        "line": "I publish it and leave it running, fully set up."
+      },
+      "grow": {
+        "title": "Grow",
+        "job": "grow",
+        "caption": "After delivery",
+        "line": "We measure what works and keep improving together."
+      }
+    },
+    "status": {
+      "pending": "Pending",
+      "running": "In progress",
+      "passed": "Done"
+    }
+  },
+  "about": {
+    "title": "About me",
+    "name": "Dixon G. Araya Arias",
+    "role": "IT & AI Consultant · DevOps/Cloud Engineer",
+    "photoAlt": "Dixon G. Araya Arias",
+    "bio": "I'm a Computer Engineer (UNED, graduated with honors). I've spent more than five years in tech: three operating enterprise cloud platforms as a DevOps engineer and two as a backend developer. Today I help startups and businesses build, automate and ship with cloud and AI, and you work with me directly.",
+    "credentialsLabel": "Credentials",
+    "credentials": {
+      "degree": "Computer Engineer (UNED, with honors)",
+      "experience": "5+ years of experience",
+      "devops": "DevOps/Cloud",
+      "backend": "Backend Java/Spring Boot · .NET",
+      "ccna": "CCNA",
+      "languages": "Native Spanish · Professional English"
+    },
+    "cta": "Let's talk about your project"
+  },
+  "projects": {
+    "title": "Projects",
+    "intro": "What I've built and practiced. Each one says whether it's my own, a demo or a client's.",
+    "typeLabels": {
+      "own": "Own project",
+      "demo": "Concept project / demo",
+      "client": "Client"
+    },
+    "viewSite": "View site",
+    "viewRepo": "View code"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "intro": "What people usually ask me before we start."
+  },
+  "contact": {
+    "title": "Let's build your idea together",
+    "note": "Free 30-minute diagnostic, no strings attached",
+    "channelsTitle": "Other ways to reach me",
+    "whatsapp": "WhatsApp",
+    "whatsappMessage": "Hi Dixon, I found Buildream and I'd like to talk about my project.",
+    "email": "Email",
+    "cal": "Book on Cal.com",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "service": "Type of service",
+      "servicePlaceholder": "Choose an option",
+      "serviceAiDiagnostic": "AI Diagnostic",
+      "serviceOther": "Other",
+      "message": "Message",
+      "optional": "optional",
+      "required": "required",
+      "honeypot": "Leave this field empty",
+      "submit": "Send message"
+    },
+    "errors": {
+      "required": "This field is required.",
+      "email": "Enter a valid email, for example name@email.com.",
+      "summary": "Please check the highlighted fields before sending."
+    },
+    "states": {
+      "idle": "I'll reply as soon as I can.",
+      "sending": "Sending…",
+      "successTitle": "Message sent",
+      "success": "Thanks for writing. I'll get back to you soon.",
+      "errorTitle": "We couldn't send your message",
+      "error": "Something went wrong. Try again or write to me directly.",
+      "whatsappFallback": "Prefer to message me on WhatsApp?",
+      "whatsappFallbackCta": "Open WhatsApp"
+    }
+  },
+  "footer": {
+    "quickLinks": "Quick links",
+    "contactTitle": "Contact",
+    "followTitle": "Follow me",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "location": "Costa Rica · Remote across Latin America",
+    "copyright": "© 2026 Buildream"
+  },
+  "meta": {
+    "home": {
+      "title": "Buildream · IT & AI Consulting",
+      "description": "Cloud, DevOps and AI automation for startups and businesses. Enterprise experience and direct access to the engineer. Book a free 30-minute call."
+    },
+    "privacy": {
+      "title": "Privacy policy · Buildream",
+      "description": "How Buildream handles the data you share when you contact us."
+    },
+    "terms": {
+      "title": "Terms of use · Buildream",
+      "description": "Terms for using the Buildream website."
+    },
+    "thanks": {
+      "title": "Message sent · Buildream",
+      "description": "We received your message and will reply soon."
+    },
+    "notFound": {
+      "title": "Page not found · Buildream",
+      "description": "The page you're looking for doesn't exist or has moved."
+    }
+  },
+  "thanks": {
+    "title": "Thank you! I got your message",
+    "text": "I'll write back soon to set up our conversation.",
+    "back": "Back to home"
+  },
+  "notFound": {
+    "title": "We couldn't find this page",
+    "text": "The link may have changed or contain a typo.",
+    "back": "Go to home"
+  },
+  "legal": {
+    "backHome": "Back to home"
+  },
+  "a11y": {
+    "skipLink": "Skip to content",
+    "homeLink": "Buildream, go to home",
+    "mainNav": "Main navigation",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "switchLang": "Switch language to Spanish",
+    "externalLink": "opens in a new tab",
+    "formStatus": "Form status"
+  }
+}

@@ -1,0 +1,235 @@
+{
+  "brand": {
+    "name": "Buildream",
+    "descriptor": "Consultoría IT & IA"
+  },
+  "nav": {
+    "services": "Servicios",
+    "diagnostic": "Diagnóstico IA",
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "cta": "Agenda tu llamada",
+    "ctaShort": "Agenda",
+    "langShort": "EN"
+  },
+  "hero": {
+    "eyebrow": "Experiencia enterprise, atención cercana",
+    "title": "Tú tienes la visión. Nosotros la construimos.",
+    "lead": "Cloud, DevOps y automatización con IA para startups y negocios. Trabajas directo con el ingeniero que lo construye, sin intermediarios.",
+    "ctaPrimary": "Diagnóstico gratis de 30 min",
+    "ctaSecondary": "Ver servicios",
+    "trust": "Ingeniero en Computación · +5 años en plataformas cloud enterprise",
+    "indexLabel": "Lo que hacemos"
+  },
+  "services": {
+    "title": "Servicios",
+    "intro": "Cinco formas de trabajar juntos, desde poner tu infraestructura en orden hasta que la IA te ahorre horas cada semana.",
+    "consult": "Consultar",
+    "consultAria": "Consultar sobre {service}"
+  },
+  "stack": {
+    "title": "Modelos de IA de frontera + tecnologías probadas",
+    "intro": "Elijo la herramienta correcta para cada proyecto, sin casarme con una sola.",
+    "featuredLabel": "Modelos de IA",
+    "gridLabel": "Tecnologías",
+    "logoNote": "Las marcas pertenecen a sus dueños y se muestran solo para nombrar las herramientas."
+  },
+  "audience": {
+    "title": "Para quién trabajo",
+    "intro": "Desde startups técnicas hasta negocios que apenas empiezan con la tecnología. Si tienes un problema por resolver, hablemos.",
+    "cta": "Cuéntame tu caso"
+  },
+  "diagnostic": {
+    "title": "Diagnóstico IA",
+    "intro": "Un análisis claro de dónde la inteligencia artificial puede ayudar a tu negocio, con un plan para empezar.",
+    "includesTitle": "Qué recibes",
+    "includes": {
+      "summary": "Resumen ejecutivo",
+      "opportunities": "Oportunidades priorizadas",
+      "tools": "Herramientas recomendadas",
+      "roadmap": "Hoja de ruta",
+      "followUp": "Seguimiento"
+    },
+    "priceLabel": "Precio",
+    "cta": "Quiero mi diagnóstico",
+    "freeCallLine": "¿Prefieres conversarlo primero? La llamada de 30 minutos es gratis y sin compromiso.",
+    "mini": {
+      "title": "Mini-diagnóstico: ¿por dónde empezar?",
+      "intro": "Responde 5 preguntas rápidas y te sugiero dos o tres servicios. Todo ocurre en tu navegador y no se guarda nada.",
+      "stepOf": "Paso {current} de {total}",
+      "progressLabel": "Progreso del mini-diagnóstico",
+      "multiHint": "Puedes elegir varias opciones.",
+      "back": "Atrás",
+      "next": "Siguiente",
+      "seeResults": "Ver resultados",
+      "resultsTitle": "Lo que te recomiendo",
+      "resultsIntro": "Según tus respuestas, estos son los mejores puntos de partida.",
+      "talk": "Quiero hablar de esto",
+      "restart": "Empezar de nuevo",
+      "noJs": "El mini-diagnóstico necesita JavaScript. Puedes escribirme directamente desde el formulario de contacto.",
+      "noJsLink": "Ir a contacto"
+    }
+  },
+  "process": {
+    "title": "Cómo trabajo",
+    "intro": "Cada proyecto avanza en cuatro etapas, como un pipeline: siempre sabes en qué punto estamos.",
+    "stages": {
+      "plan": {
+        "title": "Plan",
+        "job": "plan",
+        "caption": "Semana 1",
+        "line": "Escucho tu idea y definimos qué construir y en qué orden."
+      },
+      "build": {
+        "title": "Build",
+        "job": "build",
+        "caption": "Durante el proyecto",
+        "line": "Lo construyo en pasos cortos y te muestro avances reales."
+      },
+      "deploy": {
+        "title": "Deploy",
+        "job": "deploy",
+        "caption": "Entrega",
+        "line": "Lo publico y lo dejo funcionando, con todo configurado."
+      },
+      "grow": {
+        "title": "Grow",
+        "job": "grow",
+        "caption": "Después de la entrega",
+        "line": "Medimos qué funciona y seguimos mejorando juntos."
+      }
+    },
+    "status": {
+      "pending": "Pendiente",
+      "running": "En curso",
+      "passed": "Completado"
+    }
+  },
+  "about": {
+    "title": "Sobre mí",
+    "name": "Dixon G. Araya Arias",
+    "role": "Consultor IT & IA · Ingeniero DevOps/Cloud",
+    "photoAlt": "Dixon G. Araya Arias",
+    "bio": "Soy ingeniero en Computación (UNED, con honores). Llevo más de cinco años en tecnología: tres operando plataformas cloud enterprise como DevOps y dos como desarrollador backend. Hoy ayudo a startups y negocios a construir, automatizar y publicar con cloud e IA, y trabajas conmigo directamente.",
+    "credentialsLabel": "Credenciales",
+    "credentials": {
+      "degree": "Ingeniero en Computación (UNED, con honores)",
+      "experience": "+5 años de experiencia",
+      "devops": "DevOps/Cloud",
+      "backend": "Backend Java/Spring Boot · .NET",
+      "ccna": "CCNA",
+      "languages": "Español nativo · Inglés profesional"
+    },
+    "cta": "Hablemos de tu proyecto"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "intro": "Lo que he construido y practicado. Cada uno indica si es propio, un demo o de un cliente.",
+    "typeLabels": {
+      "own": "Proyecto propio",
+      "demo": "Proyecto conceptual / demo",
+      "client": "Cliente"
+    },
+    "viewSite": "Ver sitio",
+    "viewRepo": "Ver código"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "intro": "Lo que suelen preguntarme antes de empezar."
+  },
+  "contact": {
+    "title": "Construyamos tu idea juntos",
+    "note": "Diagnóstico gratis de 30 minutos, sin compromiso",
+    "channelsTitle": "Otras formas de escribirme",
+    "whatsapp": "WhatsApp",
+    "whatsappMessage": "Hola Dixon, vi Buildream y me gustaría hablar de mi proyecto.",
+    "email": "Correo",
+    "cal": "Agendar en Cal.com",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo",
+      "company": "Empresa",
+      "service": "Tipo de servicio",
+      "servicePlaceholder": "Elige una opción",
+      "serviceAiDiagnostic": "Diagnóstico IA",
+      "serviceOther": "Otro",
+      "message": "Mensaje",
+      "optional": "opcional",
+      "required": "obligatorio",
+      "honeypot": "No llenes este campo",
+      "submit": "Enviar mensaje"
+    },
+    "errors": {
+      "required": "Este campo es obligatorio.",
+      "email": "Escribe un correo válido, por ejemplo nombre@correo.com.",
+      "summary": "Revisa los campos marcados antes de enviar."
+    },
+    "states": {
+      "idle": "Te respondo lo antes posible.",
+      "sending": "Enviando…",
+      "successTitle": "Mensaje enviado",
+      "success": "Gracias por escribir. Te responderé pronto.",
+      "errorTitle": "No pudimos enviar tu mensaje",
+      "error": "Algo falló al enviar. Inténtalo de nuevo o escríbeme directo.",
+      "whatsappFallback": "¿Prefieres escribirme por WhatsApp?",
+      "whatsappFallbackCta": "Abrir WhatsApp"
+    }
+  },
+  "footer": {
+    "quickLinks": "Enlaces rápidos",
+    "contactTitle": "Contacto",
+    "followTitle": "Sígueme",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "location": "Costa Rica · Remoto para toda Latinoamérica",
+    "copyright": "© 2026 Buildream"
+  },
+  "meta": {
+    "home": {
+      "title": "Buildream · Consultoría IT & IA",
+      "description": "Cloud, DevOps y automatización con IA para startups y negocios. Experiencia enterprise y trato directo con el ingeniero. Agenda una llamada gratis de 30 minutos."
+    },
+    "privacy": {
+      "title": "Política de privacidad · Buildream",
+      "description": "Cómo trata Buildream los datos que compartes al contactarnos."
+    },
+    "terms": {
+      "title": "Términos de uso · Buildream",
+      "description": "Condiciones de uso del sitio web de Buildream."
+    },
+    "thanks": {
+      "title": "Mensaje enviado · Buildream",
+      "description": "Recibimos tu mensaje y te responderemos pronto."
+    },
+    "notFound": {
+      "title": "Página no encontrada · Buildream",
+      "description": "La página que buscas no existe o cambió de lugar."
+    }
+  },
+  "thanks": {
+    "title": "¡Gracias! Recibí tu mensaje",
+    "text": "Te escribiré pronto para coordinar nuestra conversación.",
+    "back": "Volver al inicio"
+  },
+  "notFound": {
+    "title": "No encontramos esta página",
+    "text": "Puede que el enlace haya cambiado o que tenga un error.",
+    "back": "Ir al inicio"
+  },
+  "legal": {
+    "backHome": "Volver al inicio"
+  },
+  "a11y": {
+    "skipLink": "Saltar al contenido",
+    "homeLink": "Buildream, ir al inicio",
+    "mainNav": "Navegación principal",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú",
+    "switchLang": "Cambiar idioma a inglés",
+    "externalLink": "se abre en una pestaña nueva",
+    "formStatus": "Estado del formulario"
+  }
+}
