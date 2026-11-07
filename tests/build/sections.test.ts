@@ -176,3 +176,17 @@ describe.each(pages)('reveal $lang', ({ file }) => {
     expect(head).toMatch(/classList\.add\(['"]js-reveal['"]\)/);
   });
 });
+
+describe.each(processPages)('process stage titles $lang', ({ file, process }) => {
+  const root = parse(readFileSync(file, 'utf8'));
+
+  it('each stage title is plain language, not its mono job name', () => {
+    const stages = root.querySelectorAll(`section#${process} [data-stage]`);
+    expect(stages).toHaveLength(4);
+    for (const s of stages) {
+      const title = s.querySelector('h3')!.text.trim().toLowerCase();
+      expect(title).not.toBe(s.getAttribute('data-stage'));
+      expect(title).not.toBe(s.querySelector('.font-mono')!.text.trim().toLowerCase());
+    }
+  });
+});

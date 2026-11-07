@@ -95,25 +95,25 @@
     "intro": "Cada proyecto avanza en cuatro etapas, como un pipeline: siempre sabes en qué punto estamos.",
     "stages": {
       "plan": {
-        "title": "Plan",
+        "title": "Entender tu negocio",
         "job": "plan",
         "caption": "Semana 1",
         "line": "Escucho tu idea y definimos qué construir y en qué orden."
       },
       "build": {
-        "title": "Build",
+        "title": "Construir la solución",
         "job": "build",
         "caption": "Durante el proyecto",
-        "line": "Lo construyo en pasos cortos y te muestro avances reales."
+        "line": "Trabajo en pasos cortos y te muestro avances reales."
       },
       "deploy": {
-        "title": "Deploy",
+        "title": "Ponerla en marcha",
         "job": "deploy",
         "caption": "Entrega",
         "line": "Lo publico y lo dejo funcionando, con todo configurado."
       },
       "grow": {
-        "title": "Grow",
+        "title": "Hacerla crecer",
         "job": "grow",
         "caption": "Después de la entrega",
         "line": "Medimos qué funciona y seguimos mejorando juntos."
