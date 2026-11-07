@@ -1,6 +1,7 @@
 ---
 import { site } from '../../config/site';
 import { pagePath, alternatePath, type Locale, type PageId } from '../../i18n/utils';
+import publicSansUrl from '@fontsource-variable/public-sans/files/public-sans-latin-wght-normal.woff2?url';
 import caslonUrl from '@fontsource/libre-caslon-display/files/libre-caslon-display-latin-400-normal.woff2?url';
 
 interface Props {
@@ -40,3 +41,4 @@ const ogAlt = locale === 'es' ? 'en_US' : 'es_CR';
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />
 <link rel="preload" as="font" type="font/woff2" href={caslonUrl} crossorigin />
+<link rel="preload" as="font" type="font/woff2" href={publicSansUrl} crossorigin />
