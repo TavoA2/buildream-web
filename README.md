@@ -109,6 +109,14 @@ Copia `.env.example` a `.env` para desarrollo local. Todas son públicas (`PUBLI
 2. Framework preset: **Astro** (build `npm run build`, output `dist`). `vercel.json` ya activa `cleanUrls`.
 3. En *Settings → Environment Variables* define las `PUBLIC_*` que uses (al menos `PUBLIC_WEB3FORMS_KEY`).
 4. Cuando exista un dominio propio, agrégalo en *Domains* y cambia `PUBLIC_SITE_URL` a ese dominio; luego vuelve a desplegar.
+5. Verifica con `curl -I https://<preview>/en/` que responde `200` (sin redirección a `/en`); canonical, hreflang y sitemap usan `/en/`.
+
+## Antes de publicar
+
+- [ ] **Bloqueante:** define `PUBLIC_WEB3FORMS_KEY` en Vercel. Sin ella el formulario falla y cae al respaldo de WhatsApp.
+- [ ] Con dominio propio: define `PUBLIC_SITE_URL` y actualiza `public/robots.txt` (línea `Sitemap:`).
+- [ ] Opcional: `PUBLIC_CAL_URL` para mostrar el enlace de reserva.
+- [ ] Revisa `TODO-CONTENT.md` (contenido pendiente).
 
 ### Netlify
 
