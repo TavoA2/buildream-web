@@ -153,6 +153,9 @@
     "viewSite": "View site",
     "viewRepo": "View code"
   },
+  "testimonials": {
+    "title": "What people who have worked with me say"
+  },
   "faq": {
     "title": "Frequently asked questions",
     "intro": "What people usually ask me before we start."
