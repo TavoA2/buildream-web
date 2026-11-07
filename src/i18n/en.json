@@ -541,5 +541,68 @@
     "text": "Tell us about it. In a 30-minute call we'll see if AI can help and where to start.",
     "primary": "Book your free assessment",
     "secondary": "Message on WhatsApp"
+  },
+  "showcase": {
+    "title": "AI in action",
+    "lead": "This is what an AI agent working inside a business looks like. Pick a case.",
+    "note": "Illustrative examples of workflows we design to fit each business.",
+    "request": "Request",
+    "result": "Result",
+    "agent": "agent",
+    "replay": "Replay",
+    "cases": [
+      {
+        "id": "arq",
+        "tab": "Architecture",
+        "agent": "floorplan-agent",
+        "request": "Draft a floor plan for a two-bedroom house on an 8 × 15 m lot.",
+        "steps": [
+          "Reading the client's requirements",
+          "Proposing the room layout",
+          "Drawing walls, layers and dimensions in AutoCAD",
+          "Exporting DWG and PDF for review"
+        ],
+        "result": "A draft ready for the architect to review and adjust."
+      },
+      {
+        "id": "mkt",
+        "tab": "Marketing",
+        "agent": "content-agent",
+        "request": "Prepare this week's content for my coffee shop.",
+        "steps": [
+          "Researching trends in the niche",
+          "Writing 5 posts and 2 scripts",
+          "Generating images and a short video",
+          "Scheduling everything in the calendar"
+        ],
+        "result": "Everything stays in draft until you approve it."
+      },
+      {
+        "id": "cx",
+        "tab": "Customer service",
+        "agent": "whatsapp-agent",
+        "request": "Do you have a spot on Saturday at 10 a.m.?",
+        "steps": [
+          "Checking the calendar in real time",
+          "Booking the available slot",
+          "Sending the confirmation on WhatsApp",
+          "Logging the customer in the CRM"
+        ],
+        "result": "An answer in seconds, even after hours."
+      },
+      {
+        "id": "data",
+        "tab": "Data",
+        "agent": "reports-agent",
+        "request": "Which product sold best this month, and why?",
+        "steps": [
+          "Connecting sales, inventory and social data",
+          "Analyzing the last 30 days",
+          "Spotting what changed from last month",
+          "Updating the dashboard"
+        ],
+        "result": "A clear summary and a chart ready to act on."
+      }
+    ]
   }
 }

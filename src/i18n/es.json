@@ -541,5 +541,68 @@
     "text": "Cuéntanosla. En una llamada de 30 minutos vemos si la IA te puede ayudar y por dónde empezar.",
     "primary": "Agenda tu diagnóstico gratis",
     "secondary": "Escribir por WhatsApp"
+  },
+  "showcase": {
+    "title": "IA en acción",
+    "lead": "Así se ve un agente de IA trabajando dentro de un negocio. Elige un caso.",
+    "note": "Ejemplos ilustrativos de flujos que diseñamos a la medida.",
+    "request": "Solicitud",
+    "result": "Resultado",
+    "agent": "agente",
+    "replay": "Repetir",
+    "cases": [
+      {
+        "id": "arq",
+        "tab": "Arquitectura",
+        "agent": "agente-planos",
+        "request": "Genera un borrador de planta para una casa de dos habitaciones en un lote de 8 × 15 m.",
+        "steps": [
+          "Leyendo los requisitos del cliente",
+          "Proponiendo la distribución de espacios",
+          "Dibujando muros, capas y cotas en AutoCAD",
+          "Exportando DWG y PDF para revisión"
+        ],
+        "result": "Borrador listo para que el arquitecto lo revise y ajuste."
+      },
+      {
+        "id": "mkt",
+        "tab": "Marketing",
+        "agent": "agente-contenido",
+        "request": "Prepara el contenido de esta semana para mi cafetería.",
+        "steps": [
+          "Investigando tendencias del nicho",
+          "Escribiendo 5 publicaciones y 2 guiones",
+          "Generando imágenes y un video corto",
+          "Programando todo en el calendario"
+        ],
+        "result": "Todo queda en borrador hasta que lo apruebes."
+      },
+      {
+        "id": "cx",
+        "tab": "Atención al cliente",
+        "agent": "agente-whatsapp",
+        "request": "¿Tienen espacio el sábado a las 10 a. m.?",
+        "steps": [
+          "Consultando la agenda en tiempo real",
+          "Reservando el espacio disponible",
+          "Enviando la confirmación por WhatsApp",
+          "Registrando al cliente en el CRM"
+        ],
+        "result": "Respuesta en segundos, también fuera de horario."
+      },
+      {
+        "id": "data",
+        "tab": "Datos",
+        "agent": "agente-reportes",
+        "request": "¿Qué producto se vendió más este mes y por qué?",
+        "steps": [
+          "Conectando ventas, inventario y redes",
+          "Analizando los últimos 30 días",
+          "Detectando qué cambió frente al mes anterior",
+          "Actualizando el tablero"
+        ],
+        "result": "Un resumen claro y un gráfico listo para decidir."
+      }
+    ]
   }
 }

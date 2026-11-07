@@ -45,7 +45,6 @@ export function isDark(hex: string): boolean {
 }
 
 export const models: Brand[] = [
-  { name: 'Claude', key: 'siClaude' },
   { name: 'Claude Code', key: 'siClaude' },
   { name: 'Codex' },
   { name: 'Cursor', key: 'siCursor' },

@@ -26,7 +26,7 @@ const last = p.steps.length - 1;
 
     <!-- The one authored moment: an idea running through a deploy pipeline, as a terminal -->
     <div class="lg:col-span-5">
-      <figure class="terminal overflow-hidden rounded-[var(--radius-panel)] bg-band text-white shadow-[0_30px_60px_-25px_rgb(15_42_32/0.55)] ring-1 ring-black/5" aria-label={p.label}>
+      <figure id="hero-terminal" class="terminal overflow-hidden rounded-[var(--radius-panel)] bg-band text-white shadow-[0_30px_60px_-25px_rgb(15_42_32/0.55)] ring-1 ring-black/5" aria-label={p.label}>
         <div class="flex items-center gap-2 border-b border-white/10 px-5 py-3">
           <span class="size-2.5 rounded-full bg-white/25"></span>
           <span class="size-2.5 rounded-full bg-white/25"></span>
@@ -37,7 +37,7 @@ const last = p.steps.length - 1;
           <p class="font-mono text-[0.8rem] leading-relaxed text-band-muted">
             <span class="text-signal">$</span> {p.command}
           </p>
-          <p class="mt-1 font-mono text-[0.84rem] leading-relaxed text-white">“{p.ideaText}”</p>
+          <p class="mt-1 min-h-[3.2em] font-mono text-[0.84rem] leading-relaxed text-white"><span data-type data-text={`“${p.ideaText}”`}>“{p.ideaText}”</span><span class="caret ml-0.5 inline-block h-[1.05em] w-[0.5em] translate-y-[0.15em] bg-signal" aria-hidden="true"></span></p>
 
           <ol class="relative mt-6">
             {p.steps.map((s, i) => (
@@ -79,7 +79,7 @@ const last = p.steps.length - 1;
   .step .badge {
     opacity: 0;
     animation: appear 0.45s var(--ease-out-expo) forwards;
-    animation-delay: calc(0.6s + var(--i) * 0.55s);
+    animation-delay: calc(var(--t0, 0.6s) + var(--i) * 0.55s);
   }
   .step .done {
     transform: scale(0.6);
@@ -87,10 +87,16 @@ const last = p.steps.length - 1;
   .step .fill {
     transform: scaleY(0);
     animation: grow 0.5s var(--ease-out-expo) forwards;
-    animation-delay: calc(0.85s + var(--i) * 0.55s);
+    animation-delay: calc(var(--t0, 0.6s) + 0.25s + var(--i) * 0.55s);
   }
   .running :global(svg) {
     animation: spin 1.4s linear infinite;
+  }
+  .caret {
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
   }
   @keyframes appear {
     to { opacity: 1; transform: none; }
@@ -105,5 +111,24 @@ const last = p.steps.length - 1;
     .step .done, .step .badge { opacity: 1; transform: none; }
     .step .fill { transform: none; }
     .running :global(svg) { animation: none; }
+    .caret { animation: none; }
   }
 </style>
+
+<script>
+  // Type the idea, then let the pipeline steps run (their CSS delays start from --t0).
+  const term = document.getElementById('hero-terminal');
+  const el = term?.querySelector<HTMLElement>('[data-type]');
+  if (term && el && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const text = el.dataset.text!;
+    const speed = 28;
+    term.style.setProperty('--t0', `${(text.length * speed + 500) / 1000}s`);
+    el.textContent = '';
+    let n = 0;
+    const tick = () => {
+      el.textContent = text.slice(0, ++n);
+      if (n < text.length) setTimeout(tick, speed);
+    };
+    setTimeout(tick, 400);
+  }
+</script>
