@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Buildream · IT & AI consulting to power up your work",
+    "title": "Buildream · IT & AI consulting and services to power up your work",
     "description": "We bring AI into the way you work, whatever your field: agents and integrations, AI marketing, websites and apps, automation, data, cloud and cybersecurity. First call free.",
     "locale": "en_US"
   },
@@ -18,7 +18,7 @@
     "home": "Home"
   },
   "brand": {
-    "descriptor": "IT & AI Consulting"
+    "descriptor": "IT & AI consulting and services"
   },
   "hero": {
     "title": "You have the vision. We build it.",

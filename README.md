@@ -1,6 +1,6 @@
 # Buildream — sitio web
 
-Sitio de presentación de **Buildream · Consultoría IT & IA**. Estático, bilingüe (ES por defecto, EN en `/en/`), hecho con Astro + Tailwind CSS v4.
+Sitio de presentación de **Buildream · Consultoría y servicios IT & IA**. Estático, bilingüe (ES por defecto, EN en `/en/`), hecho con Astro + Tailwind CSS v4.
 
 ## Páginas
 
