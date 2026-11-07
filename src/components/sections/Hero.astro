@@ -31,16 +31,16 @@ const titleLines = t(locale, 'hero.title').split(/(?<=\.)\s+/);
     </div>
     <div class="lg:col-span-7">
       <p class="max-w-[60ch] text-ink-muted">{t(locale, 'hero.lead')}</p>
-      <div class="mt-10 flex flex-wrap items-center gap-3">
+      <div data-reveal class="mt-10 flex flex-wrap items-center gap-3">
         <Button href={sectionHref('contact', locale)} data-hero-cta>{t(locale, 'hero.ctaPrimary')}</Button>
         <Button href={servicesHref} variant="secondary" data-hero-cta>{t(locale, 'hero.ctaSecondary')}</Button>
       </div>
-      <p class="mt-12 max-w-[60ch] border-t border-hairline pt-6 text-[0.9375rem] leading-[1.5] text-pretty text-ink-muted">
+      <p data-reveal class="mt-12 max-w-[60ch] border-t border-hairline pt-6 text-[0.9375rem] leading-[1.5] text-pretty text-ink-muted">
         {t(locale, 'hero.trust')}
       </p>
     </div>
 
-    <div data-hero-index class="hidden lg:col-span-4 lg:col-start-9 lg:block">
+    <div data-hero-index data-reveal class="hidden lg:col-span-4 lg:col-start-9 lg:block">
       <p id="hero-index-label" class="font-sans text-xs font-medium uppercase leading-[1.4] tracking-[0.14em] text-ink-muted">
         {t(locale, 'hero.indexLabel')}
       </p>

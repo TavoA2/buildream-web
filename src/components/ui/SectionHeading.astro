@@ -9,7 +9,7 @@ interface Props {
 const { id, eyebrow, title, intro, tone = 'light' } = Astro.props;
 const night = tone === 'night';
 ---
-<div class="max-w-[68ch]">
+<div data-reveal class="max-w-[68ch]">
   {eyebrow && (
     <p class:list={['mb-4 font-sans text-xs font-medium uppercase leading-[1.4] tracking-[0.14em]', night ? 'text-night-muted' : 'text-pine-ink']}>{eyebrow}</p>
   )}

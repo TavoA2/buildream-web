@@ -130,3 +130,49 @@ describe.each(diagPages)('diagnostic $lang', ({ file, diagnostic, home, contact 
     expect(html).not.toContain('[PENDIENTE');
   });
 });
+
+const processPages = [
+  { lang: 'es', file: 'dist/index.html', process: 'como-trabajo', passed: 'Completado' },
+  { lang: 'en', file: 'dist/en/index.html', process: 'how-i-work', passed: 'Done' },
+];
+
+describe.each(processPages)('process pipeline $lang', ({ file, process, passed }) => {
+  const root = parse(readFileSync(file, 'utf8'));
+  const section = root.querySelector(`section#${process}`);
+
+  it('has the process section right after diagnostic', () => {
+    expect(section?.getAttribute('data-section')).toBe('process');
+    const order = root.querySelectorAll('main > section').map((s) => s.getAttribute('data-section'));
+    expect(order.indexOf('process')).toBe(order.indexOf('diagnostic') + 1);
+  });
+
+  it('renders 4 stages in order, all passed server-side, with a text status', () => {
+    const stages = section!.querySelectorAll('[data-pipeline] [data-stage]');
+    expect(stages.map((s) => s.getAttribute('data-stage'))).toEqual(['plan', 'build', 'deploy', 'grow']);
+    for (const s of stages) {
+      expect(s.getAttribute('data-state')).toBe('passed');
+      expect(s.querySelector('[data-status]')?.text.trim()).toBe(passed);
+      expect(s.querySelector('h3')?.text.trim()).toBeTruthy();
+    }
+  });
+
+  it('pipeline is not an aria-live region', () => {
+    expect(section!.querySelector('[aria-live]')).toBeNull();
+  });
+});
+
+describe.each(pages)('reveal $lang', ({ file }) => {
+  const html = readFileSync(file, 'utf8');
+  const root = parse(html);
+
+  it('marks headings and rows with data-reveal but never the h1', () => {
+    expect(root.querySelectorAll('[data-reveal]').length).toBeGreaterThan(10);
+    expect(root.querySelector('h1')?.closest('[data-reveal]')).toBeNull();
+  });
+
+  it('adds js-reveal from an inline head script so content is visible without JS', () => {
+    expect(root.querySelector('html')?.classList.contains('js-reveal')).toBe(false);
+    const head = root.querySelector('head')!.innerHTML;
+    expect(head).toMatch(/classList\.add\(['"]js-reveal['"]\)/);
+  });
+});

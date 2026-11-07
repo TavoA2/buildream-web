@@ -21,6 +21,19 @@ const { locale, page, title, description, faq, jsonLd = page === 'home' } = Astr
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!--
+      Runs before first paint: opt in to reveal motion only when it will play. If reveal.ts has not
+      booted within 3s (blocked or failed), drop the class so nothing stays hidden.
+    -->
+    <script is:inline>
+      (function (d) {
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+        d.classList.add('js-reveal');
+        setTimeout(function () {
+          if (!('revealReady' in d.dataset)) d.classList.remove('js-reveal');
+        }, 3000);
+      })(document.documentElement);
+    </script>
     <SEO locale={locale} page={page} title={title} description={description} />
     {jsonLd && <JsonLd locale={locale} faq={faq} />}
   </head>
@@ -31,5 +44,8 @@ const { locale, page, title, description, faq, jsonLd = page === 'home' } = Astr
     >{t(locale, 'a11y.skipLink')}</a>
     <Navbar locale={locale} />
     <slot />
+    <script>
+      import '../scripts/reveal';
+    </script>
   </body>
 </html>

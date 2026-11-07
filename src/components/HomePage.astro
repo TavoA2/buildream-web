@@ -5,6 +5,7 @@ import Services from './sections/Services.astro';
 import Stack from './sections/Stack.astro';
 import Audience from './sections/Audience.astro';
 import DiagnosticPackage from './sections/DiagnosticPackage.astro';
+import Process from './sections/Process.astro';
 import { getLocalizedCollection } from '../lib/content';
 import { t, type Locale } from '../i18n/utils';
 
@@ -37,5 +38,6 @@ const faq = faqEntries.map((e) => ({
     <Stack locale={locale} />
     <Audience locale={locale} />
     <DiagnosticPackage locale={locale} />
+    <Process locale={locale} />
   </main>
 </BaseLayout>
