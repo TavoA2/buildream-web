@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@import "@fontsource/libre-caslon-display/latin-400.css";
+@import "@fontsource/libre-caslon-text/latin-400.css";
+@import "@fontsource/libre-caslon-text/latin-400-italic.css";
+@import "@fontsource/libre-caslon-text/latin-700.css";
+
+/* Public Sans Variable: latin subset only (package's wght.css also ships latin-ext and vietnamese). */
+@font-face {
+  font-family: 'Public Sans Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/public-sans/files/public-sans-latin-wght-normal.woff2') format('woff2-variations');
+}
+
+@theme {
+  --color-*: initial;
+  --color-bone: #F7F4EE;
+  --color-bone-deep: #EFEAE1;
+  --color-ink: #1C1917;
+  --color-ink-muted: #57534E;
+  --color-hairline: rgba(28, 25, 23, 0.14);
+  /* DESIGN.md token `control-border` -> utility `border-control` */
+  --color-control: #78716C;
+  --color-pine: #0F766E;
+  --color-pine-ink: #115E59;
+  --color-pine-on-dark: #4FB3A5;
+  --color-night: #0A0A0A;
+  --color-night-text: #E7E5E4;
+  --color-night-muted: #A8A29E;
+  --color-night-hairline: rgba(231, 229, 228, 0.10);
+  --color-white: #FFFFFF;
+  --color-danger: #B42318;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-display: 'Libre Caslon Display', 'Libre Caslon Text', Georgia, serif;
+  --font-serif: 'Libre Caslon Text', Georgia, serif;
+  --font-sans: 'Public Sans Variable', 'Public Sans', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --radius-*: initial;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-pill: 999px;
+
+  /* DESIGN.md spacing scale: key N = N*4px except where listed explicitly. */
+  --spacing: 0.25rem;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-24: 96px;
+  --spacing-32: 128px;
+  --spacing-40: 160px;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-bone);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.125rem);
+    line-height: 1.6;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-pine);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
