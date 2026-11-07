@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "test": "vitest run tests/unit",
-    "test:build": "vitest run tests/build"
+    "test:build": "vitest run tests/build",
+    "contrast": "tsx scripts/check-contrast.ts"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
@@ -26,9 +27,16 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
+    "@lhci/cli": "^0.16.0",
+    "linkinator": "^8.1.0",
     "node-html-parser": "^9.0.7",
     "opentype.js": "^2.0.0",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
-    "vitest": "^5.1.0"
+    "vitest": "^5.1.0",
+    "yaml": "^2.9.1"
+  },
+  "engines": {
+    "node": ">=22.19"
   }
 }
