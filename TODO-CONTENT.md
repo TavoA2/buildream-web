@@ -23,3 +23,7 @@ Pending items. Nothing here may be invented; placeholders render in dev only.
 
 ## Mini-diagnostic
 - [ ] (Optional) USD ranges for the mini-diagnostic budget options `low` / `mid` / `high` (`src/content/diagnostic/{es,en}.json`). They ship with qualitative labels (ES: Ajustado / Moderado / Amplio; EN: Tight / Moderate / Flexible); ranges can be added to the labels later once Dixon confirms them.
+
+## Copy decisions (from the final design review)
+- [ ] The free call is labelled "Diagnóstico gratis de 30 min" / "Free 30-min diagnostic" (hero CTA, contact subtitle) while the paid package is "Diagnóstico IA · USD 150". Consider "Llamada gratis de 30 min" / "Free 30-min call" (as in PRODUCT.md and the package's own "Empieza con la llamada gratis") so the two offers don't share a name. Keys: `hero.ctaPrimary`, contact subtitle in `src/i18n/{es,en}.json`.
+- [ ] The same call-to-action uses several labels ("Agenda tu llamada", "Cuéntame tu caso", "Hablemos de tu proyecto", "Empieza con la llamada gratis"). Optional: converge on one phrase.
