@@ -29,14 +29,14 @@ export const legal: Record<LegalId, Record<Locale, LegalDoc>> = {
       sections: [
         {
           heading: 'Qué datos recogemos',
-          paragraphs: ['Los datos personales que recibimos son los que escribes en el formulario de contacto:'],
+          paragraphs: ['Los datos que escribes en el formulario de contacto son:'],
           items: ['Nombre', 'Correo electrónico', 'Empresa (opcional)', 'Servicio de interés', 'Tu mensaje'],
           note: 'Además, el servicio de formularios y el hosting reciben datos técnicos de la conexión, como tu dirección IP y metadatos de la solicitud.',
         },
         {
           heading: 'Para qué los usamos',
           paragraphs: [
-            'Usamos estos datos únicamente para responder a tu consulta y coordinar una conversación contigo. No los usamos para publicidad ni los vendemos.',
+            'Usamos los datos del formulario únicamente para responder a tu consulta y coordinar una conversación contigo. No los usamos para publicidad ni los vendemos.',
           ],
         },
         {
@@ -78,14 +78,14 @@ export const legal: Record<LegalId, Record<Locale, LegalDoc>> = {
       sections: [
         {
           heading: 'What data we collect',
-          paragraphs: ['The personal data we receive is what you type into the contact form:'],
+          paragraphs: ['The data you type into the contact form is:'],
           items: ['Name', 'Email address', 'Company (optional)', 'Service you are interested in', 'Your message'],
           note: 'In addition, the form service and the hosting provider receive technical connection data, such as your IP address and request metadata.',
         },
         {
           heading: 'What we use it for',
           paragraphs: [
-            'We use this data only to reply to your inquiry and set up a conversation with you. We do not use it for advertising and we do not sell it.',
+            'We use the form data only to reply to your inquiry and set up a conversation with you. We do not use it for advertising and we do not sell it.',
           ],
         },
         {

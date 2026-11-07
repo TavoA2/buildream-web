@@ -20,7 +20,7 @@ const cfg = resolveFormConfig({
   PUBLIC_FORMSPREE_ID: import.meta.env.PUBLIC_FORMSPREE_ID,
 });
 // Names the real processors so the policy stays true if the provider env changes.
-const vars = { processor: providerNames[cfg.provider], host: cfg.provider === 'netlify' ? 'Netlify' : 'Vercel' };
+const vars = { processor: providerNames[cfg.provider], host: process.env.NETLIFY === 'true' ? 'Netlify' : 'Vercel' };
 const fill = (s: string) => format(s, vars);
 ---
 <BaseLayout locale={locale} page={page} title={t(locale, `meta.${page}.title`)} description={t(locale, `meta.${page}.description`)}>
