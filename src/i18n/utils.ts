@@ -89,3 +89,7 @@ export function translateHash(hash: string, from: Locale, to: Locale): string {
 export function sectionHref(id: SectionId, locale: Locale): string {
   return `${pagePath('home', locale)}#${anchors[id][locale]}`;
 }
+
+export function format(str: string, vars: Record<string, string | number>): string {
+  return str.replace(/\{(\w+)\}/g, (m, k: string) => (k in vars ? String(vars[k]) : m));
+}

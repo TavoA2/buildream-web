@@ -18,6 +18,8 @@
     "@fontsource/libre-caslon-text": "^5.3.0",
     "@tailwindcss/vite": "^4.3.5",
     "astro": "^7.4.7",
+    "lucide-static": "^1.70.0",
+    "simple-icons": "^16.36.0",
     "tailwindcss": "^4.3.5"
   },
   "devDependencies": {
