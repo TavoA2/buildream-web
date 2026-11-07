@@ -68,6 +68,13 @@
       "restart": "Empezar de nuevo",
       "noJs": "El mini-diagnóstico necesita JavaScript. Puedes escribirme directamente desde el formulario de contacto.",
       "noJsLink": "Ir a contacto"
+    },
+    "reasons": {
+      "cloud-devops": "Tu infraestructura puede ganar estabilidad y orden; puedo ayudarte a montarla en la nube con despliegues automatizados.",
+      "ai-strategy": "Te ayudo a ver con calma dónde la inteligencia artificial tiene sentido en tu negocio y por dónde conviene empezar.",
+      "web-chatbot": "Tus clientes te escriben por varios canales; puedo montar una web o un chatbot que responda lo básico y te deje tiempo para lo importante.",
+      "automation": "Hay tareas repetitivas que se pueden automatizar; puedo conectar tus herramientas para que dejes de hacerlas a mano.",
+      "workshops": "Puedo darte un taller práctico para que tú y tu equipo aprendan a usar la IA con confianza."
     }
   },
   "process": {

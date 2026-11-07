@@ -1,0 +1,187 @@
+{
+  "questions": [
+    {
+      "id": "business",
+      "multi": false,
+      "title": "¿Qué describe mejor tu negocio?",
+      "options": [
+        {
+          "id": "startup",
+          "label": "Startup o proyecto nuevo"
+        },
+        {
+          "id": "small-business",
+          "label": "Pyme o negocio local"
+        },
+        {
+          "id": "professional-services",
+          "label": "Servicios profesionales (consultoría, legal, contable)"
+        },
+        {
+          "id": "health-clinic",
+          "label": "Salud o clínica"
+        },
+        {
+          "id": "tourism-hospitality",
+          "label": "Turismo u hospitalidad"
+        },
+        {
+          "id": "fitness",
+          "label": "Gimnasio o fitness"
+        },
+        {
+          "id": "ecommerce",
+          "label": "Tienda online o e-commerce"
+        },
+        {
+          "id": "restaurant",
+          "label": "Restaurante o gastronomía"
+        },
+        {
+          "id": "education",
+          "label": "Educación o formación"
+        },
+        {
+          "id": "freelancer",
+          "label": "Freelancer o independiente"
+        },
+        {
+          "id": "other",
+          "label": "Otro"
+        }
+      ]
+    },
+    {
+      "id": "repetitive",
+      "multi": true,
+      "title": "¿Qué tareas repetitivas te quitan más tiempo?",
+      "options": [
+        {
+          "id": "faq-replies",
+          "label": "Responder las mismas preguntas de clientes"
+        },
+        {
+          "id": "invoicing",
+          "label": "Facturación y cobros"
+        },
+        {
+          "id": "crm-entry",
+          "label": "Pasar datos a una hoja o CRM a mano"
+        },
+        {
+          "id": "reports",
+          "label": "Armar reportes"
+        },
+        {
+          "id": "scheduling",
+          "label": "Agendar citas y reservas"
+        },
+        {
+          "id": "inventory",
+          "label": "Control de inventario"
+        },
+        {
+          "id": "email-sorting",
+          "label": "Clasificar y responder correos"
+        },
+        {
+          "id": "content-creation",
+          "label": "Crear contenido o publicaciones"
+        },
+        {
+          "id": "none-tasks",
+          "label": "Ninguna en particular"
+        }
+      ]
+    },
+    {
+      "id": "channels",
+      "multi": true,
+      "title": "¿Por qué canales te contactan tus clientes?",
+      "options": [
+        {
+          "id": "whatsapp",
+          "label": "WhatsApp"
+        },
+        {
+          "id": "website",
+          "label": "Mi sitio web"
+        },
+        {
+          "id": "instagram",
+          "label": "Instagram o redes sociales"
+        },
+        {
+          "id": "email",
+          "label": "Correo electrónico"
+        },
+        {
+          "id": "phone",
+          "label": "Llamadas telefónicas"
+        },
+        {
+          "id": "in-person",
+          "label": "En persona"
+        },
+        {
+          "id": "none-channels",
+          "label": "Todavía no tengo un canal definido"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "multi": false,
+      "title": "¿Qué usas hoy para trabajar?",
+      "options": [
+        {
+          "id": "manual",
+          "label": "Papel o todo a mano"
+        },
+        {
+          "id": "spreadsheets",
+          "label": "Hojas de cálculo"
+        },
+        {
+          "id": "crm-software",
+          "label": "Un CRM o software de gestión"
+        },
+        {
+          "id": "ecommerce-platform",
+          "label": "Una plataforma de tienda online"
+        },
+        {
+          "id": "cloud-hosting",
+          "label": "Servidores o servicios en la nube"
+        },
+        {
+          "id": "none-tools",
+          "label": "No estoy seguro"
+        }
+      ]
+    },
+    {
+      "id": "budget",
+      "multi": false,
+      "title": "¿Qué presupuesto aproximado tienes en mente?",
+      "options": [
+        {
+          "id": "low",
+          "label": "[PENDIENTE: rango USD] Presupuesto bajo"
+        },
+        {
+          "id": "mid",
+          "label": "[PENDIENTE: rango USD] Presupuesto medio"
+        },
+        {
+          "id": "high",
+          "label": "[PENDIENTE: rango USD] Presupuesto alto"
+        },
+        {
+          "id": "unsure",
+          "label": "Aún no lo sé"
+        }
+      ]
+    }
+  ]
+}
