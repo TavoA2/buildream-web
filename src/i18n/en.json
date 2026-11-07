@@ -229,6 +229,7 @@
     "menuOpen": "Open menu",
     "menuClose": "Close menu",
     "switchLang": "Switch language to Spanish",
+    "currentLang": "Current language: English",
     "externalLink": "opens in a new tab",
     "formStatus": "Form status"
   }

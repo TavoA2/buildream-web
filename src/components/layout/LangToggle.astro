@@ -14,15 +14,16 @@ const map = Object.fromEntries(
 );
 ---
 <div class:list={['flex items-center gap-1 text-sm font-semibold', className]}>
-  <span class="text-ink" aria-hidden="true">{locale.toUpperCase()}</span>
+  <span class="text-ink">
+    <span aria-hidden="true">{locale.toUpperCase()}</span>
+    <span class="sr-only">{t(locale, 'a11y.currentLang')}</span>
+  </span>
   <span class="text-hairline" aria-hidden="true">/</span>
   <a
     href={href}
     hreflang={target}
-    lang={target}
-    aria-label={t(locale, 'a11y.switchLang')}
     data-lang-toggle
     data-map={JSON.stringify(map)}
     class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm text-ink-muted no-underline hover:text-ink"
-  >{target.toUpperCase()}</a>
+  ><span lang={target}>{target.toUpperCase()}</span><span class="sr-only">, {t(locale, 'a11y.switchLang')}</span></a>
 </div>

@@ -229,6 +229,7 @@
     "menuOpen": "Abrir menú",
     "menuClose": "Cerrar menú",
     "switchLang": "Cambiar idioma a inglés",
+    "currentLang": "Idioma actual: español",
     "externalLink": "se abre en una pestaña nueva",
     "formStatus": "Estado del formulario"
   }
