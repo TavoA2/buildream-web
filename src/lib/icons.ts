@@ -45,9 +45,10 @@ export function isDark(hex: string): boolean {
 }
 
 export const models: Brand[] = [
-  { name: 'OpenAI' },
   { name: 'Claude', key: 'siClaude' },
-  { name: 'Gemini', key: 'siGooglegemini' },
+  { name: 'Claude Code', key: 'siClaude' },
+  { name: 'Codex' },
+  { name: 'Cursor', key: 'siCursor' },
 ];
 
 export const tools: Brand[] = [
@@ -67,4 +68,12 @@ export const tools: Brand[] = [
   { name: 'Cloudflare', key: 'siCloudflare' },
   { name: 'Argo CD', key: 'siArgo' },
   { name: 'Grafana', key: 'siGrafana' },
+  { name: 'Python', key: 'siPython' },
+  { name: 'TypeScript', key: 'siTypescript' },
+  { name: 'Vercel', key: 'siVercel' },
+  { name: 'Google Cloud', key: 'siGooglecloud' },
+  { name: 'PostgreSQL', key: 'siPostgresql' },
+  { name: 'Supabase', key: 'siSupabase' },
+  { name: 'Zapier', key: 'siZapier' },
+  { name: 'Make', key: 'siMake' },
 ];

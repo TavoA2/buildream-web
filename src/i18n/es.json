@@ -77,7 +77,7 @@
       {
         "icon": "graduation-cap",
         "title": "Talleres de IA para equipos",
-        "text": "Sesiones prácticas para cualquier área: cómo usar ChatGPT, Claude y Gemini en las tareas reales de tu equipo, con buenas prácticas de uso seguro."
+        "text": "Sesiones prácticas para cualquier área: cómo usar ChatGPT, Claude y otras herramientas de IA en las tareas reales de tu equipo, con buenas prácticas de uso seguro."
       },
       {
         "icon": "globe",
@@ -136,7 +136,7 @@
           {
             "icon": "graduation-cap",
             "title": "Talleres de IA para equipos",
-            "text": "Sesiones prácticas para cualquier área: cómo usar ChatGPT, Claude y Gemini en las tareas reales de tu equipo, con buenas prácticas de uso seguro."
+            "text": "Sesiones prácticas para cualquier área: cómo usar ChatGPT, Claude y otras herramientas de IA en las tareas reales de tu equipo, con buenas prácticas de uso seguro."
           }
         ]
       },
@@ -366,9 +366,9 @@
     }
   },
   "stack": {
-    "title": "Modelos de IA de frontera con tecnologías probadas",
+    "title": "IA de frontera con tecnologías probadas",
     "lead": "Elegimos el modelo y la infraestructura según tu caso, para que lo que construimos sea seguro, crezca contigo y no dependa de una moda.",
-    "models": "Modelos de IA",
+    "models": "Herramientas de IA",
     "tools": "Herramientas y plataformas"
   },
   "process": {
@@ -484,7 +484,7 @@
     "or": "O escríbenos directo",
     "whatsapp": "Escribir por WhatsApp",
     "whatsappText": "Hola, vi Buildream y quiero agendar un diagnóstico.",
-    "emailLabel": "Enviar correo"
+    "emailLabel": "Escribir por correo"
   },
   "footer": {
     "tagline": "Tecnología e IA que trabajan para tu negocio.",
@@ -494,7 +494,8 @@
     "privacy": "Privacidad",
     "terms": "Términos",
     "rights": "Todos los derechos reservados.",
-    "portfolio": "Portafolio del fundador"
+    "portfolio": "Portafolio del fundador",
+    "email": "Correo"
   },
   "legal": {
     "back": "Volver al inicio",
@@ -504,7 +505,7 @@
       "body": [
         "Buildream solo recoge los datos que envías en el formulario de contacto: nombre, correo, empresa y mensaje.",
         "Usamos esos datos únicamente para responderte y preparar tu propuesta. No los vendemos ni los compartimos con terceros, salvo el proveedor que procesa el formulario (Netlify).",
-        "Puedes pedir que borremos tus datos en cualquier momento escribiendo a dixon.ar08@gmail.com.",
+        "Puedes pedir que borremos tus datos en cualquier momento escribiéndonos desde la página de contacto.",
         "Este sitio no usa cookies de seguimiento ni publicidad."
       ]
     },

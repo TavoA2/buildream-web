@@ -77,7 +77,7 @@
       {
         "icon": "graduation-cap",
         "title": "AI workshops for teams",
-        "text": "Hands-on sessions for any field: how to use ChatGPT, Claude and Gemini on your team's real tasks, with safe-use practices."
+        "text": "Hands-on sessions for any field: how to use ChatGPT, Claude and other AI tools on your team's real tasks, with safe-use practices."
       },
       {
         "icon": "globe",
@@ -136,7 +136,7 @@
           {
             "icon": "graduation-cap",
             "title": "AI workshops for teams",
-            "text": "Hands-on sessions for any field: how to use ChatGPT, Claude and Gemini on your team's real tasks, with safe-use practices."
+            "text": "Hands-on sessions for any field: how to use ChatGPT, Claude and other AI tools on your team's real tasks, with safe-use practices."
           }
         ]
       },
@@ -366,9 +366,9 @@
     }
   },
   "stack": {
-    "title": "Frontier AI models with proven technology",
+    "title": "Frontier AI with proven technology",
     "lead": "We pick the model and the infrastructure for your case, so what we build is secure, grows with you and doesn't depend on a trend.",
-    "models": "AI models",
+    "models": "AI tools",
     "tools": "Tools and platforms"
   },
   "process": {
@@ -494,7 +494,8 @@
     "privacy": "Privacy",
     "terms": "Terms",
     "rights": "All rights reserved.",
-    "portfolio": "Founder's portfolio"
+    "portfolio": "Founder's portfolio",
+    "email": "Email"
   },
   "legal": {
     "back": "Back to home",
@@ -504,7 +505,7 @@
       "body": [
         "Buildream only collects the data you send through the contact form: name, email, company and message.",
         "We use that data only to reply and prepare your proposal. We don't sell it or share it with third parties, except the provider that processes the form (Netlify).",
-        "You can ask us to delete your data at any time by writing to dixon.ar08@gmail.com.",
+        "You can ask us to delete your data at any time by writing to us from the contact page.",
         "This site doesn't use tracking or advertising cookies."
       ]
     },
