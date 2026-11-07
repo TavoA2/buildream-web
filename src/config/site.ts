@@ -3,7 +3,7 @@ const WHATSAPP_NUMBER = '50685200223';
 const clean = (v: unknown): string => (typeof v === 'string' ? v.trim() : '');
 
 export const site = {
-  url: clean(import.meta.env.PUBLIC_SITE_URL) || 'https://buildream.vercel.app',
+  url: clean(import.meta.env.PUBLIC_SITE_URL) || 'https://buildream-web.vercel.app',
   email: 'dixon.ar08@gmail.com',
   whatsappNumber: WHATSAPP_NUMBER,
   whatsappUrl(message: string): string {

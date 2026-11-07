@@ -37,7 +37,7 @@ Buildream is the IT & AI consulting practice of Dixon G. Araya Arias. The websit
 
 - Bilingual parity ES/EN is mandatory; Spanish copy uses **tú** (works across Latin America).
 - All text lives in translation files / content collections, never hard-coded in components.
-- No custom domain yet: `https://buildream.vercel.app` until revenue justifies one.
+- No custom domain yet: `https://buildream-web.vercel.app` until revenue justifies one.
 - Lighthouse ≥ 95 in all four categories; near-zero JS on static sections.
 - Undecided: final email on own domain, Cal.com URL, Web3Forms access key, photo of Dixon, final project descriptions/links, legal review of Privacy/Terms.
 

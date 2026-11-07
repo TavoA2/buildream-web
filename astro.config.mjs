@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { alternatePath } from './src/i18n/utils.ts';
 
-const site = process.env.PUBLIC_SITE_URL ?? 'https://buildream.vercel.app';
+const site = process.env.PUBLIC_SITE_URL ?? 'https://buildream-web.vercel.app';
 
 export default defineConfig({
   site,

@@ -91,7 +91,7 @@ Copia `.env.example` a `.env` para desarrollo local. Todas son públicas (`PUBLI
 
 | Variable | Uso |
 |---|---|
-| `PUBLIC_SITE_URL` | URL canónica (sitemap, OG, hreflang). Por defecto `https://buildream.vercel.app`. |
+| `PUBLIC_SITE_URL` | URL canónica (sitemap, OG, hreflang). Por defecto `https://buildream-web.vercel.app`. |
 | `PUBLIC_FORM_PROVIDER` | `web3forms` (por defecto), `formspree` o `netlify`. |
 | `PUBLIC_WEB3FORMS_KEY` | Access key de Web3Forms (obligatoria con `web3forms`). |
 | `PUBLIC_FORMSPREE_ID` | ID del formulario de Formspree (obligatoria con `formspree`). |

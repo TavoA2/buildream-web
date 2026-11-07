@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { parse } from 'node-html-parser';
 
-const BASE = 'https://buildream.vercel.app';
+const BASE = 'https://buildream-web.vercel.app';
 const pages = [
   { lang: 'es', file: 'dist/index.html', canonical: `${BASE}/` },
   { lang: 'en', file: 'dist/en/index.html', canonical: `${BASE}/en/` },
@@ -75,7 +75,7 @@ describe('robots.txt', () => {
     const r = readFileSync('public/robots.txt', 'utf8');
     expect(r).toMatch(/User-agent: \*/);
     expect(r).toMatch(/Allow: \//);
-    expect(r).toMatch(/Sitemap: https:\/\/buildream\.vercel\.app\/sitemap-index\.xml/);
+    expect(r).toMatch(/Sitemap: https:\/\/buildream-web\.vercel\.app\/sitemap-index\.xml/);
   });
 });
 
