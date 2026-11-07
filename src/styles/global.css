@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import '@fontsource-variable/newsreader/opsz.css';
 @import '@fontsource-variable/hanken-grotesk';
+@import '@fontsource-variable/jetbrains-mono';
 
 /* Design tokens — see DESIGN.md */
 @theme {
@@ -17,6 +18,8 @@
 
   --font-display: 'Newsreader Variable', 'Iowan Old Style', Georgia, serif;
   --font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'Cascadia Code', monospace;
+  --color-signal: #4fd18b;
 
   --radius-control: 0.5rem;
   --radius-panel: 1rem;

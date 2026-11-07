@@ -1,14 +1,14 @@
 {
   "meta": {
     "title": "Buildream · Consultoría IT e IA para potenciar tu trabajo",
-    "description": "Llevo la inteligencia artificial a tu forma de trabajar, sea cual sea tu área: agentes e integraciones, marketing y video con IA, webs con chatbot, automatizaciones y nube. Primera llamada gratis.",
+    "description": "Llevamos la inteligencia artificial a tu forma de trabajar, sea cual sea tu área: agentes e integraciones, marketing con IA, webs y apps, automatización, datos, nube y ciberseguridad. Primera llamada gratis.",
     "locale": "es_CR"
   },
   "nav": {
     "services": "Servicios",
     "diagnosis": "Diagnóstico IA",
-    "about": "Sobre mí",
-    "projects": "Proyectos",
+    "about": "Nosotros",
+    "projects": "Portafolio",
     "contact": "Contacto",
     "cta": "Agenda tu diagnóstico",
     "menu": "Abrir menú",
@@ -22,10 +22,10 @@
   },
   "hero": {
     "title": "Tú tienes la visión. Nosotros la construimos.",
-    "lead": "Llevo la inteligencia artificial a tu forma de trabajar, sea cual sea tu área: marketing, diseño, arquitectura, ventas o tecnología. Te explico en simple qué te sirve, lo conecto con las herramientas que ya usas y lo dejo funcionando.",
+    "lead": "Llevamos la inteligencia artificial a tu forma de trabajar, sea cual sea tu área: marketing, diseño, arquitectura, ventas o tecnología. Te explicamos en simple qué te sirve, lo conectamos con las herramientas que ya usas y lo dejamos funcionando.",
     "primary": "Agenda tu diagnóstico gratis",
     "secondary": "Ver servicios",
-    "fact": "Ingeniero en Computación con más de 5 años operando plataformas cloud de nivel enterprise.",
+    "fact": "Respaldados por más de 5 años construyendo y operando plataformas cloud de nivel enterprise.",
     "pipeline": {
       "label": "Así avanza un proyecto",
       "idea": "Tu idea",
@@ -49,12 +49,14 @@
         }
       ],
       "running": "en curso",
-      "done": "listo"
+      "done": "listo",
+      "command": "buildream deploy --idea",
+      "window": "buildream · pipeline"
     }
   },
   "services": {
     "title": "Qué puedo hacer por tu negocio",
-    "lead": "Siete formas de llevar la IA a tu trabajo. Si no sabes cuál necesitas, empezamos por el diagnóstico.",
+    "lead": "Diez servicios en tres áreas. Si no sabes cuál necesitas, empezamos por el diagnóstico.",
     "ask": "Consultar",
     "items": [
       {
@@ -65,36 +67,124 @@
       {
         "icon": "plug",
         "title": "Agentes e integraciones de IA",
-        "text": "Conecto la IA con los programas que ya usas: AutoCAD, Excel, tu CRM o tu correo. Por ejemplo, generar borradores de planos a partir de una descripción o preparar reportes solos."
+        "text": "Conectamos la IA con los programas que ya usas: AutoCAD, Excel, tu CRM o tu correo. Por ejemplo, generar borradores de planos a partir de una descripción o leer facturas y documentos de forma automática."
       },
       {
         "icon": "clapperboard",
         "title": "Marketing y contenido con IA",
-        "text": "Agentes que investigan tu nicho, escriben textos, generan imágenes y videos y arman tu calendario de publicaciones. Tú revisas y apruebas."
-      },
-      {
-        "icon": "globe",
-        "title": "Sitio web con chatbot de IA",
-        "text": "Una web rápida y clara, conectada a WhatsApp, con un asistente que responde preguntas frecuentes y agenda citas mientras tú trabajas."
-      },
-      {
-        "icon": "workflow",
-        "title": "Automatización de procesos",
-        "text": "Formularios que llegan solos a tu hoja de cálculo, recordatorios automáticos, facturas y seguimiento de clientes con n8n o Make."
+        "text": "Agentes que investigan tu nicho, escriben textos, generan imágenes y videos, mejoran tu SEO y arman tu calendario de publicaciones. Tú revisas y apruebas."
       },
       {
         "icon": "graduation-cap",
         "title": "Talleres de IA para equipos",
-        "text": "Sesiones prácticas para cualquier área: cómo usar ChatGPT, Claude y Gemini en las tareas reales de tu equipo."
+        "text": "Sesiones prácticas para cualquier área: cómo usar ChatGPT, Claude y Gemini en las tareas reales de tu equipo, con buenas prácticas de uso seguro."
+      },
+      {
+        "icon": "globe",
+        "title": "Sitios web, apps y chatbots",
+        "text": "Sitios rápidos, tiendas en línea, portales y apps a la medida, con un asistente de IA que responde y agenda por WhatsApp o en tu web."
+      },
+      {
+        "icon": "workflow",
+        "title": "Automatización de procesos",
+        "text": "Formularios que llegan solos a tu hoja de cálculo, recordatorios, facturas y seguimiento de clientes con n8n, Make o Zapier."
+      },
+      {
+        "icon": "chart-column",
+        "title": "Datos y reportes",
+        "text": "Unimos tus ventas, inventario y redes en tableros claros para decidir con números, no con corazonadas."
       },
       {
         "icon": "cloud",
         "title": "Nube y DevOps",
-        "text": "Hosting, despliegues automáticos, monitoreo y AWS: una base técnica que aguante cuando tu producto crezca."
+        "text": "Migración a la nube, hosting, despliegues automáticos y monitoreo en AWS, Google Cloud o Azure, con costos bajo control."
+      },
+      {
+        "icon": "shield-check",
+        "title": "Ciberseguridad y respaldos",
+        "text": "Revisión de seguridad, doble factor de autenticación, protección del correo y respaldos automáticos que sí se pueden restaurar."
+      },
+      {
+        "icon": "life-buoy",
+        "title": "Soporte y mantenimiento",
+        "text": "Un plan mensual para tu tecnología: Microsoft 365 o Google Workspace, redes, actualizaciones y ayuda cuando algo falla."
       }
     ],
     "all": "Ver todos los servicios",
-    "summaryTitle": "IA aplicada a tu forma de trabajar"
+    "summaryTitle": "Tecnología e IA para todo tu negocio",
+    "groups": [
+      {
+        "id": "ai",
+        "title": "IA aplicada",
+        "lead": "Inteligencia artificial puesta a trabajar en tu día a día.",
+        "items": [
+          {
+            "icon": "compass",
+            "title": "Diagnóstico y estrategia de IA",
+            "text": "Revisamos cómo trabajas hoy y encontramos dónde la IA te ahorra tiempo de verdad, sin comprar herramientas que no vas a usar."
+          },
+          {
+            "icon": "plug",
+            "title": "Agentes e integraciones de IA",
+            "text": "Conectamos la IA con los programas que ya usas: AutoCAD, Excel, tu CRM o tu correo. Por ejemplo, generar borradores de planos a partir de una descripción o leer facturas y documentos de forma automática."
+          },
+          {
+            "icon": "clapperboard",
+            "title": "Marketing y contenido con IA",
+            "text": "Agentes que investigan tu nicho, escriben textos, generan imágenes y videos, mejoran tu SEO y arman tu calendario de publicaciones. Tú revisas y apruebas."
+          },
+          {
+            "icon": "graduation-cap",
+            "title": "Talleres de IA para equipos",
+            "text": "Sesiones prácticas para cualquier área: cómo usar ChatGPT, Claude y Gemini en las tareas reales de tu equipo, con buenas prácticas de uso seguro."
+          }
+        ]
+      },
+      {
+        "id": "build",
+        "title": "Desarrollo y automatización",
+        "lead": "Software que trabaja por ti mientras tú atiendes el negocio.",
+        "items": [
+          {
+            "icon": "globe",
+            "title": "Sitios web, apps y chatbots",
+            "text": "Sitios rápidos, tiendas en línea, portales y apps a la medida, con un asistente de IA que responde y agenda por WhatsApp o en tu web."
+          },
+          {
+            "icon": "workflow",
+            "title": "Automatización de procesos",
+            "text": "Formularios que llegan solos a tu hoja de cálculo, recordatorios, facturas y seguimiento de clientes con n8n, Make o Zapier."
+          },
+          {
+            "icon": "chart-column",
+            "title": "Datos y reportes",
+            "text": "Unimos tus ventas, inventario y redes en tableros claros para decidir con números, no con corazonadas."
+          }
+        ]
+      },
+      {
+        "id": "infra",
+        "title": "Infraestructura y seguridad",
+        "lead": "La base técnica que mantiene todo funcionando y protegido.",
+        "items": [
+          {
+            "icon": "cloud",
+            "title": "Nube y DevOps",
+            "text": "Migración a la nube, hosting, despliegues automáticos y monitoreo en AWS, Google Cloud o Azure, con costos bajo control."
+          },
+          {
+            "icon": "shield-check",
+            "title": "Ciberseguridad y respaldos",
+            "text": "Revisión de seguridad, doble factor de autenticación, protección del correo y respaldos automáticos que sí se pueden restaurar."
+          },
+          {
+            "icon": "life-buoy",
+            "title": "Soporte y mantenimiento",
+            "text": "Un plan mensual para tu tecnología: Microsoft 365 o Google Workspace, redes, actualizaciones y ayuda cuando algo falla."
+          }
+        ]
+      }
+    ]
   },
   "audience": {
     "title": "Para cualquier área",
@@ -152,7 +242,7 @@
   },
   "diagnosis": {
     "title": "Diagnóstico de IA para tu negocio",
-    "lead": "Una llamada de 30 minutos, gratis y sin compromiso. Después te envío una propuesta con lo que conviene hacer primero.",
+    "lead": "Una llamada de 30 minutos, gratis y sin compromiso. Después te enviamos una propuesta con lo que conviene hacer primero.",
     "receiveTitle": "Qué recibes",
     "receive": [
       "Un resumen de cómo funciona hoy tu negocio y dónde se pierde tiempo",
@@ -164,11 +254,11 @@
     "cta": "Agenda tu diagnóstico",
     "quiz": {
       "title": "Prueba rápida",
-      "intro": "Responde cuatro preguntas y te muestro por dónde empezaría.",
+      "intro": "Responde cuatro preguntas y te mostramos por dónde empezaríamos.",
       "progress": "Pregunta {n} de {total}",
       "back": "Atrás",
       "restart": "Empezar de nuevo",
-      "resultTitle": "Por dónde empezaría",
+      "resultTitle": "Por dónde empezaríamos",
       "resultCta": "Enviar mis respuestas",
       "resultNote": "Tus respuestas se copian al formulario de contacto.",
       "questions": [
@@ -277,7 +367,7 @@
   },
   "stack": {
     "title": "Modelos de IA de frontera con tecnologías probadas",
-    "lead": "Elijo el modelo y la infraestructura según tu caso, para que lo que construimos sea seguro, crezca contigo y no dependa de una moda.",
+    "lead": "Elegimos el modelo y la infraestructura según tu caso, para que lo que construimos sea seguro, crezca contigo y no dependa de una moda.",
     "models": "Modelos de IA",
     "tools": "Herramientas y plataformas"
   },
@@ -291,11 +381,11 @@
       },
       {
         "name": "Build",
-        "text": "Construyo la solución y te muestro avances; tú decides antes de seguir."
+        "text": "Construimos la solución y te mostramos avances; tú decides antes de seguir."
       },
       {
         "name": "Deploy",
-        "text": "Lo publicamos, lo probamos con casos reales y te enseño a usarlo."
+        "text": "Lo publicamos, lo probamos con casos reales y te enseñamos a usarlo."
       },
       {
         "name": "Grow",
@@ -304,121 +394,60 @@
     ]
   },
   "about": {
-    "title": "Sobre mí",
-    "name": "Dixon G. Araya Arias",
-    "role": "Consultor IT & IA e ingeniero DevOps y Cloud",
-    "bio": [
-      "Soy Ingeniero en Computación, graduado con honores de la UNED. Llevo más de cinco años en tecnología: tres operando plataformas cloud de nivel enterprise y dos como desarrollador backend.",
-      "Creé Buildream para llevar esa experiencia a negocios pequeños: explicar la IA en simple y dejarla funcionando donde de verdad ayuda."
+    "title": "Nosotros",
+    "lead": "Buildream es una consultoría de tecnología e inteligencia artificial de Costa Rica. Ayudamos a negocios de cualquier área a trabajar mejor con IA, software y nube.",
+    "missionTitle": "Por qué existimos",
+    "mission": "La IA avanza más rápido de lo que la mayoría de negocios puede seguir. Nuestra tarea es traducirla: entender cómo trabajas, elegir lo que de verdad te sirve y dejarlo funcionando, sin jerga y sin humo.",
+    "principlesTitle": "Cómo pensamos",
+    "principles": [
+      {
+        "icon": "target",
+        "title": "Resultados antes que herramientas",
+        "text": "Empezamos por el problema de tu negocio, no por la tecnología de moda."
+      },
+      {
+        "icon": "message-square-text",
+        "title": "Claridad",
+        "text": "Explicamos cada decisión en lenguaje simple y te dejamos documentado lo que construimos."
+      },
+      {
+        "icon": "shield-check",
+        "title": "Seguridad desde el inicio",
+        "text": "Accesos mínimos, respaldos y buenas prácticas en todo lo que tocamos."
+      },
+      {
+        "icon": "repeat",
+        "title": "Mejora continua",
+        "text": "Medimos, ajustamos y crecemos contigo, como en un buen pipeline."
+      }
     ],
+    "experienceTitle": "La experiencia detrás",
+    "experience": "Buildream nace de más de cinco años en tecnología: operación de plataformas cloud de nivel enterprise, desarrollo backend y redes. Esa misma forma de trabajar, con procesos claros, automatización y monitoreo, es la que llevamos a cada proyecto, sin importar su tamaño.",
     "chips": [
-      "Ingeniero en Computación (UNED)",
+      "Ingeniería en Computación",
       "DevOps y Cloud",
       "AWS y Kubernetes",
-      "Backend Java y .NET",
-      "CCNA",
+      "Desarrollo backend",
+      "Redes (CCNA)",
       "Español e inglés"
     ],
-    "portfolio": "Ver mi portafolio completo",
-    "talk": "Hablemos de tu proyecto",
-    "photoAlt": "Foto de Dixon Araya"
-  },
-  "projects": {
-    "title": "Proyectos",
-    "lead": "Trabajo propio y demostraciones. Pronto, casos de clientes reales.",
-    "tags": {
-      "own": "Proyecto propio",
-      "demo": "Proyecto conceptual",
-      "client": "Cliente"
-    },
-    "view": "Ver proyecto",
-    "items": [
-      {
-        "kind": "own",
-        "title": "Portafolio profesional",
-        "text": "Mi sitio personal con experiencia, proyectos y stack. Rápido, accesible y publicado con despliegue continuo.",
-        "tech": [
-          "Web",
-          "Netlify",
-          "CI/CD"
-        ],
-        "url": "https://dixon-araya-portafolio.netlify.app",
-        "nodes": [
-          "Código",
-          "Build",
-          "Netlify",
-          "Web"
-        ]
-      },
-      {
-        "kind": "own",
-        "title": "clubscope-platform",
-        "text": "Una plataforma interna para desarrolladores: infraestructura como código, despliegues GitOps y monitoreo desde el primer día.",
-        "tech": [
-          "Terraform",
-          "Kubernetes",
-          "Argo CD",
-          "Grafana"
-        ],
-        "url": "https://github.com/TavoA2/clubscope-platform",
-        "nodes": [
-          "Terraform",
-          "Cluster",
-          "Argo CD",
-          "Grafana"
-        ]
-      },
-      {
-        "kind": "own",
-        "title": "TaskFlow",
-        "text": "Una app de tareas con el ciclo completo de un producto real: pipelines separados, base de datos privada y despliegue en AWS.",
-        "tech": [
-          "AWS",
-          "PostgreSQL",
-          "GitHub Actions",
-          "Prometheus"
-        ],
-        "url": "https://github.com/TavoA2",
-        "nodes": [
-          "App",
-          "CI",
-          "AWS",
-          "Métricas"
-        ]
-      },
-      {
-        "kind": "own",
-        "title": "AWS DevOps Lab",
-        "text": "Un laboratorio en AWS para probar arquitecturas con módulos reutilizables y entornos separados, cuidando el costo.",
-        "tech": [
-          "AWS",
-          "Terraform",
-          "Módulos"
-        ],
-        "url": "https://github.com/TavoA2/AWS-DEVOPS-LAB",
-        "nodes": [
-          "Módulos",
-          "Dev",
-          "AWS",
-          "Costos"
-        ]
-      }
-    ]
+    "founder": "Conoce el portafolio del fundador",
+    "talk": "Hablemos de tu proyecto"
   },
   "faq": {
     "title": "Preguntas frecuentes",
     "items": [
       {
         "q": "¿Necesito saber de tecnología?",
-        "a": "No. Te explico cada paso en lenguaje simple y te dejo una guía corta para que tú o tu equipo lo usen sin depender de mí."
+        "a": "No. Te explicamos cada paso en lenguaje simple y te dejamos una guía corta para que tú o tu equipo lo usen sin depender de nosotros."
       },
       {
         "q": "¿Cuánto cuesta?",
-        "a": "Cada proyecto se cotiza a la medida. Primero hacemos una llamada gratis de 30 minutos y después te envío una propuesta con alcance, tiempos y precio."
+        "a": "Cada proyecto se cotiza a la medida. Primero hacemos una llamada gratis de 30 minutos y después te enviamos una propuesta con alcance, tiempos y precio."
       },
       {
         "q": "¿Trabajas fuera de Costa Rica?",
-        "a": "Sí. Trabajo de forma remota con negocios de toda Latinoamérica, en español o en inglés."
+        "a": "Sí. Trabajamos de forma remota con negocios de toda Latinoamérica, en español o en inglés."
       },
       {
         "q": "¿Cuánto tarda un proyecto?",
@@ -426,17 +455,17 @@
       },
       {
         "q": "¿Qué pasa después de la entrega?",
-        "a": "Te acompaño las primeras semanas para ajustar lo necesario. Si quieres, podemos acordar soporte mensual."
+        "a": "Te acompañamos las primeras semanas para ajustar lo necesario. Si quieres, podemos acordar un plan de soporte mensual."
       },
       {
         "q": "¿Mis datos están seguros?",
-        "a": "Uso herramientas reconocidas, accesos con permisos mínimos y te explico dónde queda cada dato. Nada se publica sin tu aprobación."
+        "a": "Usamos herramientas reconocidas, accesos con permisos mínimos y te explicamos dónde queda cada dato. Nada se publica sin tu aprobación."
       }
     ]
   },
   "contact": {
     "title": "Construyamos tu idea juntos",
-    "lead": "Cuéntame qué quieres lograr. Te respondo en menos de 24 horas para agendar tu diagnóstico gratis de 30 minutos.",
+    "lead": "Cuéntanos qué quieres lograr. Te respondemos en menos de 24 horas para agendar tu diagnóstico gratis de 30 minutos.",
     "name": "Nombre",
     "email": "Correo",
     "company": "Empresa o proyecto",
@@ -448,13 +477,13 @@
     "messagePlaceholder": "Ej.: tengo una tienda y quiero responder más rápido en WhatsApp.",
     "send": "Enviar mensaje",
     "sending": "Enviando…",
-    "sent": "Mensaje enviado. Te escribo pronto.",
-    "error": "No se pudo enviar. Revisa tu conexión o escríbeme por WhatsApp.",
+    "sent": "Mensaje enviado. Te escribimos pronto.",
+    "error": "No se pudo enviar. Revisa tu conexión o escríbenos por WhatsApp.",
     "required": "Completa este campo.",
     "invalidEmail": "Escribe un correo válido, por ejemplo nombre@correo.com.",
-    "or": "O escríbeme directo",
+    "or": "O escríbenos directo",
     "whatsapp": "Escribir por WhatsApp",
-    "whatsappText": "Hola Dixon, vi Buildream y quiero agendar un diagnóstico.",
+    "whatsappText": "Hola, vi Buildream y quiero agendar un diagnóstico.",
     "emailLabel": "Enviar correo"
   },
   "footer": {
@@ -464,7 +493,8 @@
     "contact": "Contacto",
     "privacy": "Privacidad",
     "terms": "Términos",
-    "rights": "Todos los derechos reservados."
+    "rights": "Todos los derechos reservados.",
+    "portfolio": "Portafolio del fundador"
   },
   "legal": {
     "back": "Volver al inicio",
@@ -473,8 +503,8 @@
       "title": "Política de privacidad",
       "body": [
         "Buildream solo recoge los datos que envías en el formulario de contacto: nombre, correo, empresa y mensaje.",
-        "Uso esos datos únicamente para responderte y preparar tu propuesta. No los vendo ni los comparto con terceros, salvo el proveedor que procesa el formulario (Netlify).",
-        "Puedes pedir que borre tus datos en cualquier momento escribiendo a dixon.ar08@gmail.com.",
+        "Usamos esos datos únicamente para responderte y preparar tu propuesta. No los vendemos ni los compartimos con terceros, salvo el proveedor que procesa el formulario (Netlify).",
+        "Puedes pedir que borremos tus datos en cualquier momento escribiendo a dixon.ar08@gmail.com.",
         "Este sitio no usa cookies de seguimiento ni publicidad."
       ]
     },
@@ -482,36 +512,32 @@
       "title": "Términos de uso",
       "body": [
         "El contenido de este sitio es informativo y no constituye una oferta formal. Cada servicio se acuerda por escrito en una propuesta.",
-        "Los nombres y logos de tecnologías de terceros pertenecen a sus dueños y se muestran solo para indicar las herramientas con las que trabajo.",
-        "Los proyectos marcados como conceptuales son demostraciones y no representan a clientes reales."
+        "Los nombres y logos de tecnologías de terceros pertenecen a sus dueños y se muestran solo para indicar las herramientas con las que trabajamos.",
+        "Cada proyecto se define y se acuerda por escrito antes de empezar."
       ]
     }
   },
   "pages": {
     "services": {
       "title": "Servicios · Buildream",
-      "description": "Agentes e integraciones de IA, marketing y video con IA, sitios web con chatbot, automatizaciones, talleres y nube."
+      "description": "IA aplicada, desarrollo y automatización, infraestructura y seguridad: diez servicios para potenciar tu negocio."
     },
     "diagnosis": {
       "title": "Diagnóstico de IA gratis · Buildream",
       "description": "Una llamada de 30 minutos para encontrar dónde la IA le ahorra tiempo a tu negocio."
     },
-    "projects": {
-      "title": "Proyectos · Buildream",
-      "description": "Proyectos propios y demostraciones de Buildream."
-    },
     "about": {
-      "title": "Sobre mí · Buildream",
-      "description": "Dixon G. Araya Arias, consultor IT e IA e ingeniero DevOps y Cloud."
+      "title": "Nosotros · Buildream",
+      "description": "Buildream, consultoría de tecnología e inteligencia artificial de Costa Rica."
     },
     "contact": {
       "title": "Contacto · Buildream",
-      "description": "Cuéntame tu idea y agenda tu diagnóstico gratis de 30 minutos."
+      "description": "Cuéntanos tu idea y agenda tu diagnóstico gratis de 30 minutos."
     }
   },
   "ctaBand": {
     "title": "¿Tienes una idea o una tarea que te quita horas?",
-    "text": "Cuéntamela. En una llamada de 30 minutos vemos si la IA te puede ayudar y por dónde empezar.",
+    "text": "Cuéntanosla. En una llamada de 30 minutos vemos si la IA te puede ayudar y por dónde empezar.",
     "primary": "Agenda tu diagnóstico gratis",
     "secondary": "Escribir por WhatsApp"
   }

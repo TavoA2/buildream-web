@@ -9,7 +9,6 @@ const links = [
   { href: route(lang, 'home'), label: d.nav.home },
   { href: route(lang, 'services'), label: d.nav.services },
   { href: route(lang, 'diagnosis'), label: d.nav.diagnosis },
-  { href: route(lang, 'projects'), label: d.nav.projects },
   { href: route(lang, 'about'), label: d.nav.about },
   { href: route(lang, 'contact'), label: d.nav.contact },
 ];
@@ -33,7 +32,7 @@ const links = [
         <li><a href={`mailto:${contact.email}`} class="no-underline hover:text-white">{contact.email}</a></li>
         <li><a href={`https://wa.me/${contact.whatsappNumber}`} class="no-underline hover:text-white">WhatsApp {contact.whatsappDisplay}</a></li>
         <li><a href={contact.linkedin} target="_blank" rel="noopener" class="no-underline hover:text-white">LinkedIn</a></li>
-        <li><a href={contact.github} target="_blank" rel="noopener" class="no-underline hover:text-white">GitHub</a></li>
+        <li><a href={contact.portfolio} target="_blank" rel="noopener" class="no-underline hover:text-white">{d.footer.portfolio}</a></li>
       </ul>
     </div>
   </div>

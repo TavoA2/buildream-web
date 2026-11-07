@@ -1,16 +1,22 @@
 ---
 import Logo from './Logo.astro';
-import { t, route, type Lang, type Route } from '../lib/i18n';
+import { t, route, contact, type Lang, type Route } from '../lib/i18n';
 import { lineIcon } from '../lib/icons';
 
 interface Props { lang: Lang; altPath: string; current: Route }
 const { lang, altPath, current } = Astro.props;
 const d = t(lang);
 const home = route(lang, 'home');
-const keys: Route[] = ['services', 'diagnosis', 'projects', 'about', 'contact'];
-const label: Record<string, string> = { home: d.nav.home, services: d.nav.services, diagnosis: d.nav.diagnosis, projects: d.nav.projects, about: d.nav.about, contact: d.nav.contact };
-const links = keys.map((k) => ({ key: k, href: route(lang, k), label: label[k] }));
-const mobileLinks = [{ key: 'home' as Route, href: home, label: d.nav.home }, ...links];
+type NavLink = { key: Route | 'portfolio'; href: string; label: string; external?: boolean };
+const links: NavLink[] = [
+  { key: 'services', href: route(lang, 'services'), label: d.nav.services },
+  { key: 'diagnosis', href: route(lang, 'diagnosis'), label: d.nav.diagnosis },
+  { key: 'about', href: route(lang, 'about'), label: d.nav.about },
+  { key: 'portfolio', href: contact.portfolio, label: d.nav.projects, external: true },
+  { key: 'contact', href: route(lang, 'contact'), label: d.nav.contact },
+];
+const mobileLinks: NavLink[] = [{ key: 'home', href: home, label: d.nav.home }, ...links];
+const ext = lineIcon('arrow-up-right', 'size-3.5 opacity-60');
 ---
 <header id="site-header" class="sticky top-0 z-40 border-b border-transparent bg-paper transition-[border-color,box-shadow] duration-300">
   <div class="wrap flex h-[4.5rem] items-center justify-between gap-6">
@@ -21,7 +27,7 @@ const mobileLinks = [{ key: 'home' as Route, href: home, label: d.nav.home }, ..
     <nav aria-label="Principal" class="hidden lg:block">
       <ul class="flex items-center gap-7 text-[0.97rem] font-medium">
         {links.map((l) => (
-          <li><a href={l.href} aria-current={l.key === current ? 'page' : undefined} class="nav-link relative py-2 text-ink/75 no-underline transition-colors hover:text-ink aria-[current=page]:text-ink">{l.label}</a></li>
+          <li><a href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined} aria-current={l.key === current ? 'page' : undefined} class="nav-link relative inline-flex items-center gap-1 py-2 text-ink/75 no-underline transition-colors hover:text-ink aria-[current=page]:text-ink">{l.label}{l.external && <Fragment set:html={ext} />}</a></li>
         ))}
       </ul>
     </nav>
@@ -50,7 +56,7 @@ const mobileLinks = [{ key: 'home' as Route, href: home, label: d.nav.home }, ..
       <ul class="flex flex-col border-t border-line">
         {mobileLinks.map((l) => (
           <li class="border-b border-line">
-            <a href={l.href} aria-current={l.key === current ? 'page' : undefined} data-close class="flex items-center justify-between py-4 font-display text-3xl no-underline aria-[current=page]:text-accent-strong">{l.label}</a>
+            <a href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined} aria-current={l.key === current ? 'page' : undefined} data-close class="flex items-center justify-between py-4 font-display text-3xl no-underline aria-[current=page]:text-accent-strong">{l.label}{l.external && <Fragment set:html={lineIcon('arrow-up-right', 'size-6 text-muted')} />}</a>
           </li>
         ))}
       </ul>

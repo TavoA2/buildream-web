@@ -9,12 +9,11 @@ Sitio de presentación de **Buildream · Consultoría IT & IA**. Estático, bili
 | Inicio | `/` | `/en/` |
 | Servicios (+ FAQ) | `/servicios/` | `/en/services/` |
 | Diagnóstico IA (+ mini-quiz) | `/diagnostico/` | `/en/assessment/` |
-| Proyectos | `/proyectos/` | `/en/projects/` |
-| Sobre mí | `/sobre-mi/` | `/en/about/` |
+| Nosotros | `/nosotros/` | `/en/about/` |
 | Contacto (+ FAQ) | `/contacto/` | `/en/contact/` |
 | Legales | `/privacidad/`, `/terminos/` | `/en/privacy/`, `/en/terms/` |
 
-Las rutas están en `src/lib/i18n.ts` (`routes`). Cada página se arma en `src/views/` con las secciones de `src/components/`. En celular el menú es una hamburguesa a pantalla completa; en escritorio, barra con la página activa subrayada.
+Las rutas están en `src/lib/i18n.ts` (`routes`). Cada página se arma en `src/views/` con las secciones de `src/components/`. "Portafolio" en el menú es un enlace externo al portafolio del fundador. En celular el menú es una hamburguesa a pantalla completa; en escritorio, barra con la página activa subrayada.
 
 El botón "Consultar" de cada servicio y el resultado del mini-quiz prellenan el formulario de Contacto (vía `sessionStorage`).
 
@@ -44,7 +43,6 @@ Otros datos:
 - Contacto (WhatsApp, correo, LinkedIn, GitHub, portafolio): `src/lib/i18n.ts` → `contact`
 - Logos del stack: `src/lib/icons.ts` → `models` y `tools` (iconos de [simple-icons](https://simpleicons.org))
 - Colores y tipografías: `src/styles/global.css` → bloque `@theme` (ver `DESIGN.md`)
-- Foto de "Sobre mí": instrucciones en `src/components/About.astro`
 
 Lo pendiente está en `TODO-CONTENT.md`.
 

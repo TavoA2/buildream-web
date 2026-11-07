@@ -9,7 +9,7 @@ const { lang } = Astro.props;
 const m = t(lang).pages.about;
 ---
 <Page lang={lang} current="about" title={m.title} description={m.description}>
-  <About lang={lang} standalone />
+  <About lang={lang} />
   <Stack lang={lang} />
   <div class="pt-[clamp(4.5rem,10vw,8rem)]"><CtaBand lang={lang} /></div>
 </Page>
