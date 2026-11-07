@@ -65,9 +65,11 @@ describe.each(lowerPages)('stack and audience $lang', ({ file, stack, audience, 
     expect(section!.querySelectorAll('[data-stack-featured] [data-stack-item]')).toHaveLength(3);
     expect(section!.querySelectorAll('[data-stack-grid] [data-stack-item]')).toHaveLength(14);
     expect(section!.outerHTML).not.toMatch(/fill="#/i);
-    for (const svg of section!.querySelectorAll('svg')) {
-      expect(svg.getAttribute('role')).toBe('img');
-      expect(svg.getAttribute('aria-label')).toBeTruthy();
+    // Logos are decorative: the visible name under each one is its accessible name (read once, not twice).
+    for (const item of section!.querySelectorAll('[data-stack-item]')) {
+      const svg = item.querySelector('svg');
+      if (svg) expect(svg.getAttribute('aria-hidden')).toBe('true');
+      expect(item.text.trim()).toBeTruthy();
     }
   });
 

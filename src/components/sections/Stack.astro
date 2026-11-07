@@ -36,7 +36,7 @@ const grid = stack.grid.map(resolve);
       {featured.map((item) => (
         <li data-stack-item class="flex flex-col items-center gap-3">
           {item.icon ? (
-            <svg role="img" aria-label={item.name} viewBox="0 0 24 24" width="48" height="48" class="h-12 w-12 text-night-text">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="48" height="48" class="h-12 w-12 text-night-text">
               <path d={item.icon.svgPath} fill="currentColor" />
             </svg>
           ) : (
@@ -56,7 +56,7 @@ const grid = stack.grid.map(resolve);
       {grid.map((item) => (
         <li data-stack-item class="flex flex-col items-center justify-start gap-3 border-t border-night-hairline px-2 py-8">
           {item.icon ? (
-            <svg role="img" aria-label={item.name} viewBox="0 0 24 24" width="32" height="32" class="h-8 w-8 text-night-text/80">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="32" height="32" class="h-8 w-8 text-night-text/80">
               <path d={item.icon.svgPath} fill="currentColor" />
             </svg>
           ) : (
