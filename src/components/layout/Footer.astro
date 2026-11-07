@@ -14,18 +14,18 @@ const newTab = t(locale, 'a11y.externalLink');
 const greeting = t(locale, 'contact.whatsappMessage');
 
 const link =
-  'inline-flex min-h-11 items-center rounded-sm text-night-text no-underline hover:underline hover:decoration-1 hover:underline-offset-4 focus-visible:outline-pine-on-dark';
-const heading = 'font-sans text-sm font-semibold text-night-muted';
+  'inline-flex min-h-11 items-center rounded-sm text-ink no-underline hover:text-pine-ink hover:underline hover:decoration-1 hover:underline-offset-4';
+const heading = 'font-sans text-sm font-semibold text-ink-muted';
 ---
-<footer class="bg-night text-night-text">
+<footer class="border-t border-hairline bg-bone text-ink">
   <div class="mx-auto max-w-[1200px] px-4 pt-16 pb-8 lg:px-6">
     <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
       <div class="max-w-[34ch]">
-        <a href={pagePath('home', locale)} aria-label={t(locale, 'a11y.homeLink')} class="inline-block rounded-sm no-underline focus-visible:outline-pine-on-dark">
-          <Logo locale={locale} tone="bone" />
+        <a href={pagePath('home', locale)} aria-label={t(locale, 'a11y.homeLink')} class="inline-block rounded-sm no-underline">
+          <Logo locale={locale} tone="ink" />
         </a>
-        <p class="mt-5 text-[0.9375rem] leading-relaxed text-night-muted">{t(locale, 'footer.descriptor')}</p>
-        <p class="mt-4 text-[0.9375rem] text-night-muted">{t(locale, 'footer.location')}</p>
+        <p class="mt-5 text-[0.9375rem] leading-relaxed text-ink-muted">{t(locale, 'footer.descriptor')}</p>
+        <p class="mt-4 text-[0.9375rem] text-ink-muted">{t(locale, 'footer.location')}</p>
       </div>
 
       <nav aria-labelledby="footer-quick">
@@ -66,7 +66,7 @@ const heading = 'font-sans text-sm font-semibold text-night-muted';
       </section>
     </div>
 
-    <div class="mt-12 flex flex-col gap-2 border-t border-night-hairline pt-6 text-sm text-night-muted sm:flex-row sm:items-center sm:justify-between">
+    <div class="mt-12 flex flex-col gap-2 border-t border-hairline pt-6 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between">
       <p>{t(locale, 'footer.copyright')}</p>
       <ul class="flex flex-wrap gap-x-4">
         <li><a href={pagePath('privacy', locale)} class={link}>{t(locale, 'footer.privacy')}</a></li>
