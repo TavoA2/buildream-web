@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { parse } from 'node-html-parser';
 
@@ -105,5 +105,33 @@ describe.each([
     const cta = root.querySelectorAll('header a[data-nav-cta]');
     expect(cta.length).toBeGreaterThan(0);
     cta.forEach((c) => expect(c.getAttribute('href')).toBe(ctaHref));
+  });
+});
+
+describe('OG images', () => {
+  it.each(['es', 'en'])('dist/og/%s.png is 1200x630', (lang) => {
+    const buf = readFileSync(`dist/og/${lang}.png`);
+    expect(buf.subarray(1, 4).toString()).toBe('PNG');
+    expect(buf.readUInt32BE(16)).toBe(1200);
+    expect(buf.readUInt32BE(20)).toBe(630);
+  });
+});
+
+describe('sitemap', () => {
+  const index = existsSync('dist/sitemap-index.xml') ? readFileSync('dist/sitemap-index.xml', 'utf8') : '';
+  const map = existsSync('dist/sitemap-0.xml') ? readFileSync('dist/sitemap-0.xml', 'utf8') : '';
+  it('has an index', () => {
+    expect(index).toContain('sitemap-0.xml');
+  });
+  it('pairs /en/privacy with /privacidad via xhtml:link', () => {
+    const block = map.split('<url>').find((u) => u.includes(`<loc>${BASE}/en/privacy</loc>`)) ?? '';
+    expect(block).toContain(`hreflang="es" href="${BASE}/privacidad"`);
+    expect(block).toContain(`hreflang="en" href="${BASE}/en/privacy"`);
+  });
+  it('pairs terms and home', () => {
+    expect(map).toMatch(/<loc>[^<]*\/terminos<\/loc>[\s\S]*?hreflang="en" href="[^"]*\/en\/terms"/);
+  });
+  it('excludes thanks and 404', () => {
+    expect(map).not.toMatch(/gracias|thanks|404/);
   });
 });
