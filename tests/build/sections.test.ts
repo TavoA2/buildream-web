@@ -71,9 +71,19 @@ describe.each(lowerPages)('stack and audience $lang', ({ file, stack, audience, 
     }
   });
 
+  it('audience lists 11 non-link rows, Startups first, with a contact CTA', () => {
+    const section = root.querySelector(`section#${audience}`);
+    expect(section?.getAttribute('data-section')).toBe('audience');
+    const items = section!.querySelectorAll('[data-audience-item]');
+    expect(items).toHaveLength(11);
+    expect(items[0].text.trim()).toBe(first);
+    expect(section!.querySelectorAll('[data-audience-item] a')).toHaveLength(0);
+    expect(section!.querySelector('[data-audience-cta]')?.getAttribute('href')).toBe(`${home}#${contact}`);
+  });
 
   it('stack comes after services and before audience', () => {
     const order = root.querySelectorAll('main > section').map((s) => s.getAttribute('data-section'));
     expect(order.indexOf('stack')).toBe(order.indexOf('services') + 1);
+    expect(order.indexOf('audience')).toBe(order.indexOf('stack') + 1);
   });
 });
