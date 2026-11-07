@@ -1,6 +1,6 @@
 ---
 title: Personal portfolio
-summary: "The site where Dixon gathers his work and professional background."
+summary: "My portfolio: the site where I gather my work and professional background."
 type: own
 tags: [Portfolio, Web]
 url: https://dixon-araya-portafolio.netlify.app

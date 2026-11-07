@@ -1,6 +1,6 @@
 ---
 title: Portafolio personal
-summary: "El sitio donde Dixon reúne su trabajo y su trayectoria profesional."
+summary: "Mi portafolio: el sitio donde reúno mi trabajo y mi trayectoria profesional."
 type: own
 tags: [Portafolio, Web]
 url: https://dixon-araya-portafolio.netlify.app
