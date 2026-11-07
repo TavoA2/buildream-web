@@ -3,6 +3,7 @@ import '../styles/global.css';
 import SEO from '../components/layout/SEO.astro';
 import JsonLd from '../components/layout/JsonLd.astro';
 import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
 import { t, type Locale, type PageId } from '../i18n/utils';
 
 interface Props {
@@ -45,6 +46,7 @@ const { locale, page, title, description, faq, jsonLd = page === 'home', noindex
     >{t(locale, 'a11y.skipLink')}</a>
     <Navbar locale={locale} />
     <slot />
+    <Footer locale={locale} />
     <script>
       import '../scripts/reveal';
     </script>

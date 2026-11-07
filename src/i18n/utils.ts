@@ -28,13 +28,14 @@ export const anchors: Record<SectionId, Record<Locale, string>> = {
   contact: { es: 'contacto', en: 'contact' },
 };
 
-export type PageId = 'home' | 'privacy' | 'terms' | 'thanks';
+export type PageId = 'home' | 'privacy' | 'terms' | 'thanks' | 'notFound';
 
 const pagePaths: Record<PageId, Record<Locale, string>> = {
   home: { es: '/', en: '/en/' },
   privacy: { es: '/privacidad', en: '/en/privacy' },
   terms: { es: '/terminos', en: '/en/terms' },
   thanks: { es: '/gracias', en: '/en/thanks' },
+  notFound: { es: '/404', en: '/404' },
 };
 
 export function pagePath(page: PageId, locale: Locale): string {

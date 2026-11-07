@@ -208,7 +208,9 @@
     "privacy": "Privacy",
     "terms": "Terms",
     "location": "Costa Rica · Remote across Latin America",
-    "copyright": "© 2026 Buildream"
+    "copyright": "© 2026 Buildream",
+    "legalTitle": "Legal",
+    "descriptor": "Cloud, DevOps and AI automation, working directly with the engineer."
   },
   "meta": {
     "home": {
@@ -243,7 +245,10 @@
     "back": "Go to home"
   },
   "legal": {
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "updated": "Last updated",
+    "contactTitle": "Questions about this?",
+    "contactText": "Write to us at"
   },
   "a11y": {
     "skipLink": "Skip to content",

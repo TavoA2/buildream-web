@@ -1,0 +1,77 @@
+---
+import Logo from '../ui/Logo.astro';
+import { site } from '../../config/site';
+import { pagePath, sectionHref, t, type Locale, type SectionId } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+const ids = ['services', 'diagnostic', 'about', 'projects', 'contact'] as const satisfies readonly SectionId[];
+const quick = ids.map((id) => ({ href: sectionHref(id, locale), label: t(locale, `nav.${id}`) }));
+const newTab = t(locale, 'a11y.externalLink');
+const greeting = t(locale, 'contact.whatsappMessage');
+
+const link =
+  'inline-flex min-h-11 items-center rounded-sm text-night-text no-underline hover:underline hover:decoration-1 hover:underline-offset-4 focus-visible:outline-pine-on-dark';
+const heading = 'font-sans text-sm font-semibold text-night-muted';
+---
+<footer class="bg-night text-night-text">
+  <div class="mx-auto max-w-[1200px] px-4 pt-16 pb-8 lg:px-6">
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div class="max-w-[34ch]">
+        <a href={pagePath('home', locale)} aria-label={t(locale, 'a11y.homeLink')} class="inline-block rounded-sm no-underline focus-visible:outline-pine-on-dark">
+          <Logo locale={locale} tone="bone" />
+        </a>
+        <p class="mt-5 text-[0.9375rem] leading-relaxed text-night-muted">{t(locale, 'footer.descriptor')}</p>
+        <p class="mt-4 text-[0.9375rem] text-night-muted">{t(locale, 'footer.location')}</p>
+      </div>
+
+      <nav aria-labelledby="footer-quick">
+        <h2 id="footer-quick" class={heading}>{t(locale, 'footer.quickLinks')}</h2>
+        <ul class="mt-3">
+          {quick.map((l) => (
+            <li><a href={l.href} class={link}>{l.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <section aria-labelledby="footer-contact">
+        <h2 id="footer-contact" class={heading}>{t(locale, 'footer.contactTitle')}</h2>
+        <ul class="mt-3">
+          <li><a href={`mailto:${site.email}`} class={link}>{site.email}</a></li>
+          <li>
+            <a href={site.whatsappUrl(greeting)} target="_blank" rel="noopener noreferrer" class={link}>
+              {t(locale, 'contact.whatsapp')}<span class="sr-only"> ({newTab})</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="footer-follow">
+        <h2 id="footer-follow" class={heading}>{t(locale, 'footer.followTitle')}</h2>
+        <ul class="mt-3">
+          <li>
+            <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class={link}>
+              {t(locale, 'footer.linkedin')}<span class="sr-only"> ({newTab})</span>
+            </a>
+          </li>
+          <li>
+            <a href={site.github} target="_blank" rel="noopener noreferrer" class={link}>
+              {t(locale, 'footer.github')}<span class="sr-only"> ({newTab})</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="mt-12 flex flex-col gap-2 border-t border-night-hairline pt-6 text-sm text-night-muted sm:flex-row sm:items-center sm:justify-between">
+      <p>{t(locale, 'footer.copyright')}</p>
+      <ul class="flex flex-wrap gap-x-4">
+        <li><a href={pagePath('privacy', locale)} class={link}>{t(locale, 'footer.privacy')}</a></li>
+        <li><a href={pagePath('terms', locale)} class={link}>{t(locale, 'footer.terms')}</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

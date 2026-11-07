@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import { pagePath, t, type Locale } from '../i18n/utils';
+
+// Served for any unknown URL, so the visitor language is unknown: show both, each block in its own lang.
+const blocks: Locale[] = ['es', 'en'];
+---
+<BaseLayout
+  locale="es"
+  page="notFound"
+  title={`${t('es', 'meta.notFound.title')} / ${t('en', 'meta.notFound.title')}`}
+  description={t('es', 'meta.notFound.description')}
+  noindex
+>
+  <main id="main" class="py-20 md:py-28">
+    <div class="mx-auto max-w-[1200px] px-4 lg:px-6">
+      <div class="grid gap-14 md:grid-cols-2 md:gap-16">
+        {blocks.map((l) => (
+          <section lang={l} class="max-w-[44ch]">
+            <h1 class="font-display text-[clamp(2rem,1.5rem+2.4vw,3.25rem)] leading-[1.1] text-ink text-balance">{t(l, 'notFound.title')}</h1>
+            <p class="mt-4 text-[1.0625rem] text-ink-muted">{t(l, 'notFound.text')}</p>
+            <Button href={pagePath('home', l)} variant={l === 'es' ? 'primary' : 'secondary'} class="mt-8">
+              <Icon name="arrow-left" size={18} />
+              {t(l, 'notFound.back')}
+            </Button>
+          </section>
+        ))}
+      </div>
+    </div>
+  </main>
+</BaseLayout>
