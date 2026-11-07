@@ -1,0 +1,46 @@
+---
+import Button from '../ui/Button.astro';
+import LangToggle from './LangToggle.astro';
+import { t, type Locale } from '../../i18n/utils';
+
+interface Props {
+  id: string;
+  locale: Locale;
+  links: { id: string; href: string; label: string }[];
+  ctaHref: string;
+  ctaExternal: boolean;
+}
+const { id, locale, links, ctaHref, ctaExternal } = Astro.props;
+---
+<div
+  id={id}
+  role="dialog"
+  aria-modal="true"
+  aria-label={t(locale, 'a11y.mainNav')}
+  data-menu-panel
+  hidden
+  class="fixed inset-0 z-40 overflow-y-auto bg-bone md:hidden"
+>
+  <div class="flex min-h-full flex-col gap-8 px-4 pb-8 pt-28">
+    <ul class="flex flex-col">
+      {links.map((l) => (
+        <li class="border-b border-hairline">
+          <a
+            href={l.href}
+            data-nav-link
+            data-section-id={l.id}
+            class="block py-4 font-display text-3xl leading-tight text-ink no-underline aria-[current=location]:text-pine-ink"
+          >{l.label}</a>
+        </li>
+      ))}
+    </ul>
+    <div class="mt-auto flex flex-col gap-6">
+      <Button
+        href={ctaHref}
+        data-nav-cta
+        {...(ctaExternal ? { target: '_blank', rel: 'noopener' } : {})}
+      >{t(locale, 'nav.cta')}</Button>
+      <LangToggle locale={locale} />
+    </div>
+  </div>
+</div>

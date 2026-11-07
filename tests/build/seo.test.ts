@@ -68,3 +68,37 @@ describe('robots.txt', () => {
     expect(r).toMatch(/Sitemap: https:\/\/buildream\.vercel\.app\/sitemap-index\.xml/);
   });
 });
+
+describe.each([
+  { lang: 'es', file: 'dist/index.html', other: '/en/', hrefs: ['/#servicios', '/#diagnostico', '/#sobre-mi', '/#proyectos', '/#contacto'], labels: ['Servicios', 'Diagnóstico IA', 'Sobre mí', 'Proyectos', 'Contacto'] },
+  { lang: 'en', file: 'dist/en/index.html', other: '/', hrefs: ['/en/#services', '/en/#diagnostic', '/en/#about', '/en/#projects', '/en/#contact'], labels: [] },
+])('navbar $lang', ({ file, other, hrefs, labels, lang }) => {
+  const root = parse(readFileSync(file, 'utf8'));
+  const nav = root.querySelector('header nav[aria-label]');
+
+  it('has desktop links in order with home-anchored hrefs', () => {
+    const links = nav!.querySelectorAll('a[data-nav-link]');
+    expect(links.map((a) => a.getAttribute('href'))).toEqual(hrefs);
+    if (labels.length) expect(links.map((a) => a.text.trim())).toEqual(labels);
+  });
+  it('has a lang toggle to the other locale', () => {
+    const a = root.querySelector('header a[hreflang]');
+    expect(a?.getAttribute('hreflang')).toBe(lang === 'es' ? 'en' : 'es');
+    expect(a?.getAttribute('href')).toBe(other);
+    expect(a?.getAttribute('aria-label')).toBeTruthy();
+  });
+  it('has a mobile dialog panel and a labelled toggle', () => {
+    const d = root.querySelector('[role=dialog][aria-modal=true]');
+    expect(d?.getAttribute('aria-label')).toBeTruthy();
+    const btn = root.querySelector('button[aria-controls]');
+    expect(btn?.getAttribute('aria-expanded')).toBe('false');
+    expect(btn?.getAttribute('aria-controls')).toBe(d?.getAttribute('id'));
+  });
+  it('has the nav sentinel at the top of main', () => {
+    expect(root.querySelector('main#main > [data-nav-sentinel]')).toBeTruthy();
+  });
+  it('CTA points to the contact section when no Cal URL', () => {
+    const cta = root.querySelectorAll('header a[data-nav-cta]');
+    expect(cta.length).toBeGreaterThan(0);
+  });
+});
