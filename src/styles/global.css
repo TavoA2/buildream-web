@@ -5,26 +5,26 @@
 
 /* Design tokens — see DESIGN.md */
 @theme {
-  --color-paper: #f5f7f4;
+  --color-paper: #f5f7fc;
   --color-surface: #ffffff;
-  --color-ink: #11241c;
-  --color-muted: #4a5a53;
-  --color-line: #d8dfda;
-  --color-accent: #157a4b;
-  --color-accent-strong: #0f5e39;
-  --color-accent-soft: #e2f0e7;
-  --color-band: #0f2a20;
-  --color-band-muted: #a9bdb3;
+  --color-ink: #0b1430;
+  --color-muted: #4a5878;
+  --color-line: #d9dfec;
+  --color-accent: #2f5bff;
+  --color-accent-strong: #1e3fd6;
+  --color-accent-soft: #e6ecff;
+  --color-band: #0b1430;
+  --color-band-muted: #9aa8cc;
 
   --font-display: 'Newsreader Variable', 'Iowan Old Style', Georgia, serif;
   --font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, 'Cascadia Code', monospace;
-  --color-signal: #4fd18b;
+  --color-signal: #22d3ee;
 
   --radius-control: 0.5rem;
   --radius-panel: 1rem;
 
-  --shadow-lift: 0 10px 30px -12px rgb(17 36 28 / 0.22);
+  --shadow-lift: 0 10px 30px -12px rgb(11 20 48 / 0.22);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -33,7 +33,7 @@
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
     -webkit-text-size-adjust: 100%;
-    scrollbar-color: #9fb1a8 var(--color-paper);
+    scrollbar-color: #a3afc9 var(--color-paper);
   }
   body {
     background: var(--color-paper);
@@ -54,7 +54,7 @@
     border-radius: 4px;
   }
   .on-band :focus-visible {
-    outline-color: #8fd6b0;
+    outline-color: #7dd3fc;
   }
   h1,
   h2,
@@ -124,7 +124,7 @@
   .btn-primary {
     background: var(--color-accent);
     color: #fff;
-    box-shadow: 0 6px 16px -8px rgb(21 122 75 / 0.6);
+    box-shadow: 0 6px 16px -8px rgb(47 91 255 / 0.55);
   }
   .btn-primary:hover {
     background: var(--color-accent-strong);

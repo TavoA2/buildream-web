@@ -4,24 +4,25 @@
 
 Buildream une **Build** (de CI/CD) con **Dream**. El sitio lo cuenta con un solo recurso: un **pipeline**. La idea del cliente entra y pasa por Plan → Build → Deploy → Grow, como un build que termina en verde. Ese pipeline aparece en el hero (el único momento animado), en la sección "Cómo trabajamos" y en los mini-diagramas de cada proyecto.
 
-El verde no es decorativo: es el verde de "build passed".
+El azul transmite confianza y tecnología; el cian de la terminal marca lo que está "vivo" (pasos completados, cursor, estados).
 
-## Color
+## Color — "Azul eléctrico"
 
 | Token | Hex | Uso |
 |---|---|---|
-| `paper` | `#F5F7F4` | Fondo general (blanco frío, no crema) |
+| `paper` | `#F5F7FC` | Fondo general (blanco frío) |
 | `surface` | `#FFFFFF` | Paneles, secciones alternas |
-| `ink` | `#11241C` | Texto principal (verde casi negro) |
-| `muted` | `#4A5A53` | Texto secundario (contraste AA sobre paper) |
-| `line` | `#D8DFDA` | Divisores de 1px, bordes |
-| `accent` | `#157A4B` | Botón primario, checks, iconos |
-| `accent-strong` | `#0F5E39` | Hover, enlaces de texto |
-| `accent-soft` | `#E2F0E7` | Fondos de etiquetas e iconos |
-| `band` | `#0F2A20` | Banda oscura del stack y footer |
-| `band-muted` | `#A9BDB3` | Texto secundario sobre band |
+| `ink` | `#0B1430` | Texto principal (azul noche) |
+| `muted` | `#4A5878` | Texto secundario |
+| `line` | `#D9DFEC` | Divisores de 1px, bordes |
+| `accent` | `#2F5BFF` | Botón primario, checks, iconos |
+| `accent-strong` | `#1E3FD6` | Hover, enlaces de texto |
+| `accent-soft` | `#E6ECFF` | Fondos de etiquetas e iconos |
+| `band` | `#0B1430` | Terminales, banda del stack y footer |
+| `band-muted` | `#9AA8CC` | Texto secundario sobre band |
+| `signal` | `#22D3EE` | Cian de la terminal: checks, cursor, estados |
 
-Sin violeta propio. Los logos de terceros conservan sus colores; los muy oscuros se pasan a blanco sobre la banda.
+Los logos de terceros conservan sus colores; los muy oscuros se pasan a blanco sobre la banda.
 
 ## Tipografía
 
