@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from './sections/Hero.astro';
+import Services from './sections/Services.astro';
 import { getLocalizedCollection } from '../lib/content';
 import { t, type Locale } from '../i18n/utils';
 
@@ -27,6 +29,7 @@ const faq = faqEntries.map((e) => ({
 >
   <main id="main">
     <div data-nav-sentinel aria-hidden="true" class="h-px"></div>
-    <h1 class="font-display text-5xl p-8">{t(locale, 'hero.title')}</h1>
+    <Hero locale={locale} />
+    <Services locale={locale} />
   </main>
 </BaseLayout>

@@ -20,13 +20,12 @@
     "ctaPrimary": "Diagnóstico gratis de 30 min",
     "ctaSecondary": "Ver servicios",
     "trust": "Ingeniero en Computación · +5 años en plataformas cloud enterprise",
-    "indexLabel": "Lo que hacemos"
+    "indexLabel": "Lo que hago"
   },
   "services": {
     "title": "Servicios",
     "intro": "Cinco formas de trabajar juntos, desde poner tu infraestructura en orden hasta que la IA te ahorre horas cada semana.",
-    "consult": "Consultar",
-    "consultAria": "Consultar sobre {service}"
+    "consult": "Consultar"
   },
   "stack": {
     "title": "Modelos de IA de frontera + tecnologías probadas",

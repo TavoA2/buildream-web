@@ -20,13 +20,12 @@
     "ctaPrimary": "Free 30-min diagnostic",
     "ctaSecondary": "See services",
     "trust": "Computer Engineer · 5+ years on enterprise cloud platforms",
-    "indexLabel": "What we do"
+    "indexLabel": "What I do"
   },
   "services": {
     "title": "Services",
     "intro": "Five ways to work together, from getting your infrastructure in order to having AI save you hours every week.",
-    "consult": "Ask about it",
-    "consultAria": "Ask about {service}"
+    "consult": "Ask about it"
   },
   "stack": {
     "title": "Frontier AI models + proven technologies",

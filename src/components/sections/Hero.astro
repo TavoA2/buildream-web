@@ -1,0 +1,66 @@
+---
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import { getLocalizedCollection } from '../../lib/content';
+import { sectionHref, t, type Locale } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+const services = await getLocalizedCollection('services', locale);
+const servicesHref = sectionHref('services', locale);
+// The tagline is two sentences; each gets its own line so the break is editorial, not accidental.
+const titleLines = t(locale, 'hero.title').split(/(?<=\.)\s+/);
+---
+<section data-hero aria-labelledby="hero-title" class="pt-12 pb-8 md:pt-20 md:pb-12 lg:pt-24 lg:pb-16">
+  <div class="mx-auto grid max-w-[1200px] gap-8 px-4 lg:grid-cols-12 lg:items-end lg:gap-x-8 lg:px-6">
+    <div class="lg:col-span-12">
+      <p class="font-sans text-xs font-medium uppercase leading-[1.4] tracking-[0.14em] text-balance text-pine-ink">
+        {t(locale, 'hero.eyebrow')}
+      </p>
+      <h1
+        id="hero-title"
+        class="mt-6 font-display text-[clamp(2.5rem,1.6rem+4vw,4.75rem)] font-normal leading-[1.04] tracking-[-0.01em] text-ink"
+      >
+        {titleLines.map((line, i) => (
+          <span class:list={['block text-balance', i > 0 && 'font-serif italic']}>{line}</span>
+        ))}
+      </h1>
+    </div>
+    <div class="lg:col-span-7">
+      <p class="max-w-[60ch] text-ink-muted">{t(locale, 'hero.lead')}</p>
+      <div class="mt-10 flex flex-wrap items-center gap-3">
+        <Button href={sectionHref('contact', locale)} data-hero-cta>{t(locale, 'hero.ctaPrimary')}</Button>
+        <Button href={servicesHref} variant="secondary" data-hero-cta>{t(locale, 'hero.ctaSecondary')}</Button>
+      </div>
+      <p class="mt-12 max-w-[60ch] border-t border-hairline pt-6 text-[0.9375rem] leading-[1.5] text-pretty text-ink-muted">
+        {t(locale, 'hero.trust')}
+      </p>
+    </div>
+
+    <div data-hero-index class="hidden lg:col-span-4 lg:col-start-9 lg:block">
+      <p id="hero-index-label" class="font-sans text-xs font-medium uppercase leading-[1.4] tracking-[0.14em] text-ink-muted">
+        {t(locale, 'hero.indexLabel')}
+      </p>
+      <ul aria-labelledby="hero-index-label" class="mt-4 border-b border-hairline">
+        {services.map((s) => (
+          <li class="border-t border-hairline">
+            <a
+              href={servicesHref}
+              class="group flex min-h-12 items-center justify-between gap-4 py-3 text-[0.9375rem] font-medium leading-[1.35] text-ink no-underline transition-colors duration-150 hover:text-pine-ink"
+            >
+              <span>{s.data.title}</span>
+              <Icon
+                name="arrow-right"
+                size={18}
+                class="text-pine opacity-0 -translate-x-1 transition duration-200 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
