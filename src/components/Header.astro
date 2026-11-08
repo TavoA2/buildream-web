@@ -33,6 +33,11 @@ const ext = lineIcon('arrow-up-right', 'size-3.5 opacity-60');
     </nav>
 
     <div class="flex items-center gap-3">
+      <button id="theme-toggle" type="button" class="grid size-11 place-items-center rounded-md text-muted transition-colors hover:text-ink"
+              aria-label={d.nav.themeDark} data-label-dark={d.nav.themeDark} data-label-light={d.nav.themeLight}>
+        <span class="theme-icon-moon"><Fragment set:html={lineIcon('moon', 'size-5')} /></span>
+        <span class="theme-icon-sun"><Fragment set:html={lineIcon('sun', 'size-5')} /></span>
+      </button>
       <a href={altPath} hreflang={lang === 'es' ? 'en' : 'es'} lang={lang === 'es' ? 'en' : 'es'}
          aria-label={d.nav.switchLabel}
          class="rounded-md px-2 py-1 text-sm font-semibold text-muted no-underline transition-colors hover:text-ink">
@@ -65,6 +70,12 @@ const ext = lineIcon('arrow-up-right', 'size-3.5 opacity-60');
   </div>
 </header>
 
+<style is:global>
+  .theme-icon-sun { display: none; }
+  :root[data-theme='dark'] .theme-icon-sun { display: block; }
+  :root[data-theme='dark'] .theme-icon-moon { display: none; }
+</style>
+
 <style>
   .nav-link::after {
     content: '';
@@ -85,6 +96,20 @@ const ext = lineIcon('arrow-up-right', 'size-3.5 opacity-60');
 </style>
 
 <script>
+  // Theme toggle: the inline script in Layout sets data-theme before paint; this flips and remembers it.
+  const themeBtn = document.getElementById('theme-toggle')!;
+  const syncThemeLabel = () => {
+    const dark = document.documentElement.dataset.theme === 'dark';
+    themeBtn.setAttribute('aria-label', dark ? themeBtn.dataset.labelLight! : themeBtn.dataset.labelDark!);
+  };
+  syncThemeLabel();
+  themeBtn.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('buildream:theme', next); } catch {}
+    syncThemeLabel();
+  });
+
   const header = document.getElementById('site-header')!;
   const onScroll = () => {
     const scrolled = window.scrollY > 8;

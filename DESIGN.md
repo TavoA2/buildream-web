@@ -24,6 +24,25 @@ El azul transmite confianza y tecnología; el cian de la terminal marca lo que e
 
 Los logos de terceros conservan sus colores; los muy oscuros se pasan a blanco sobre la banda.
 
+### Modo oscuro
+
+Mismos tokens con otros valores (`:root[data-theme="dark"]` en `src/styles/global.css`). Por defecto sigue la preferencia del sistema; el botón sol/luna del navbar lo cambia y la elección se guarda en `localStorage` (`buildream:theme`). Un script en el `<head>` lo aplica antes de pintar, sin parpadeo.
+
+| Token | Oscuro |
+|---|---|
+| `paper` | `#070C1E` |
+| `surface` | `#0E1630` |
+| `ink` | `#E8ECF8` |
+| `muted` | `#9AA8CC` |
+| `line` | `#24305A` |
+| `accent` | `#3D66FF` (botón primario; hover `#2549E0`) |
+| `accent-strong` | `#8FA6FF` (enlaces de texto) |
+| `accent-soft` | `#16224A` |
+| `band` | `#111B3D`, con borde interior blanco al 8 % para separarse del fondo |
+| `danger` | `#FF8A8A` (claro: `#B91C1C`) |
+
+En oscuro el logo usa la variante azul (cuadro azul eléctrico, `>` blanco, chispa cian). Contraste AA verificado: texto 16.5:1, secundario 8.2:1, enlaces 8.4:1, botón 4.6:1.
+
 ## Logo
 
 C4 "prompt de IA": cuadro de terminal azul noche con `>` en cian y una chispa azul en lugar del cursor (aquí escribes, la IA responde). Nombre en JetBrains Mono 600, minúsculas, con `_` como cursor. En fondos oscuros, el cuadro pasa a azul eléctrico con `>` blanco y chispa cian. Archivos en `/brand`.

@@ -45,7 +45,16 @@ const jsonLd = {
     <link rel="alternate" hreflang="x-default" href={lang === 'es' ? canonical : alt} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#f5f7fc" />
+    <meta name="theme-color" content="#f5f7fc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#070c1e" media="(prefers-color-scheme: dark)" />
+    <script is:inline>
+      (() => {
+        let t = null;
+        try { t = localStorage.getItem('buildream:theme'); } catch {}
+        if (t !== 'dark' && t !== 'light') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Buildream" />

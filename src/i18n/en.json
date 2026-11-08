@@ -15,7 +15,9 @@
     "close": "Close menu",
     "switchTo": "Español",
     "switchLabel": "Ver el sitio en español",
-    "home": "Home"
+    "home": "Home",
+    "themeDark": "Switch to dark mode",
+    "themeLight": "Switch to light mode"
   },
   "brand": {
     "descriptor": "IT & AI consulting and services"

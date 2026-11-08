@@ -15,7 +15,9 @@
     "close": "Cerrar menú",
     "switchTo": "English",
     "switchLabel": "Ver el sitio en inglés",
-    "home": "Inicio"
+    "home": "Inicio",
+    "themeDark": "Activar modo oscuro",
+    "themeLight": "Activar modo claro"
   },
   "brand": {
     "descriptor": "Consultoría y servicios IT & IA"
