@@ -3,8 +3,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
-// Dominio pendiente: cambia SITE_URL en .env (o en Netlify) cuando lo compres.
-const SITE_URL = process.env.SITE_URL || 'https://buildream.netlify.app';
+// Dominio pendiente: cambia SITE_URL en las variables de Vercel (o en .env) cuando lo compres.
+const SITE_URL = process.env.SITE_URL || 'https://buildream-web.vercel.app';
 
 export default defineConfig({
   site: SITE_URL,

@@ -4,5 +4,5 @@
 - [ ] **Casos de éxito:** cuando haya clientes reales (por ejemplo Natural o la integración con AutoCAD), crear una página de casos con permiso del cliente.
 - [ ] **Testimonios / casos de éxito:** agregar la sección solo con testimonios reales y con permiso.
 - [ ] **Agenda en línea** (opcional): crear cuenta en Cal.com y añadir el enlace en Contacto.
-- [ ] **Netlify Forms:** después del primer deploy, activar las notificaciones por correo.
+- [ ] **Web3Forms:** restringir los envíos al dominio del sitio en el panel de Web3Forms y confirmar que los mensajes llegan (revisar spam la primera vez).
 - [ ] Revisar los textos legales con alguien de confianza antes de cobrar el primer proyecto.

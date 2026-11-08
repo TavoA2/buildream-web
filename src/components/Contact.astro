@@ -8,8 +8,10 @@ const H = standalone ? 'h1' : 'h2';
 const all = t(Astro.props.lang);
 const d = all.contact;
 const services = all.services.items.map((s) => s.title);
-// Netlify Forms por defecto. Para usar Formspree/Web3Forms, define PUBLIC_FORM_ENDPOINT.
-const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT || '/';
+// Formulario con Web3Forms. La access key va solo como variable de entorno (PUBLIC_WEB3FORMS_KEY).
+// Sin key, el formulario no se rompe: muestra el mensaje de error que invita a escribir por WhatsApp.
+const accessKey = (import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '').trim();
+const endpoint = 'https://api.web3forms.com/submit';
 const field = 'mt-2 block w-full rounded-[var(--radius-control)] border border-line bg-paper px-4 py-3 text-base text-ink placeholder:text-muted/70 transition focus:border-accent focus:bg-surface focus:outline-none focus:ring-2 focus:ring-accent/25 aria-[invalid=true]:border-red-700';
 const label = 'block text-[0.95rem] font-semibold';
 ---
@@ -31,11 +33,13 @@ const label = 'block text-[0.95rem] font-semibold';
       </div>
     </div>
 
-    <form id="contact-form" name="contacto" method="POST" action={endpoint} data-netlify="true" netlify-honeypot="bot-field"
-          data-endpoint={endpoint} data-msg-required={d.required} data-msg-email={d.invalidEmail}
+    <form id="contact-form" name="contacto" method="POST" action={endpoint}
+          data-endpoint={endpoint} data-configured={accessKey ? 'true' : 'false'} data-msg-required={d.required} data-msg-email={d.invalidEmail}
           class="panel grid gap-5 p-6 sm:p-8 lg:col-span-7" novalidate>
-      <input type="hidden" name="form-name" value="contacto" />
-      <p class="hidden"><label>Bot <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+      <input type="hidden" name="access_key" value={accessKey} />
+      <input type="hidden" name="subject" value="Nuevo contacto desde Buildream" />
+      <input type="hidden" name="from_name" value="Buildream web" />
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <input type="hidden" name="idioma" value={Astro.props.lang} />
 
       <div class="grid gap-5 sm:grid-cols-2">
@@ -123,13 +127,18 @@ const label = 'block text-[0.95rem] font-semibold';
     btn.disabled = true;
     btn.textContent = btn.dataset.sending!;
     try {
-      const data = new FormData(form);
+      if (form.dataset.configured !== 'true') throw new Error('missing access key');
+      const fd = new FormData(form);
+      const payload: Record<string, unknown> = {};
+      fd.forEach((value, key) => { payload[key] = value; });
+      payload.botcheck = (form.querySelector<HTMLInputElement>('[name=botcheck]')?.checked) ?? false;
       const res = await fetch(form.dataset.endpoint!, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' },
-        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error(String(res.status));
+      const data = await res.json().catch(() => ({}));
+      if (!(res.ok && (data as { success?: boolean }).success)) throw new Error(String(res.status));
       form.reset();
       status.className = 'text-[0.95rem] font-medium text-accent-strong';
       status.textContent = status.dataset.sent!;

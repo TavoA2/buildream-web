@@ -52,15 +52,24 @@ Logo "prompt de IA" (C4) en `brand/`: ícono oscuro y azul, logo horizontal clar
 
 ## Deploy
 
-### Netlify (recomendado: plan gratis permite uso comercial)
+### Vercel (sitio publicado)
 
-1. Sube el repo a GitHub.
-2. En Netlify: **Add new site → Import from Git** → elige el repo. `netlify.toml` ya trae el build (`npm run build`, carpeta `dist`).
-3. El formulario de contacto usa **Netlify Forms**: aparece solo en *Forms* después del primer deploy. Activa las notificaciones por correo en *Forms → Form notifications*.
+El sitio está en Vercel, proyecto `buildream-web`, conectado al repo de GitHub `TavoA2/buildream-web`: cada push a `main` publica en producción y cada Pull Request genera una vista previa.
 
-### Vercel
+- Framework **Astro**, build `npm run build`, salida `dist`, Node **22.x**.
+- Variables de entorno (Production y Preview):
+  - `SITE_URL=https://buildream-web.vercel.app` (cámbiala al comprar el dominio).
+  - `PUBLIC_WEB3FORMS_KEY`: access key de [Web3Forms](https://web3forms.com). Es pública por diseño (va en el HTML del formulario), así que en Vercel puede ser tipo *Config*. Al cambiarla, haz **Redeploy**: se lee al construir el sitio.
+- `vercel.json` aplica los mismos encabezados de seguridad y caché que `netlify.toml`.
+- Ojo: el plan **Hobby** de Vercel es para uso personal/no comercial; para un sitio comercial corresponde el plan Pro (o usar Netlify).
 
-Funciona igual (sitio estático). Ojo: el plan Hobby es solo para uso personal/no comercial. Netlify Forms no funciona en Vercel: define `PUBLIC_FORM_ENDPOINT` con un endpoint de Formspree o Web3Forms.
+### Formulario de contacto
+
+Envía a Web3Forms (`https://api.web3forms.com/submit`) como JSON, con honeypot `botcheck`. Los mensajes llegan al correo con el que se creó la access key. Si la variable no está definida, el formulario no se rompe: muestra el aviso para escribir por WhatsApp. En el panel de Web3Forms conviene restringir los envíos al dominio del sitio.
+
+### Netlify (alternativa)
+
+`netlify.toml` ya trae el build. En Netlify el formulario sigue usando Web3Forms con la misma variable.
 
 ### Dominio
 

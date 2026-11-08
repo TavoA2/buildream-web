@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://buildream.netlify.app/sitemap-index.xml
+Sitemap: https://buildream-web.vercel.app/sitemap-index.xml
